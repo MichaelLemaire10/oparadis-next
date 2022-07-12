@@ -6,7 +6,7 @@ import img from "../public/house.jpg";
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
-  return (
+return (
     <div className={styles.container}>
       <Head>
         <title>O'Paradis</title>
