@@ -1,20 +1,30 @@
-import styles from "../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import Image from "next/image";
 import imageLoader from "../../../imagesLoader";
 
-function HouseFour () {
+function HouseFour ( {obj} ) {
 
     return (
         <article className={styles.card}>
-        <div className={styles.card_img}>image</div>
+        <div className={styles.card_img}>
+          <Image 
+            loader={imageLoader}
+            unoptimized
+            className={styles.card_img__img}
+            src={obj.img}
+            alt="image house"
+            width={250}
+            height={175}
+            />
+        </div>
         <div className={styles.card_text}>
-          <h2 className={styles.card_text__name}>maison 3</h2>
-          <p>Type du logement</p>
+          <h2 className={styles.card_text__name}>{obj.title}</h2>
+          <p>{obj.type}</p>
           <div className={styles.card_text__location}>
-            <p>Ville</p>
-            <p>Pays</p>
+            <p>{obj.city}</p>
+            <p>{obj.country}</p>
           </div>
-          <p>Date de création</p>
+          <p>{obj.date}</p>
         </div>
       </article>
     )

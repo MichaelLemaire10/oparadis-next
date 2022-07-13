@@ -11,7 +11,8 @@ import {
 
 export default function ModalSignup() {
   const dispatch = useDispatch();
-  
+  const target = 'modal';
+
   // Selector //
   const openModalSignup = useSelector((state) => state.booleans.modalSignup)
 
@@ -45,7 +46,7 @@ export default function ModalSignup() {
             </DialogContentText>
             <form className={styles.form_modal}>
               <TextFormProfil />
-              <PasswordFormProfil />
+              <PasswordFormProfil target={target} />
             </form>
           </DialogContent>
           <DialogActions>

@@ -40,6 +40,12 @@ height: 50%;
 border-radius: 15px 15px 0px 0px;
 border-bottom: 1px solid black;
 }
+.card_img__img {
+  border-radius: 15px 15px 0px 0px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  }
 
 .card_text {
   width: 100%;
@@ -50,13 +56,13 @@ border-bottom: 1px solid black;
 .card_text__name{
   font-size: larger;
   font-weight: 500;
-  margin-top: -.1rem;
 }
 
 .card_text__location {
 display: flex;
 justify-content: center;
 justify-content: space-evenly;
+margin: -.5rem;
 }
 
 .section_down {
