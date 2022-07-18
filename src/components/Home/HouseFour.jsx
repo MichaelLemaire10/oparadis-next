@@ -1,52 +1,29 @@
 import styles from "../../../styles/Home.module.css";
-import Image from "next/image";
-import imageLoader from "../../../imagesLoader";
-import img from '../../../public/house.jpg'
+import ImgHouse from "../ImgHouse";
 
-function HouseFour ( {obj} ) {
-console.log('obj:', obj);
-const photos = obj.photo;
-console.log('photos:', photos);
+function HouseFour({ obj }) {
+  const custom = {
+    width: 250,
+    height: 175,
+    styles: styles.card_img__img,
+  };
 
-    return (
-        <article className={styles.card}>
-        <div className={styles.card_img}>
-          { photos.map((p) => {
-            if(p.main_photo === true) {
-            <Image 
-              loader={imageLoader}
-              unoptimized
-              className={styles.card_img__img}
-              src={p.photo}
-              alt="image house"
-              width={250}
-              height={175}
-              />
-            } else {
-              <Image 
-              loader={imageLoader}
-              unoptimized
-              className={styles.card_img__img}
-              src={img}
-              alt="image house"
-              width={250}
-              height={175}
-              />
-              }
-            }) 
-        }  
+  return (
+    <article className={styles.card}>
+      <div className={styles.card_img}>
+      {obj.photo.map(p => <ImgHouse key={p.id} data={p} custom={custom} /> )}
+      </div>
+      <div className={styles.card_text}>
+        <h2 className={styles.card_text__name}>{obj.title}</h2>
+        <p>{obj.type.type}</p>
+        <div className={styles.card_text__location}>
+          <p>{obj.city}</p>
+          <p>{obj.country.country}</p>
         </div>
-        <div className={styles.card_text}>
-          <h2 className={styles.card_text__name}>{obj.title}</h2>
-          <p>{obj.type.type}</p>
-          <div className={styles.card_text__location}>
-            <p>{obj.city}</p>
-            <p>{obj.country.country}</p>
-          </div>
-          <p>{obj.date}</p>
-        </div>
-      </article>
-    )
+        <p>{obj.created_at}</p>
+      </div>
+    </article>
+  )
 };
 
 export default HouseFour;

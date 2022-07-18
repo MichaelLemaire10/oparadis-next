@@ -34,11 +34,8 @@ const Home = ({ arrayHouse }) => {
 export const getStaticProps = async () => {
   const getUrl = process.env.URL;
   const res = await axios.get(`${getUrl}/`);
-
   return {
-    props: {
-      arrayHouse: res.data
-    },
+    props: { arrayHouse: res.data },
   };
 };
 
