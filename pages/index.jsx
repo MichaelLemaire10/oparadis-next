@@ -4,10 +4,12 @@ import HomeLogo from "../src/components/Home/homeLogo";
 import HouseFour from "../src/components/Home/HouseFour";
 import Cards from "../src/components/Home/Cards";
 import styles from "../styles/Home.module.css";
-import { array, arrayHouse } from "../src/selectors/data";
+import { array } from "../src/selectors/data";
+import axios from "axios";
 
-const Home = () => {
-return (
+const Home = ({ arrayHouse }) => {
+
+  return (
     <div className={styles.container}>
       <Head>
         <title>O'Paradis</title>
@@ -19,14 +21,25 @@ return (
           <HomeLogo />
         </section>
         <section className={styles.section_middle}>
-          {arrayHouse.map( house => <HouseFour key={house.id} obj={house}/>)}
+          {arrayHouse.map(house => <HouseFour key={house.id} obj={house} />)}
         </section>
         <section className={styles.section_down}>
-          {array.map( a => <Cards key={a.id} obj={a}/> )}
+          {array.map(a => <Cards key={a.id} obj={a} />)}
         </section>
       </div>
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const getUrl = process.env.URL;
+  const res = await axios.get(`${getUrl}/`);
+
+  return {
+    props: {
+      arrayHouse: res.data
+    },
+  };
 };
 
 export default Home;

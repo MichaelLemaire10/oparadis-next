@@ -5,8 +5,8 @@ const houseSlice = createSlice({
   name: 'houses',
   initialState,
   reducers: {
-    getFourHouses: (state) => {
-      state.getFourHouses
+    getFourHouses: (state, action) => {
+      state.getFourHouses = action.payload
     },
     updateHouse: (state, action) => {
       state.title = action.payload
