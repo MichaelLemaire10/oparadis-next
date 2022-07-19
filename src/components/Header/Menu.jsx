@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export default function MenuListComposition() {
+const MenuListComposition = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const anchorRef = React.useRef(null);
@@ -146,3 +146,5 @@ export default function MenuListComposition() {
     </div>
   );
 }
+
+export default MenuListComposition;

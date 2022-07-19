@@ -5,7 +5,7 @@ import styles from "../../../styles/Form.module.css";
 import imgchimere from "../../../public/chimere.jpg";
 import noImg from "../../../public/animaux.jpg";
 
-function SectionAnimal() {
+const SectionAnimal = () => {
   return (
     <section className={`${styles.animal} ${styles.card}`}>
       {/* <h3>Un ou plusieurs animaux</h3> */}

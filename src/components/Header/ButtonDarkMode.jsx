@@ -59,7 +59,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches() {
+const CustomizedSwitches = () =>{
   return (
     <FormGroup>
       <FormControlLabel
@@ -69,3 +69,5 @@ export default function CustomizedSwitches() {
     </FormGroup>
   );
 }
+
+export default CustomizedSwitches;

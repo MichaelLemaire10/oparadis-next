@@ -5,14 +5,15 @@ const houseSlice = createSlice({
   name: 'houses',
   initialState,
   reducers: {
-    getFourHouses: (state, action) => {
-      state.getFourHouses = action.payload
+    getHouses: (state, action) => {
+      state.houses = action.payload
     },
     updateHouse: (state, action) => {
+      console.log('type:', action.type);
       state.title = action.payload
     },
   },
 });
 
-export const { getFourHouses, updateHouse } = houseSlice.actions
+export const { getHouses, updateHouse } = houseSlice.actions
 export default houseSlice.reducer
