@@ -21,7 +21,7 @@ const Home = ({ arrayHouse }) => {
           <HomeLogo />
         </section>
         <section className={styles.section_middle}>
-          {arrayHouse.map(house => <HouseFour key={house.id} obj={house} />)}
+          {arrayHouse.map(house => <HouseFour key={house.id} obj={house} date={new Date(house.created_at)} />)}
         </section>
         <section className={styles.section_down}>
           {array.map(a => <Cards key={a.id} obj={a} />)}

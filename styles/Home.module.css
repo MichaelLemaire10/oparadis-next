@@ -27,7 +27,7 @@
 .card {
   box-shadow: 0px 0px 12px 4px rgba(161, 214, 255, 0.3);
   width: 250px;
-  height: 350px;
+  height: 370px;
   border-radius: 15PX;
   margin: 1rem;
   display: flex;
@@ -38,14 +38,12 @@
 width: 100%;
 height: 50%;
 border-radius: 15px 15px 0px 0px;
-border-bottom: 1px solid black;
 }
 .card_img__img {
   border-radius: 15px 15px 0px 0px;
   object-fit: cover;
   width: 100%;
   height: 100%;
-  background-color: aqua;
   }
 
 .card_text {
@@ -57,13 +55,14 @@ border-bottom: 1px solid black;
 .card_text__name{
   font-size: larger;
   font-weight: 500;
+  margin-top: 0.3rem;
 }
 
 .card_text__location {
 display: flex;
 justify-content: center;
 justify-content: space-evenly;
-margin: -.5rem;
+margin: -1.1rem;
 }
 
 .section_down {

@@ -7,11 +7,15 @@ function HouseFour({ obj }) {
     height: 175,
     styles: styles.card_img__img,
   };
+  
+  const picture = obj.photo.filter(p => p.main_photo === true);
+  const bool = obj.photo[0] ? true : false ;
 
   return (
     <article className={styles.card}>
       <div className={styles.card_img}>
-      {obj.photo.map(p => <ImgHouse key={p.id} data={p} custom={custom} /> )}
+      {bool && picture.map(p => <ImgHouse key={p.id} data={p} custom={custom} />)}
+      {!bool && <ImgHouse data={{main_photo: false}} custom={custom} />}
       </div>
       <div className={styles.card_text}>
         <h2 className={styles.card_text__name}>{obj.title}</h2>
