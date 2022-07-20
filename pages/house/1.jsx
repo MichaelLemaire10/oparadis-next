@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import styles from "../../styles/House.module.css";
-import { LeafletWithNoSSR } from "../../src/selectors/noSSR";
+import { LeafletWithNoSSR } from "../../src/selectors/LeafletWithNoSSR";
 import SectionPhoto from "../../src/components/House/Photo";
 import SectionText from "../../src/components/House/Text";
 import SectionBool from "../../src/components/House/Bool";

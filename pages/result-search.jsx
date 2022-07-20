@@ -1,5 +1,5 @@
 import styles from "../styles/ResultSearch.module.css";
-import { LeafletWithNoSSR } from "../src/selectors/noSSR";
+import { LeafletWithNoSSR } from "../src/selectors/LeafletWithNoSSR";
 import Image from "next/image";
 import img1 from "../public/darkHouse.jpg";
 import img2 from "../public/house.jpg";

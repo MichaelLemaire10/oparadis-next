@@ -22,7 +22,7 @@ const Home = ({ arrayHouse }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-        <button onClick={handleTest}>test: {test}</button>
+        {/* <button onClick={handleTest}>test: {test}</button> */}
         <section className={styles.section_up}>
           <HomeLogo />
         </section>

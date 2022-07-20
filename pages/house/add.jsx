@@ -1,5 +1,5 @@
 import styles from "../../styles/Form.module.css";
-import { LeafletWithNoSSR } from "../../src/selectors/LeafletNoSSR";
+import { LeafletWithNoSSR } from "../../src/selectors/LeafletWithNoSSR";
 import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
 import SectionFormBool from "../../src/components/HouseForm/BoolForm";
