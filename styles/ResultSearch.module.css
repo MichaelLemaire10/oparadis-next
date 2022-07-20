@@ -26,10 +26,6 @@
 
 
 .card {
-  /* box-shadow: 0px 0px 12px 4px rgba(161, 214, 255, 0.3); */
-  /* width: 90%; */
-  /* margin: 1rem; */
-  /* background-color: rgba(215, 238, 255, 0.3); */
   width: 100%;
   height: 200px;
   border-radius: 15px 0px 0px 15px;
@@ -40,8 +36,6 @@
 }
 
 .card_img {
-  /* background-color: aqua; */
-  /* border-right: 1px solid rgb(236, 239, 251); */
   border-radius: 15px 0px 0px 15px;
   width: 60%;
   height: 100%;
@@ -56,7 +50,6 @@
 }
 
 .card_text {
-  /* border-radius: 0px 15px 15px 0px; */
   background-color: white;
   width: 40%;
   height: 100%;
