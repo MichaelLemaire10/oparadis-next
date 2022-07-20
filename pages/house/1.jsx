@@ -15,6 +15,12 @@ const HouseById = () => {
       <h2>Mon logement</h2>
       <SectionPhoto />
       <div className={styles.container}>
+        <section className={styles.user}>
+          User
+        </section>
+        <section className={styles.calendar}>
+          Calendrier
+        </section>
         <SectionText />
         <section className={styles.map}>
           <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />

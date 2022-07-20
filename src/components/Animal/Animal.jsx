@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
-import styles from "../../../styles/Form.module.css";
+import styles from "../../../styles/House.module.css";
 import imgchimere from "../../../public/chimere.jpg";
 import noImg from "../../../public/animaux.jpg";
 
