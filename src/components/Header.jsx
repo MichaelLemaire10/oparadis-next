@@ -7,9 +7,13 @@ import logo from "../../public/logo_small.svg";
 import styles from "../../styles/Header.module.css";
 import MenuList from "./Header/Menu";
 import DarkMode from "./Header/ButtonDarkMode";
+import ImgAvatar from "./Image/ImgAvatar";
 
 function Header() {
-  const avatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/mmtetrupmel5r4c8qcaf.png";
+  const custom = {
+    width: "40px",
+    height: "40px",
+  };
 
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -49,15 +53,7 @@ function Header() {
       <div className={styles.div}>
         <DarkMode />
         <MenuList />
-        <Image 
-          className={styles.div_avatar}
-          loader={imageLoader}
-          alt="image d'un avatar"
-          src={avatar}
-          width="40px"
-          height="40px"
-          unoptimized
-        />
+        <ImgAvatar custom={custom} />
       </div>
     </header>
   );

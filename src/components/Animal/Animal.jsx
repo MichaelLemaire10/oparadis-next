@@ -9,7 +9,7 @@ function SectionAnimal() {
   return (
     <section className={`${styles.animal} ${styles.card}`}>
       {/* <h3>Un ou plusieurs animaux</h3> */}
-      <div className={`${styles.card_container} ${styles.animal_color}`}>
+      <div className={styles.card_container}>
         <div className={styles.card_location}>
           <div className={styles.card_location__img}>
             <Image

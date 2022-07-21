@@ -9,7 +9,7 @@ function SectionPlant() {
   return (
     <section className={`${styles.plant} ${styles.card}`}>
       {/* <h3>Une ou plusieurs plantes</h3> */}
-      <div className={`${styles.card_container} ${styles.plant_color}`}>
+      <div className={styles.card_container}>
         <div className={styles.card_location}>
           <div className={styles.card_location__img}>
             <Image

@@ -4,9 +4,7 @@
     z-index: 10;
 }
 
-.h1 {
-    display: none;
-}
+.h1 { display: none; }
 
 .a {
     display: flex;
@@ -19,9 +17,7 @@
     height: 100%;
 }
 
-.margin {
-    margin-left: -40px;
-}
+.margin { margin-left: -40px;}
 
 .div {
     display: flex;
@@ -32,10 +28,7 @@
     z-index: 10;
 }
 
-.div_avatar {
-    margin-left: 0.5rem;
-    border-radius: 100%;
-}
+.div_avatar {border-radius: 100%;}
 
 .div_handles {
     display: flex;

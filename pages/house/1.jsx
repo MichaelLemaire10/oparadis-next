@@ -2,6 +2,8 @@
 import styles from "../../styles/House.module.css";
 import { LeafletWithNoSSR } from "../../src/selectors/LeafletNoSSR";
 import SectionPhoto from "../../src/components/House/Photo";
+import SectionUser from "../../src/components/House/User";
+import SectionCalendar from "../../src/components/House/Calendar";
 import SectionText from "../../src/components/House/Text";
 import SectionBool from "../../src/components/House/Bool";
 import SectionAnimal from "../../src/components/Animal/Animal";
@@ -15,12 +17,8 @@ const HouseById = () => {
       <h2>Mon logement</h2>
       <SectionPhoto />
       <div className={styles.container}>
-        <section className={styles.user}>
-          User
-        </section>
-        <section className={styles.calendar}>
-          Calendrier
-        </section>
+        <SectionUser />
+        <SectionCalendar />
         <SectionText />
         <section className={styles.map}>
           <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
