@@ -6,20 +6,26 @@ import Card from "./CardAnimal";
 
 function SectionAnimal() {
   const [page, setPage] = React.useState(1);
+  const [animal, setAnimal] = React.useState("");
+
+  React.useEffect(() => { setAnimal(ArrayAnimal.at(--page)) });
+
+  console.log('animal:', animal);
+
   const handleChange = (e, value) => {
     setPage(value);
+    setAnimal(ArrayAnimal.at(--page));
   };
-
-  // console.log(ArrayAnimal);
 
   return (
     <section className={`${styles.animal} ${styles.card}`}>
       {/* <h3>Un ou plusieurs animaux</h3> */}
-      {ArrayAnimal.map( a => <Card key={a.id} obj={a} /> )}
-      <Stack spacing={2}>
-        <Typography>Page: {page}</Typography>
+      <Card obj={animal} />
+      <button><</button>
+      {/* <Stack spacing={2}> */}
+        {/* <Typography>Page: {page}</Typography> */}
         <Pagination count={ArrayAnimal.length} page={page} onChange={handleChange} />
-      </Stack>
+      {/* </Stack> */}
     </section>
   );
 }

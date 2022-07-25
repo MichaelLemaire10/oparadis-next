@@ -1,10 +1,10 @@
 export const ArrayAnimal = [
   {
     id: 1,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "",
     type: "Légendaire",
     race: "Chimére",
-    maladie: "RAS",
+    maladie: "schizophrénie",
     notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
   },
   {
