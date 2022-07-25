@@ -4,10 +4,13 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  createTheme,
+  ThemeProvider,
 } from "@material-ui/core";
 import styles from "../../styles/Profil.module.css";
 import TextForm from "../../src/components/Profil/TextForm";
 import AvatarForm from "../../src/components/Profil/AvatarForm";
+import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
 
 const Profil = () => {
@@ -28,16 +31,28 @@ const Profil = () => {
     // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
   };
 
+  // New styles
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "rgb(139, 186, 249)",
+        contrastText: "#ffffff",
+      },
+    },
+  })
+
   return (
     <div className={styles.main}>
-       
-        <DialogContent className={styles.form}> 
+
+      <DialogContent className={styles.form}>
         <DialogTitle>Mon profil</DialogTitle>
-          <form className={styles.form_card}>
-            <TextForm />
-            <AvatarForm />
-          </form>
-          <DialogActions>
+        <form className={styles.form_card}>
+          <TextForm />
+          <AvatarForm />
+          <DescForm />
+        </form>
+        <DialogActions>
+        <ThemeProvider theme={theme} >
             <Button
               variant="contained"
               color="primary"
@@ -46,11 +61,13 @@ const Profil = () => {
             >
               Envoyer
             </Button>
-          </DialogActions>
-          <form className={styles.form_allPassword}>
-            <PasswordForm />
-          </form>
-          <DialogActions>
+          </ThemeProvider>
+        </DialogActions>
+        <form className={styles.form_allPassword}>
+          <PasswordForm />
+        </form>
+        <DialogActions>
+          <ThemeProvider theme={theme} >
             <Button
               variant="contained"
               color="primary"
@@ -59,8 +76,9 @@ const Profil = () => {
             >
               Envoyer
             </Button>
-          </DialogActions>
-        </DialogContent>
+          </ThemeProvider>
+        </DialogActions>
+      </DialogContent>
     </div>
   );
 };

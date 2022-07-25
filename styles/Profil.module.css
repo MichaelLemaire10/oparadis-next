@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: -2%;
+  margin-top: -3%;
 }
 
 .form_card {
@@ -33,6 +33,21 @@
   align-items: center;
   flex-direction: column;
   width: 350px;
+}
+
+.form_desc {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.form_desc__texte {
+  border: 1px solid rgb(182, 183, 184);
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  outline-color: rgb(175, 206, 247);
 }
 
 .form_password {

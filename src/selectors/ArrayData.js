@@ -1,0 +1,85 @@
+export const ArrayAnimal = [
+  {
+    id: 1,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Légendaire",
+    race: "Chimére",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id: 2,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen2_t8dl4l.png",
+    type: "Chien",
+    race: "Bulldog",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id: 3,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Chat",
+    race: "Serval",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id: 4,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Poisson",
+    race: "Saumon",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id: 5,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Mouton",
+    race: "",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id: 6,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Chevre",
+    race: "Nain",
+    maladie: "RAS",
+    notes: "",
+  },
+  {
+    id: 7,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Dragon",
+    race: "feu",
+    maladie: "RAS",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+];
+
+export const ArrayPlant = [
+  {
+    id:  1,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Carnivore",
+    notes: "Manger deux moutons par semaine et un grand verre d'eau plate.",
+  },
+  {
+    id:  2,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen2_t8dl4l.png",
+    type: "Rosier",
+    notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
+  },
+  {
+    id:  3,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Persil",
+    notes: "RAS",
+  },
+  {
+    id:  4,
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    type: "Tomate",
+    notes: "RAS",
+  },
+];

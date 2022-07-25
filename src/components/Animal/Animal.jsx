@@ -1,78 +1,25 @@
 import React from "react";
-import Image from "next/image";
-import imagesLoader from "../../../imagesLoader";
 import styles from "../../../styles/House.module.css";
-import imgchimere from "../../../public/chimere.jpg";
-import noImg from "../../../public/animaux.jpg";
+import { Pagination, Stack, Typography } from "@mui/material";
+import { ArrayAnimal } from "../../selectors/ArrayData";
+import Card from "./CardAnimal";
 
 function SectionAnimal() {
+  const [page, setPage] = React.useState(1);
+  const handleChange = (e, value) => {
+    setPage(value);
+  };
+
+  // console.log(ArrayAnimal);
+
   return (
     <section className={`${styles.animal} ${styles.card}`}>
       {/* <h3>Un ou plusieurs animaux</h3> */}
-      <div className={styles.card_container}>
-        <div className={styles.card_location}>
-          <div className={styles.card_location__img}>
-            <Image
-              src={imgchimere}
-              className={styles.card_img}
-              loader={imagesLoader}
-              unoptimized
-              alt="image plante"
-            />
-          </div>
-          <div className={styles.card_location__info}>
-            <p>
-              <span>Type: </span>Légendaire
-            </p>
-            <p>
-              <span>Race: </span>Chimére
-            </p>
-            <p>
-              <span>Maladie: </span>schizophrène
-            </p>
-          </div>
-        </div>
-        <div className={styles.card_notes}>
-          {/* champs texte 120 caracteres max */}
-          <p>
-            <span>Notes: </span>0123456789 0123456789 0123456789 0123456789
-            0123456789 0123456789 0123456789 0123456789 0123456789 0123456789
-            0123456789 0123456789
-          </p>
-        </div>
-      </div>
-      <div className={`${styles.card_container} ${styles.animal_color}`}>
-        <div className={styles.card_location}>
-          <div className={styles.card_location__img}>
-            <Image
-              src={noImg}
-              className={styles.card_img}
-              loader={imagesLoader}
-              unoptimized
-              alt="image plante"
-            />
-          </div>
-          <div className={styles.card_location__info}>
-            <p>
-              <span>Type: </span>Chien
-            </p>
-            <p>
-              <span>Race: </span>Bulldogs
-            </p>
-            <p>
-              <span>Maladie: </span>RAS
-            </p>
-          </div>
-        </div>
-        <div className={styles.card_notes}>
-          {/* champs texte 120 caracteres max */}
-          <p>
-            <span>Notes: </span>0123456789 0123456789 0123456789 0123456789
-            0123456789 0123456789 0123456789 0123456789 0123456789 0123456789
-            0123456789 0123456789
-          </p>
-        </div>
-      </div>
+      {ArrayAnimal.map( a => <Card key={a.id} obj={a} /> )}
+      <Stack spacing={2}>
+        <Typography>Page: {page}</Typography>
+        <Pagination count={ArrayAnimal.length} page={page} onChange={handleChange} />
+      </Stack>
     </section>
   );
 }
