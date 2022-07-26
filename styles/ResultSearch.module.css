@@ -40,6 +40,7 @@
   width: 60%;
   height: 100%;
   display: flex;
+  position: relative;
 }
 
 .card_img__img {
@@ -47,6 +48,7 @@
   max-width: 100%;
   max-height: 200px;
   object-fit: cover;
+  position: absolute;
 }
 
 .card_text {

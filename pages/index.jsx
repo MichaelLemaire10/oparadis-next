@@ -2,7 +2,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import imageLoader from "../imagesLoader";
-import img from "../public/house.jpg";
+import { noImgHouse as img } from "../src/selectors/img";
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
@@ -16,8 +16,11 @@ const Home = () => {
       <div className={styles.main}>
         <section className={styles.section_up}>
           <Image
+            className={styles.section_up__img}
             loader={imageLoader}
             unoptimized
+            width='2000'
+            height='1500'
             src={img}
             priority
             alt="image house"
