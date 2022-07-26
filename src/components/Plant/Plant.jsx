@@ -1,39 +1,35 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import Image from "next/image";
-import imagesLoader from "../../../imagesLoader";
 import styles from "../../../styles/House.module.css";
-import imgplant from "../../../public/plant-carnivore.jpg";
+import { ArrayPlant } from "../../selectors/ArrayData";
+import Card from "./CardPlant";
 
 function SectionPlant() {
+  const [page, setPage] = React.useState(0);
+  const [plant, setPlant] = React.useState("");
+
+  React.useEffect(() => { setPlant(ArrayPlant.at(page)) }, [page]);
+
   return (
     <section className={`${styles.plant} ${styles.card}`}>
       {/* <h3>Une ou plusieurs plantes</h3> */}
-      <div className={styles.card_container}>
-        <div className={styles.card_location}>
-          <div className={styles.card_location__img}>
-            <Image
-              src={imgplant}
-              className={styles.card_img}
-              loader={imagesLoader}
-              unoptimized
-              alt="image plante"
-            />
-          </div>
-          <div className={styles.card_location__info}>
-            <p>
-              <span>Type: </span>Carnivore
-            </p>
-          </div>
-        </div>
-        <div className={styles.card_notes}>
-          {/* champs texte 120 caracteres max */}
-          <p>
-            <span>Notes: </span>Manger deux moutons par semaine et un grand
-            verre d'eau plate.
-          </p>
-        </div>
-      </div>
+      <Card obj={plant} />
+      {page > 0 ?
+        <button
+          className={`${styles.button_slide} ${styles.button_slide_left}`}
+          onClick={() => setPage(--page)}
+        >{"<"}</button>
+        :
+        <button disabled className={`${styles.button_slide} ${styles.button_slide_left}`} >{"<"}</button>
+      }
+      {page < ArrayPlant.length - 1 ?
+        <button
+          className={`${styles.button_slide} ${styles.button_slide_right}`}
+          onClick={() => setPage(++page)}
+        >{">"}</button>
+        :
+        <button disabled className={`${styles.button_slide} ${styles.button_slide_right}`} >{">"}</button>
+      }
     </section>
   );
 }

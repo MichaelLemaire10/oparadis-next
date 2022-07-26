@@ -1,7 +1,7 @@
 export const ArrayAnimal = [
   {
     id: 1,
-    src: "",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828072/samples/animals/g9ltcevkludqfwp1monj.jpg",
     type: "Légendaire",
     race: "Chimére",
     maladie: "schizophrénie",
@@ -9,7 +9,7 @@ export const ArrayAnimal = [
   },
   {
     id: 2,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen2_t8dl4l.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1643711471/samples/animals/three-dogs.jpg",
     type: "Chien",
     race: "Bulldog",
     maladie: "RAS",
@@ -17,7 +17,7 @@ export const ArrayAnimal = [
   },
   {
     id: 3,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1643711465/samples/animals/cat.jpg",
     type: "Chat",
     race: "Serval",
     maladie: "RAS",
@@ -25,7 +25,7 @@ export const ArrayAnimal = [
   },
   {
     id: 4,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "",
     type: "Poisson",
     race: "Saumon",
     maladie: "RAS",
@@ -33,7 +33,7 @@ export const ArrayAnimal = [
   },
   {
     id: 5,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1643711468/samples/sheep.jpg",
     type: "Mouton",
     race: "",
     maladie: "RAS",
@@ -41,7 +41,7 @@ export const ArrayAnimal = [
   },
   {
     id: 6,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "",
     type: "Chevre",
     race: "Nain",
     maladie: "RAS",
@@ -49,7 +49,7 @@ export const ArrayAnimal = [
   },
   {
     id: 7,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828170/samples/animals/nqfcqouzpqdueoemji3k.jpg",
     type: "Dragon",
     race: "feu",
     maladie: "RAS",
@@ -60,25 +60,25 @@ export const ArrayAnimal = [
 export const ArrayPlant = [
   {
     id:  1,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828317/samples/plant/fcgkmcpry9k2rj3mbrgp.jpg",
     type: "Carnivore",
     notes: "Manger deux moutons par semaine et un grand verre d'eau plate.",
   },
   {
     id:  2,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen2_t8dl4l.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828403/samples/plant/hvj7qwuks9kv952ichmm.jpg",
     type: "Rosier",
     notes: "lorem aopjdij dgnuon nufdguu fun ufngu gnf dug onu ufnguo d.",
   },
   {
     id:  3,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "",
     type: "Persil",
     notes: "RAS",
   },
   {
     id:  4,
-    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png",
+    src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828481/samples/plant/vfpaebgaocymdtvxwdjr.jpg",
     type: "Tomate",
     notes: "RAS",
   },

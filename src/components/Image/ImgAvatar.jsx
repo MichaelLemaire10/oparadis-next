@@ -3,7 +3,7 @@ import imageLoader from "../../../imagesLoader";
 import styles from "../../../styles/Header.module.css";
 
 const ImgAvatar = ({ custom }) => {
-    const avatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/mmtetrupmel5r4c8qcaf.png";
+    const avatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/image%20default/mmtetrupmel5r4c8qcaf.png";
 
     return(
         <Image 
