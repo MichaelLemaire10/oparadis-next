@@ -3,7 +3,7 @@ import ImgHouse from "../Image/ImgHouse";
 
 function HouseFour({ obj }) {
   const custom = {
-    width: 250,
+    width: 300,
     height: 175,
     styles: styles.card_img__img,
   };
