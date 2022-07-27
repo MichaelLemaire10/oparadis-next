@@ -1,11 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
-import Head from "next/head";
-import Image from "next/image";
-import imageLoader from "../imagesLoader";
-import { noImgHouse as img } from "../src/selectors/img";
 import styles from "../styles/Home.module.css";
+import axios from "axios";
+import Head from "next/head";
+import HomeLogo from "../src/components/Home/homeLogo";
+import HouseFour from "../src/components/Home/HouseFour";
+import Cards from "../src/components/Home/Cards";
+import { array } from "../src/selectors/data";
+import { updateHouse } from "../src/reducers/houses/slice";
+import { useDispatch, useSelector } from "react-redux";
 
-const Home = () => {
+const Home = ({ arrayHouse }) => {
+  console.log('arrayHouse:', arrayHouse);
+  const dispatch = useDispatch();
+  const test = useSelector((state) => state.houses.title);
+  const handleTest = () => dispatch(updateHouse('blabal'));
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,103 +23,28 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
+        {/* <button onClick={handleTest}>test: {test}</button> */}
         <section className={styles.section_up}>
-          <Image
-            className={styles.section_up__img}
-            loader={imageLoader}
-            unoptimized
-            width='2000'
-            height='1500'
-            src={img}
-            priority
-            alt="image house"
-          />
+          <HomeLogo />
         </section>
         <section className={styles.section_middle}>
-        <article className={styles.card}>
-            <div className={styles.card_img}>image</div>
-            <div className={styles.card_text}>
-              <h2 className={styles.card_text__name}>maison 1</h2>
-              <p>Type du logement</p>
-              <div className={styles.card_text__location}>
-                <p>Ville</p>
-                <p>Pays</p>
-              </div>
-              <p>Date de création</p>
-            </div>
-          </article>          
-          <article className={styles.card}>
-            <div className={styles.card_img}>image</div>
-            <div className={styles.card_text}>
-              <h2 className={styles.card_text__name}>maison 2</h2>
-              <p>Type du logement</p>
-              <div className={styles.card_text__location}>
-                <p>Ville</p>
-                <p>Pays</p>
-              </div>
-              <p>Date de création</p>
-            </div>
-          </article>          
-          <article className={styles.card}>
-            <div className={styles.card_img}>image</div>
-            <div className={styles.card_text}>
-              <h2 className={styles.card_text__name}>maison 3</h2>
-              <p>Type du logement</p>
-              <div className={styles.card_text__location}>
-                <p>Ville</p>
-                <p>Pays</p>
-              </div>
-              <p>Date de création</p>
-            </div>
-          </article>
-          <article className={styles.card}>
-            <div className={styles.card_img}>image</div>
-            <div className={styles.card_text}>
-              <h2 className={styles.card_text__name}>maison 4</h2>
-              <p>Type du logement</p>
-              <div className={styles.card_text__location}>
-                <p>Ville</p>
-                <p>Pays</p>
-              </div>
-              <p>Date de création</p>
-            </div>
-          </article>
+          {arrayHouse.map(house => <HouseFour key={house.id} obj={house} date={new Date(house.created_at)} />)}
         </section>
         <section className={styles.section_down}>
-          <article className={styles.section_down__article}>
-            <Image
-            loader={imageLoader}
-            unoptimized
-            width="350"
-            height="350"
-            src="https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen1_etri1e.png"
-            alt="image cherche sa destination" />
-            <p>1. Chercher sa destination</p>
-          </article>
-          <article className={styles.section_down__article}>
-            <Image
-            loader={imageLoader}
-            unoptimized
-            width="350"
-            height="350"
-            src="https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen2_t8dl4l.png"
-            alt="image choisir sa destination" />
-            <p>2. Choisir sa destination</p>
-          </article>
-          <article className={styles.section_down__article}>
-            <Image
-            loader={imageLoader}
-            unoptimized
-            width="350"
-            height="350"
-            src="https://res.cloudinary.com/dhwbw94lc/image/upload/v1655197687/image%20zen/zen3_v86oux.png"
-            alt="image profiter de votre destination" />
-            <p>3. Profiter de votre destination</p>
-          </article>
+          {array.map(a => <Cards key={a.id} obj={a} />)}
         </section>
       </div>
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const url = process.env.URL;
+  const res = await axios.get(`${url}/`);
+  console.log('getStaticProps:', res.data);
+  return {
+    props: { arrayHouse: res.data },
+  };
 };
 
 export default Home;

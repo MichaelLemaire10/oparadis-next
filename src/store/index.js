@@ -2,8 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import { rootReducer } from '../reducers';
   
-  // const combinedReducer = combineReducers({rootReducer});
-  
   const reducer = (state, action) => {
     if (action.type === HYDRATE) {
       const nextState = {

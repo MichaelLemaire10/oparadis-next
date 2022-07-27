@@ -1,9 +1,9 @@
 import Image from "next/image";
 import imageLoader from "../../../imagesLoader";
 import styles from "../../../styles/Header.module.css";
+import { noImgAvatar as avatar } from "../../selectors/img";
 
 const ImgAvatar = ({ custom }) => {
-    const avatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/image%20default/mmtetrupmel5r4c8qcaf.png";
 
     return(
         <Image 

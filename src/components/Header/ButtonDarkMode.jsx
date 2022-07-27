@@ -4,6 +4,14 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
+// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+//   // dark mode
+// }
+
+// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+//   const newColorScheme = event.matches ? "dark" : "light";
+// });
+
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -51,7 +59,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches() {
+const CustomizedSwitches = () =>{
   return (
     <FormGroup>
       <FormControlLabel
@@ -61,3 +69,5 @@ export default function CustomizedSwitches() {
     </FormGroup>
   );
 }
+
+export default CustomizedSwitches;

@@ -1,5 +1,5 @@
 import styles from "../styles/ResultSearch.module.css";
-import { LeafletWithNoSSR } from "../src/selectors/LeafletNoSSR";
+import { LeafletWithNoSSR } from "../src/selectors/LeafletWithNoSSR";
 import Image from "next/image";
 import { ImgDarkMod as img1 } from "../src/selectors/img";
 import { noImgHouse as img2 } from "../src/selectors/img";

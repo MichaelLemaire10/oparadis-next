@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 
-const Password = () => {
+const Password = ({ target }) => {
   const [values, setValues] = React.useState({
     password: "",
     repeat_password: "",
@@ -19,6 +19,9 @@ const Password = () => {
     showOldPassword: false,
   });
 
+  // 
+  if (target === 'modal') console.log('mettre une req vers reducer signup');
+
   const handleChange =
     (prop) => (event) => {
       setValues({ ...values, [prop]: event.target.value });
@@ -26,13 +29,14 @@ const Password = () => {
 
   const handleClickShowPassword = () => {
     // let getName = e.target.getAttribute('name');
-    setValues({ ...values, showPassword: !values.showPassword,});};
+    setValues({ ...values, showPassword: !values.showPassword, });
+  };
 
-  const handleClickShowRepeatPassword = () => setValues({ ...values, showRepeatPassword: !values.showRepeatPassword,});
+  const handleClickShowRepeatPassword = () => setValues({ ...values, showRepeatPassword: !values.showRepeatPassword, });
 
-  const handleClickShowOldPassword = () => setValues({ ...values, showOldPassword: !values.showOldPassword,});
+  const handleClickShowOldPassword = () => setValues({ ...values, showOldPassword: !values.showOldPassword, });
 
-  const handleMouseDownPassword = (event) => {event.preventDefault();};
+  const handleMouseDownPassword = (event) => { event.preventDefault(); };
 
   return (
     <form className={styles.form_password}>
@@ -58,7 +62,7 @@ const Password = () => {
               </IconButton>
             </InputAdornment>
           }
-          
+
         />
       </FormControl>
       {/* {errors.password && <p className='error'>{errors.password}</p>} */}
@@ -85,37 +89,38 @@ const Password = () => {
               </IconButton>
             </InputAdornment>
           }
-          
+
         />
       </FormControl>
       {/* {errors.repeat_password && <p className='error'>{errors.repeat_password}</p>} */}
 
-      <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-        <InputLabel htmlFor="standard-adornment-old-password">
-          Ancien mot de passe
-        </InputLabel>
-        <Input
-          id="standard-adornment-old-password"
-          className={styles.input_pwd}
-          margin="dense"
-          type={values.showOldPassword ? "text" : "password"}
-          value={values.old_password}
-          onChange={handleChange("old_password")}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle old_password visibility"
-                onClick={handleClickShowOldPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {values.showOldPassword ? <VisibilityOff name="showOldPassword" /> : <Visibility name="showOldPassword" />}
-              </IconButton>
-            </InputAdornment>
-          }
-          
-        />
-      </FormControl>
-      {/* {errors.repeat_password && <p className='error'>{errors.old_password}</p>} */}
+      {!target && (
+        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="standard-adornment-old-password">
+            Ancien mot de passe
+          </InputLabel>
+          <Input
+            id="standard-adornment-old-password"
+            className={styles.input_pwd}
+            margin="dense"
+            type={values.showOldPassword ? "text" : "password"}
+            value={values.old_password}
+            onChange={handleChange("old_password")}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle old_password visibility"
+                  onClick={handleClickShowOldPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {values.showOldPassword ? <VisibilityOff name="showOldPassword" /> : <Visibility name="showOldPassword" />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+        // {/* {errors.repeat_password && <p className='error'>{errors.old_password}</p>} */}
+      )}
     </form>
   );
 };

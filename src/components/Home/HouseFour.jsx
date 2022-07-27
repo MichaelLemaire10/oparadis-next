@@ -1,23 +1,35 @@
-import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import imageLoader from "../../../imagesLoader";
+import styles from "../../../styles/Home.module.css";
+import ImgHouse from "../Image/ImgHouse";
 
-function HouseFour () {
+function HouseFour({ obj }) {
+  const custom = {
+    width: 250,
+    height: 175,
+    styles: styles.card_img__img,
+  };
+  // Ici je recupère la photo qui doit etre affiché
+  const picture = obj.photo.filter(p => p.main_photo === true);
+  // On vérifie si une photo existe
+  const bool = obj.photo[0] ? true : false ;
 
-    return (
-        <article className={styles.card}>
-        <div className={styles.card_img}>image</div>
-        <div className={styles.card_text}>
-          <h2 className={styles.card_text__name}>maison 3</h2>
-          <p>Type du logement</p>
-          <div className={styles.card_text__location}>
-            <p>Ville</p>
-            <p>Pays</p>
-          </div>
-          <p>Date de création</p>
+  return (
+    <article className={styles.card}>
+      <div className={styles.card_img}>
+      {/* si une photo avec main_photo a true alors tu executes bool */}
+      {bool && picture.map(p => <ImgHouse key={p.id} data={p} custom={custom} />)}
+      {!bool && <ImgHouse data={{main_photo: false}} custom={custom} />}
+      </div>
+      <div className={styles.card_text}>
+        <h2 className={styles.card_text__name}>{obj.title}</h2>
+        <p>{obj.type.type}</p>
+        <div className={styles.card_text__location}>
+          <p>{obj.city}</p>
+          <p>{obj.country.country}</p>
         </div>
-      </article>
-    )
+        <p>{obj.created_at}</p>
+      </div>
+    </article>
+  )
 };
 
 export default HouseFour;

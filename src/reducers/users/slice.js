@@ -9,9 +9,8 @@ const userSlice = createSlice({
         state.firstname = 'Robert',
         state.lastname = 'U'
       },
-      // incrementByAmount(state, action: PayloadAction<number>) {
-      //   state.value += action.payload
-      // },
     },
   })
   
+export const { getUser } = userSlice.actions
+export default userSlice.reducer
