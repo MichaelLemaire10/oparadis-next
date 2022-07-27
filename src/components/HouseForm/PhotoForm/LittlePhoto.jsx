@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../../../../styles/Form.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
-import imgHouse from "../../../../public/house.jpg";
+import { noImgHouse as imgHouse } from "../../../selectors/img";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
 function PhotoForm() {

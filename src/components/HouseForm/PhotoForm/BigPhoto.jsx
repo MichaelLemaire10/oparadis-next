@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
-import imgHouse from "../../../../public/house.jpg";
+import { noImgHouse as imgHouse } from "../../../selectors/img";
 import styles from "../../../../styles/Form.module.css";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 

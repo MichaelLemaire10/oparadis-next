@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
-import imgHouse from "../../../public/house.jpg";
+import { noImgHouse as imgHouse } from "../../../src/selectors/img";
 import styles from "../../../styles/House.module.css";
 
 function Photo() {
@@ -14,6 +14,7 @@ function Photo() {
           loader={imagesLoader}
           unoptimized
           src={imgHouse}
+          layout="fill"
           alt="images house"
         />
       </div>
@@ -23,6 +24,7 @@ function Photo() {
           loader={imagesLoader}
           unoptimized
           src={imgHouse}
+          layout="fill"
           alt="images house"
         />
       </div>
@@ -32,6 +34,7 @@ function Photo() {
           loader={imagesLoader}
           unoptimized
           src={imgHouse}
+          layout="fill"
           alt="images house"
         />
       </div>
@@ -41,6 +44,7 @@ function Photo() {
           loader={imagesLoader}
           unoptimized
           src={imgHouse}
+          layout="fill"
           alt="images house"
         />
       </div>
@@ -50,6 +54,7 @@ function Photo() {
           loader={imagesLoader}
           unoptimized
           src={imgHouse}
+          layout="fill"
           alt="images house"
         />
       </div>

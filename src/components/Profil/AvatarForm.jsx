@@ -3,10 +3,10 @@ import styles from "../../../styles/Profil.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { noImgAvatar as avatar } from "../../selectors/img";
 
 
 const AvatarForm = () => {
-  const avatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/mmtetrupmel5r4c8qcaf.png";
 
   const [imageSrc, setImageSrc] = useState('');
 
