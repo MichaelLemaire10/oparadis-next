@@ -4,6 +4,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
+// Pour utiliser le darkMode défini dans le navigateur
 // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 //   // dark mode
 // }
@@ -12,6 +13,7 @@ import Switch from '@mui/material/Switch';
 //   const newColorScheme = event.matches ? "dark" : "light";
 // });
 
+// Style UI pour le bouton dark mod
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,

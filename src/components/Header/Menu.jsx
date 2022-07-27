@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenModalSignup, setOpenModalSignin, setOpenMenu } from "../../reducers/booleans/slice";
 
+// styles pour le menu
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {

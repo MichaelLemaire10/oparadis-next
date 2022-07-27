@@ -17,6 +17,7 @@ function BoolForm() {
     parking: false,
   });
 
+  // fonction pour valider un bool
   const handleOnChange = (e) => {
     const getName = e.target.getAttribute('name');
     const boolInput = {

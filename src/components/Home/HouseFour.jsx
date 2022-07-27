@@ -7,7 +7,7 @@ function HouseFour({ obj }) {
     height: 175,
     styles: styles.card_img__img,
   };
-  // Ici je recupère la photo qui doit etre affiché
+  // On recupère la photo qui doit etre affiché
   const picture = obj.photo.filter(p => p.main_photo === true);
   // On vérifie si une photo existe
   const bool = obj.photo[0] ? true : false ;
@@ -15,7 +15,7 @@ function HouseFour({ obj }) {
   return (
     <article className={styles.card}>
       <div className={styles.card_img}>
-      {/* si une photo avec main_photo a true alors tu executes bool */}
+      {/* si une photo avec main_photo a true alors tu exécutes bool */}
       {bool && picture.map(p => <ImgHouse key={p.id} data={p} custom={custom} />)}
       {!bool && <ImgHouse data={{main_photo: false}} custom={custom} />}
       </div>

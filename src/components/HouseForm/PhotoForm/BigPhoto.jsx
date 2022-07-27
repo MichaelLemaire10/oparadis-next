@@ -7,17 +7,20 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
 function PhotoForm() {
   //   State to display the picture
-  const [imageSrc, setImageSrc] = useState('');
-  function handleOnChange(changeEvent) {
+  const [imageSrc, setImageSrc] = useState();
+  console.log('imageSrc:', imageSrc);
+
+  const handleOnChange = (changeEvent) => {
     const reader = new FileReader();
-    reader.onload = function (onLoadEvent) {
+    reader.onload = (onLoadEvent) => {
       setImageSrc(onLoadEvent.target.result);
     };
     reader.readAsDataURL(changeEvent.target.files[0]);
-  }
+  };
 
   return (
     <div className={`${styles.photos_big} ${styles.photos_hover}`}>
+      {/* <button onClick={() => {setImageSrc()}}>delete</button> */}
         <label htmlFor="contained-button-file">
           <input
             className={styles.displayNone}

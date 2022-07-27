@@ -1,9 +1,9 @@
 import styles from "../../../styles/House.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
+import { noImgAnimal as noImg } from "../../selectors/img";
 
 const CardAnimal = ({obj}) => {
-  const noImg = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828607/image%20default/ncxztkg65sblzzn8qozu.jpg";
   const { src, type , race, maladie, notes } = obj;
   
     return (

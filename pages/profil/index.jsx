@@ -14,7 +14,6 @@ import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
 
 const Profil = () => {
-  //State form
 
   const submitTheFormCard = (e) => {
     console.log("valider carte", e.currentTarget);
@@ -31,7 +30,7 @@ const Profil = () => {
     // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
   };
 
-  // New styles
+  // New styles pour le bouton
   const theme = createTheme({
     palette: {
       primary: {

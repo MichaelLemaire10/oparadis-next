@@ -5,30 +5,31 @@ import imagesLoader from "../../../../imagesLoader";
 import { noImgHouse as imgHouse } from "../../../selectors/img";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
-function PhotoForm() {
+const PhotoForm = () => {
   // State to display the picture
-  const [img1, setimg1] = useState();
-  const [img2, setimg2] = useState();
-  const [img3, setimg3] = useState();
-  const [img4, setimg4] = useState();
+  const [img1, setImg1] = useState();
+  const [img2, setImg2] = useState();
+  const [img3, setImg3] = useState();
+  const [img4, setImg4] = useState();
 
-  function handleOnChange(changeEvent) {
+  // fonction pour récuperer les images
+  const handleOnChange = (changeEvent) => {
     const targetId = changeEvent.target.id;
     console.log("targetId:", targetId);
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
       switch (targetId) {
         case "file-1":
-          setimg1(onLoadEvent.target.result);
+          setImg1(onLoadEvent.target.result);
           break;
         case "file-2":
-          setimg2(onLoadEvent.target.result);
+          setImg2(onLoadEvent.target.result);
           break;
         case "file-3":
-          setimg3(onLoadEvent.target.result);
+          setImg3(onLoadEvent.target.result);
           break;
         case "file-4":
-          setimg4(onLoadEvent.target.result);
+          setImg4(onLoadEvent.target.result);
           break;
         default:
           break;
@@ -61,7 +62,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={img1}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -72,7 +73,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={imgHouse}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -104,7 +105,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={img2}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -115,7 +116,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={imgHouse}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -144,7 +145,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={img3}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -155,7 +156,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={imgHouse}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -184,7 +185,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={img4}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
@@ -195,7 +196,7 @@ function PhotoForm() {
               loader={imagesLoader}
               unoptimized
               src={imgHouse}
-              alt="images house one"
+              alt="images house"
               width="250"
               height="200"
             />
