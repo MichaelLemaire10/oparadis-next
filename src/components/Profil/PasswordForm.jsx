@@ -27,7 +27,7 @@ const Password = ({ target }) => {
   // handle met à jour le state
   const handleChange = (prop) => (event) => setValues({ ...values, [prop]: event.target.value });
   // affiche le mot de passe
-  const handleClickShowPwd = (getName) => () => setValues({ ...values, [getName]: !values[getName], });
+  const handleClickShowPwd = (getName) => () => setValues({ ...values, [getName]: !values[getName] });
 
   const handleMouseDownPassword = (event) => event.preventDefault();
 

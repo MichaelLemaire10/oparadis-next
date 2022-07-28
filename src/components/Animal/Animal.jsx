@@ -3,7 +3,7 @@ import styles from "../../../styles/House.module.css";
 import { ArrayAnimal } from "../../selectors/ArrayData";
 import Card from "./CardAnimal";
 
-function SectionAnimal() {
+const SectionAnimal = () => {
   // On récupere le numéro qui va etre utiliser 
   // avec la fonction "at()" ci-dessous
   const [page, setPage] = React.useState(0);

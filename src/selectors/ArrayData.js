@@ -84,7 +84,7 @@ export const ArrayPlant = [
   },
 ];
 
-export const arrayHouse = [
+export const arrayHouses = [
   {
     id: 'cl63lvh5k1967r2v27nv6g4fo',
     address: '27 Chemin de Saint-Laurent le Vieux',

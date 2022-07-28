@@ -8,7 +8,6 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 function PhotoForm() {
   //   State to display the picture
   const [imageSrc, setImageSrc] = useState();
-  console.log('imageSrc:', imageSrc);
 
   const handleOnChange = (changeEvent) => {
     const reader = new FileReader();
@@ -34,7 +33,7 @@ function PhotoForm() {
         <PhotoCamera 
         className={imageSrc? 
             `${styles.photos_button} ${styles.photos_button_opacity}`
-        : `${styles.photos_button_opacity}`} 
+        : `${styles.photos_button_opacity}`}
         />
           {imageSrc && (
             <Image
