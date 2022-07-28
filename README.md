@@ -1,3 +1,14 @@
+# Run project
+
+Le projet est en cours de developpement la partie back n'est pas accessible pour le moment pour avoir un affichage complet de la page index:
+
+- page index => décommenter la ligne 45 et commenter la ligne 44
+- modifier le "res.data" en "res"
+
+PS: N'oublier pas de vous mettre sur la branche dev ;)
+
+Et bon séjour sur O'Paradis.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -5,8 +16,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 

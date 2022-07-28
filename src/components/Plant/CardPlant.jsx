@@ -2,9 +2,9 @@ import React from "react";
 import styles from "../../../styles/House.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
+import { noImgPlant as noImg } from "../../../src/selectors/img";
 
 const CardPlant = ({obj}) => {
-  const noImg = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658830088/image%20default/ybwxv9ev5icpplqgdsuk.svg";
   const { src, type, notes } = obj;
 
     return(

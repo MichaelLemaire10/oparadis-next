@@ -24,17 +24,17 @@ export default function ModalSignin() {
 
   // Handle //
   const handleOpenOrCloseForIn = () => { if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin)) };
-  const handleChange = (prop) => (event) => { setValues({ ...values, [prop]: event.target.value }); };
-  const handleClickShowPassword = () => { setValues({ ...values, showPassword: !values.showPassword, }); };
-  const handleMouseDownPassword = (event) => { event.preventDefault(); };
+  const handleChange = (prop) => (event) => setValues({ ...values, [prop]: event.target.value });
+  const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword, });
+  const handleMouseDownPassword = event => event.preventDefault();
 
   //Submit //
   const submitSignInForm = () => {
     // setErrors(validation(userObject));
     console.log('connecter');
     handleOpenOrCloseForIn();
-
   };
+  
   return (
     <div>
       <Modal

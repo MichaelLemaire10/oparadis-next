@@ -8,8 +8,10 @@ import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
 import { updateHouse } from "../src/reducers/houses/slice";
 import { useDispatch, useSelector } from "react-redux";
+import { arrayHouse } from "../src/selectors/ArrayData";
 
 const Home = ({ arrayHouse }) => {
+  console.log('arrayHouse:', arrayHouse);
   const dispatch = useDispatch();
   const test = useSelector((state) => state.houses.title);
   const handleTest = () => dispatch(updateHouse('blabal'));
@@ -40,6 +42,7 @@ const Home = ({ arrayHouse }) => {
 export const getStaticProps = async () => {
   const url = process.env.URL;
   const res = await axios.get(`${url}/`);
+  // const res = arrayHouse;
   return {
     props: { arrayHouse: res.data },
   };

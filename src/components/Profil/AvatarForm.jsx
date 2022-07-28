@@ -17,7 +17,7 @@ const AvatarForm = () => {
       setImageSrc(onLoadEvent.target.result);
     };
     reader.readAsDataURL(changeEvent.target.files[0]);
-  }
+  };
 
   return (
     <div className={`${styles.form_photo} ${styles.photo_hover}`}>

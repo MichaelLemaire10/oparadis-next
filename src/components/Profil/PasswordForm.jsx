@@ -10,6 +10,8 @@ import {
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 
 const Password = ({ target }) => {
+
+  // State utiliser pour l'affichage du mot de passe et initialisé
   const [values, setValues] = React.useState({
     password: "",
     repeat_password: "",
@@ -19,24 +21,15 @@ const Password = ({ target }) => {
     showOldPassword: false,
   });
 
-  // 
-  if (target === 'modal') console.log('mettre une req vers reducer signup');
+  // Condition pour executer un requete differente a la base de donnée
+  // if (target === 'modal') console.log('mettre une req vers reducer signup');
 
-  const handleChange =
-    (prop) => (event) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
+  // handle met à jour le state
+  const handleChange = (prop) => (event) => setValues({ ...values, [prop]: event.target.value });
+  // affiche le mot de passe
+  const handleClickShowPwd = (getName) => () => setValues({ ...values, [getName]: !values[getName], });
 
-  const handleClickShowPassword = () => {
-    // let getName = e.target.getAttribute('name');
-    setValues({ ...values, showPassword: !values.showPassword, });
-  };
-
-  const handleClickShowRepeatPassword = () => setValues({ ...values, showRepeatPassword: !values.showRepeatPassword, });
-
-  const handleClickShowOldPassword = () => setValues({ ...values, showOldPassword: !values.showOldPassword, });
-
-  const handleMouseDownPassword = (event) => { event.preventDefault(); };
+  const handleMouseDownPassword = (event) => event.preventDefault();
 
   return (
     <form className={styles.form_password}>
@@ -55,7 +48,7 @@ const Password = ({ target }) => {
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
+                onClick={handleClickShowPwd("showPassword")}
                 onMouseDown={handleMouseDownPassword}
               >
                 {values.showPassword ? <VisibilityOff name="showPassword" /> : <Visibility name="showPassword" />}
@@ -82,7 +75,7 @@ const Password = ({ target }) => {
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle repeat_password visibility"
-                onClick={handleClickShowRepeatPassword}
+                onClick={handleClickShowPwd("showRepeatPassword")}
                 onMouseDown={handleMouseDownPassword}
               >
                 {values.showRepeatPassword ? <VisibilityOff name="showRepeatPassword" /> : <Visibility name="showRepeatPassword" />}
@@ -110,7 +103,7 @@ const Password = ({ target }) => {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle old_password visibility"
-                  onClick={handleClickShowOldPassword}
+                  onClick={handleClickShowPwd("showOldPassword")}
                   onMouseDown={handleMouseDownPassword}
                 >
                   {values.showOldPassword ? <VisibilityOff name="showOldPassword" /> : <Visibility name="showOldPassword" />}

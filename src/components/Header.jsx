@@ -11,10 +11,12 @@ import InputSearch from "./Header/InputSearch";
 import MenuList from "./Header/Menu";
 
 const Header = () => {
+  
   const custom = {
     width: "40px",
     height: "40px",
   };
+
   return (
     <header className={styles.header}>
       <nav className={`${styles.div} ${styles.margin}`}>
