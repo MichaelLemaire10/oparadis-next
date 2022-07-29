@@ -1,13 +1,13 @@
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
-const ButtonUpdate = () => {
+const ButtonUpdate = ({ custom }) => {
     return (
         <ModeEditIcon
-        // className={custom.styles}
-        onClick={handleDeleteHouse}
-        fontSize="large"
-        color="error"
-    />
+            className={custom.styles}
+            // onClick={handleDeleteHouse}
+            fontSize="large"
+            color="secondary"
+        />
     );
 };
 

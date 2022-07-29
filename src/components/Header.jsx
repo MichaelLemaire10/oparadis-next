@@ -9,6 +9,7 @@ import DarkMode from "./Header/ButtonDarkMode";
 import ImgAvatar from "./Image/ImgAvatar";
 import InputSearch from "./Header/InputSearch";
 import MenuList from "./Header/Menu";
+import ButtonUpdate from "./button/buttonUpdate";
 
 const Header = () => {
   

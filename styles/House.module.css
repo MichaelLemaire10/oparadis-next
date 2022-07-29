@@ -21,6 +21,12 @@
   bottom: 15px;
 }
 
+.button_update {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 /* section photo */
 .photos {
   display: grid;
@@ -29,6 +35,7 @@
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   margin-top: 20px;
+  position: relative;
 }
 
 .photos_big {

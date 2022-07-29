@@ -6,8 +6,10 @@ import styles from "../../../styles/House.module.css";
 import ButtonUpdate from "../button/buttonUpdate";
 
 const Photo = () => {
+  const buttonUpdate = {styles: styles.button_update};
   return (
     <section className={styles.photos}>
+      <ButtonUpdate custom={buttonUpdate} />
       <div className={styles.photos_big}>
         <Image
           className={styles.photos_img}
