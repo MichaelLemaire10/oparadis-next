@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "../../../styles/House.module.css";
 
-function Text() {
+const Text = () => {
   return (
     <section className={styles.desc}>
     <h3 className={styles.displayNone}>Description du logement</h3>

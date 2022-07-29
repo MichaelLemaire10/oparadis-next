@@ -199,9 +199,9 @@ const TextForm = ({ theme }) => {
             </div>
           </div>
         </Box>
-      </div>
-      <ThemeProvider theme={theme}>
-          <Button 
+        <ThemeProvider theme={theme}>
+          <Button
+            className={styles.button_send}
             variant="contained"
             color="primary"
             type="submit"
@@ -210,6 +210,7 @@ const TextForm = ({ theme }) => {
             Envoyer
           </Button>
         </ThemeProvider>
+      </div>
     </section>
   );
 }

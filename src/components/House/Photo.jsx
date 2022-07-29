@@ -3,11 +3,11 @@ import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
 import { noImgHouse as imgHouse } from "../../../src/selectors/img";
 import styles from "../../../styles/House.module.css";
+import ButtonUpdate from "../button/buttonUpdate";
 
-function Photo() {
+const Photo = () => {
   return (
     <section className={styles.photos}>
-      <h3 className={styles.displayNone}>Photos du logement</h3>
       <div className={styles.photos_big}>
         <Image
           className={styles.photos_img}

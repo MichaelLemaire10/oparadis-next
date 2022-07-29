@@ -8,6 +8,19 @@
 
 .displayNone {display: none;}
 
+.title { 
+  display: flex;
+  justify-content: center;
+  width: 1050px;
+  margin-bottom: -20px;
+  position: relative;
+}
+.button_delete {
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+}
+
 /* section photo */
 .photos {
   display: grid;
@@ -15,6 +28,7 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  margin-top: 20px;
 }
 
 .photos_big {
