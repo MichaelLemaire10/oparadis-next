@@ -5,23 +5,34 @@ import SectionFormText from "../../src/components/HouseForm/TextForm";
 import SectionFormBool from "../../src/components/HouseForm/BoolForm";
 import SectionAnimal from "../../src/components/Animal/Animal";
 import SectionPlant from "../../src/components/Plant/Plant";
+import { createTheme } from "@material-ui/core";
 
 const HouseAdd = () => {
   const zoom = 14;
+  
+  // New styles pour le bouton
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "rgb(139, 186, 249)",
+        contrastText: "#ffffff",
+      },
+    },
+  });
 
   return (
     <div className={styles.main}>
       <h2>Ajouter un logement</h2>
       <form className={styles.main}>
-          <SectionFormPhoto />
+          <SectionFormPhoto theme={theme} />
           <div className={styles.container}>
             <SectionFormText />
             <section className={styles.map}>
               <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
             </section>
-            <SectionFormBool />
-            <SectionAnimal />
-            <SectionPlant />
+            <SectionFormBool theme={theme} />
+            <SectionAnimal theme={theme} />
+            <SectionPlant theme={theme} />
           </div>
       </form>
     </div>

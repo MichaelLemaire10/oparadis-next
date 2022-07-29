@@ -15,6 +15,16 @@ import PasswordForm from "../../src/components/Profil/PasswordForm";
 
 const Profil = () => {
 
+  // New styles pour le bouton
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "rgb(139, 186, 249)",
+        contrastText: "#ffffff",
+      },
+    },
+  });
+
   const submitTheFormCard = (e) => {
     console.log("valider carte", e.currentTarget);
     //check input errors before sending the form data
@@ -30,15 +40,6 @@ const Profil = () => {
     // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
   };
 
-  // New styles pour le bouton
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "rgb(139, 186, 249)",
-        contrastText: "#ffffff",
-      },
-    },
-  })
 
   return (
     <div className={styles.main}>
