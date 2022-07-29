@@ -153,14 +153,12 @@ z-index: 0;
 
 /* section supply */
 .supply {
-display: flex;
-justify-content: center;
-align-items: center;
 background-color: rgb(248, 254, 255);
 border-radius: 30px;
 width: 250px;
 grid-area: 2 / 4 / 3 / 5;
 }
+
 .supply_icon {
 display: flex;
 justify-content: center;

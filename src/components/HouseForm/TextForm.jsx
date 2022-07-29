@@ -2,6 +2,7 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 import styles from "../../../styles/Form.module.css";
+import { ThemeProvider, Button } from "@material-ui/core";
 
 const types = [
   {
@@ -21,7 +22,6 @@ const types = [
     label: "Loft",
   },
 ];
-
 const countries = [
   {
     value: "France",
@@ -41,13 +41,17 @@ const countries = [
   },
 ];
 
-function TextForm() {
+const TextForm = ({ theme }) => {
   const [type, setType] = React.useState("Maison");
   const [country, setCountry] = React.useState("France");
 
   const handleChangeType = (event) => setType(event.target.value);
   const handleChangeCountry = (event) => setCountry(event.target.value);
 
+  const submitFormText = (e) => {
+    e.preventDefault();
+    console.log('envoie du text');
+  }
   return (
     <section className={styles.desc}>
       <h3 className={styles.displayNone}>Description du logement</h3>
@@ -196,6 +200,16 @@ function TextForm() {
           </div>
         </Box>
       </div>
+      <ThemeProvider theme={theme}>
+          <Button 
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={submitFormText}
+          >
+            Envoyer
+          </Button>
+        </ThemeProvider>
     </section>
   );
 }
