@@ -9,7 +9,7 @@ import {
   DialogContentText, DialogActions, Button
 } from '@material-ui/core';
 import { setErrorsUser } from '../../reducers/users/slice';
-import { validationProfil } from '../../selectors/validation';
+import { validationSignup } from '../../selectors/validation';
 
 const ModalSignup = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const ModalSignup = () => {
   // Submit //
   const submitTheForm = () => {
     //check input errors before sending the form data
-    dispatch(setErrorsUser(validationProfil(signup)));
+    dispatch(setErrorsUser(validationSignup(signup)));
     // prevent form validation if password under 3 characters
     if(password.length >= 3 && repeat_password === password) {
       handleOpenOrCloseForUp();

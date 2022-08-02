@@ -12,8 +12,11 @@ import TextForm from "../../src/components/Profil/TextForm";
 import AvatarForm from "../../src/components/Profil/AvatarForm";
 import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
+import { useDispatch, useSelector } from 'react-redux';
 
 const Profil = () => {
+  const dispatch = useDispatch();
+  const { user, errorsUser, userFormPassword } = useSelector((state) => state.users);
 
   // New styles pour le bouton
   const theme = createTheme({
@@ -27,7 +30,7 @@ const Profil = () => {
 
   const submitTheFormCard = (e) => {
     console.log("valider carte", e.currentTarget);
-    //check input errors before sending the form data
+    // check input errors before sending the form data
     // setErrors(validation(userObject));
     // prevent form validation if password under 3 characters
     // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
@@ -47,9 +50,9 @@ const Profil = () => {
       <DialogContent className={styles.form}>
         <DialogTitle>Mon profil</DialogTitle>
         <form className={styles.form_card}>
-          <TextForm />
-          <AvatarForm />
-          <DescForm />
+          <TextForm data={user} errors={errorsUser} />
+          <AvatarForm data={user} />
+          <DescForm data={user} errors={errorsUser} />
         </form>
         <DialogActions>
         <ThemeProvider theme={theme} >
@@ -64,7 +67,7 @@ const Profil = () => {
           </ThemeProvider>
         </DialogActions>
         <form className={styles.form_allPassword}>
-          <PasswordForm />
+          <PasswordForm data={userFormPassword} errors={errorsUser} />
         </form>
         <DialogActions>
           <ThemeProvider theme={theme} >

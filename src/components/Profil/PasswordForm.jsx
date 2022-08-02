@@ -10,7 +10,6 @@ import {
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setSignup } from "../../reducers/users/slice";
-import { style } from "@mui/system";
 
 const Password = ({ target, errors, data }) => {
   const dispatch = useDispatch();
@@ -121,7 +120,6 @@ const Password = ({ target, errors, data }) => {
             }
           />
         </FormControl>
-        // {/* {errors.repeat_password && <p className='error'>{errors.old_password}</p>} */}
       )}
     </form>
   );

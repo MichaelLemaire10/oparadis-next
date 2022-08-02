@@ -57,8 +57,6 @@ const ModalSignin = () => {
               label='Entrez votre email'
               type='email'
               name='email'
-              // error={!!inputError}
-              // helperText={inputError ? errorMail : null}
               fullWidth
               variant='standard'
             // value={email}

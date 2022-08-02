@@ -1,7 +1,8 @@
 import styles from "../../../styles/Profil.module.css";
 import { TextareaAutosize } from "@material-ui/core";
 
-const DescForm = () => {
+const DescForm = ({ data }) => {
+    const { description } = data;
     const handleChange = (e) => { 
         // console.log(e.target.value) 
     };
@@ -14,6 +15,7 @@ const DescForm = () => {
                 aria-label="maximum height"
                 minRows={8}
                 placeholder="Quelques mots sur vous ?"
+                defaultValue={description}
                 style={{ width: 300 }}
                 onChange={handleChange}
             />

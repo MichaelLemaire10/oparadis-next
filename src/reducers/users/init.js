@@ -1,4 +1,5 @@
 export const initialState = {
+    
   errorsUser: {},
 
   signup: {
@@ -18,13 +19,13 @@ export const initialState = {
 
   user: {
     id:"",
-    email: "",
-    firstname: "",
-    lastname: "",
+    email: "Bob@bikini.io",
+    firstname: "Bob",
+    lastname: "L'éponge",
     pseudo: "",
-    phone_number: "",
+    phone_number: "0606060606",
     avatar: "",
-    description: "",
+    description: "Je vis sous la mer.",
   },
 
   userFormDesc: {
