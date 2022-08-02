@@ -1,19 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./init";
 
 const houseSlice = createSlice({
-  name: 'houses',
+  name: "houses",
   initialState,
   reducers: {
     getHouses: (state, action) => {
-      state.houses = action.payload
+      state.houses = action.payload;
     },
     updateHouse: (state, action) => {
-      console.log('type:', action.type);
-      state.title = action.payload
+      console.log("type:", action.type);
+      state.title = action.payload;
     },
   },
 });
 
-export const { getHouses, updateHouse } = houseSlice.actions
-export default houseSlice.reducer
+export const { getHouses, updateHouse } = houseSlice.actions;
+export default houseSlice.reducer;

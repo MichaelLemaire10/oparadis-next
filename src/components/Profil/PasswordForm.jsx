@@ -8,9 +8,13 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { setSignup } from "../../reducers/users/slice";
+import { style } from "@mui/system";
 
-const Password = ({ target }) => {
-
+const Password = ({ target, errors, data }) => {
+  const dispatch = useDispatch();
+  const { password, repeat_password } = data;
   // State utiliser pour l'affichage du mot de passe et initialisé
   const [values, setValues] = React.useState({
     password: "",
@@ -25,7 +29,12 @@ const Password = ({ target }) => {
   // if (target === 'modal') console.log('mettre une req vers reducer signup');
 
   // handle met à jour le state
-  const handleChange = (prop) => (event) => setValues({ ...values, [prop]: event.target.value });
+  const handleChange = (prop) => (event) => {
+    !target ? 
+    setValues({ ...data, [prop]: event.target.value })
+    : 
+    dispatch(setSignup({ ...data, [prop]: event.target.value }));
+  };
   // affiche le mot de passe
   const handleClickShowPwd = (getName) => () => setValues({ ...values, [getName]: !values[getName] });
 
@@ -42,7 +51,7 @@ const Password = ({ target }) => {
           id="standard-adornment-password"
           margin="dense"
           type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          value={password}
           onChange={handleChange("password")}
           endAdornment={
             <InputAdornment position="end">
@@ -58,7 +67,7 @@ const Password = ({ target }) => {
 
         />
       </FormControl>
-      {/* {errors.password && <p className='error'>{errors.password}</p>} */}
+      {errors.password && <p className={styles.error}>{errors.password}</p>}
 
       <FormControl fullWidth sx={{ m: 1 }} variant="standard">
         <InputLabel htmlFor="standard-adornment-repeat-password">
@@ -69,7 +78,7 @@ const Password = ({ target }) => {
           className={styles.input_pwd}
           margin="dense"
           type={values.showRepeatPassword ? "text" : "password"}
-          value={values.repeat_password}
+          value={repeat_password}
           onChange={handleChange("repeat_password")}
           endAdornment={
             <InputAdornment position="end">
@@ -85,7 +94,7 @@ const Password = ({ target }) => {
 
         />
       </FormControl>
-      {/* {errors.repeat_password && <p className='error'>{errors.repeat_password}</p>} */}
+      {errors.repeat_password && <p className={styles.error}>{errors.repeat_password}</p>}
 
       {!target && (
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">

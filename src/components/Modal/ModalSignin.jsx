@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-export default function ModalSignin() {
+const ModalSignin = () => {
   const dispatch = useDispatch();
 
   // state for password // 
@@ -100,4 +100,6 @@ export default function ModalSignin() {
       </Modal>
     </div>
   );
-}
+};
+
+export default ModalSignin;

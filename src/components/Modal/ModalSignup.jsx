@@ -8,9 +8,13 @@ import {
   Box, DialogContent, DialogTitle, Modal,
   DialogContentText, DialogActions, Button
 } from '@material-ui/core';
+import { setErrorsUser } from '../../reducers/users/slice';
+import { validationProfil } from '../../selectors/validation';
 
-export default function ModalSignup() {
+const ModalSignup = () => {
   const dispatch = useDispatch();
+  const { signup, errorsUser } = useSelector((state) => state.users);
+  const { password, repeat_password } = signup;
   const target = 'modal';
 
   // Selector //
@@ -21,13 +25,14 @@ export default function ModalSignup() {
 
   // Submit //
   const submitTheForm = () => {
-    console.log('valider');
-    handleOpenOrCloseForUp();
     //check input errors before sending the form data
-    // setErrors(validation(userObject));
+    dispatch(setErrorsUser(validationProfil(signup)));
     // prevent form validation if password under 3 characters
-    // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
-  };
+    if(password.length >= 3 && repeat_password === password) {
+      handleOpenOrCloseForUp();
+      dispatch(setErrorsUser({}));
+    };
+    };
 
   return (
     <div>
@@ -45,8 +50,8 @@ export default function ModalSignup() {
               :
             </DialogContentText>
             <form className={styles.form_modal}>
-              <TextFormProfil />
-              <PasswordFormProfil target={target} />
+              <TextFormProfil errors={errorsUser} data={signup} />
+              <PasswordFormProfil errors={errorsUser} data={signup} target={target} />
             </form>
           </DialogContent>
           <DialogActions>
@@ -59,4 +64,6 @@ export default function ModalSignup() {
       </Modal>
     </div>
   );
-}
+};
+
+export default ModalSignup;
