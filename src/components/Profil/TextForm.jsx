@@ -11,12 +11,8 @@ const ProfilForm = ({ errors, data }) => {
 
   const handleSignUpInputChange = (e) => {
     const getName = e.target.getAttribute('name');
-    const objectToPass = {
-      ...data,
-      [getName]: e.target.value,
-    };
-    dispatch(setSignup(objectToPass));
-  }
+    dispatch(setSignup({ ...data, [getName]: e.target.value }));
+  };
 
   return (
     <div className={styles.form_info}>

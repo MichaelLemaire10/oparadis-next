@@ -30,9 +30,8 @@ const ModalSignup = () => {
     // prevent form validation if password under 3 characters
     if(password.length >= 3 && repeat_password === password) {
       handleOpenOrCloseForUp();
-      dispatch(setErrorsUser({}));
     };
-    };
+  };
 
   return (
     <div>

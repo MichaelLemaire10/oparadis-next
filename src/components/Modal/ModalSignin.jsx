@@ -10,29 +10,36 @@ import {
   DialogContentText, TextField, DialogActions, FormControl, InputLabel, Input, InputAdornment, IconButton
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { setSignin, setErrorsUser } from '../../reducers/users/slice';
+import { validationSignin } from '../../selectors/validation';
 
 const ModalSignin = () => {
-  const dispatch = useDispatch();
 
-  // state for password // 
-  const [values, setValues] = React.useState({
-    password: "", showPassword: false,
-  });
+  const dispatch = useDispatch();
+  const { signin, errorsUser } = useSelector((state) => state.users );
+  const { email, password } = signin; 
+  const [showPwd, setShowPwd] = React.useState(false);
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
 
   // Handle //
   const handleOpenOrCloseForIn = () => { if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin)) };
-  const handleChange = (prop) => (event) => setValues({ ...values, [prop]: event.target.value });
-  const handleClickShowPassword = () => setValues({ ...values, showPassword: !values.showPassword, });
+  const handleChange = (e) => {
+    const getName = e.target.getAttribute('name');
+    dispatch(setSignin({ ...signin, [getName]: e.target.value }));
+  };
+  const handleClickShowPassword = () => setShowPwd(!showPwd);
   const handleMouseDownPassword = event => event.preventDefault();
 
   //Submit //
   const submitSignInForm = () => {
-    // setErrors(validation(userObject));
-    console.log('connecter');
-    handleOpenOrCloseForIn();
+    dispatch(setErrorsUser(validationSignin(signin)));
+
+    if(email != '' && password != '' && password.length >= 3) {
+      console.log('connecter');
+      handleOpenOrCloseForIn();
+    };
   };
   
   return (
@@ -49,20 +56,29 @@ const ModalSignin = () => {
             <DialogContentText>
               Veuillez renseigner vos informations de connexion :
             </DialogContentText>
-            <TextField
+            {!errorsUser.email && <TextField
               required
               autoFocus
               margin='dense'
-              id='name'
               label='Entrez votre email'
               type='email'
               name='email'
               fullWidth
               variant='standard'
-            // value={email}
-            // onChange={handleSignInInputChange}
-            />
-            {/* {errors.email && <p className='error'>{errors.email}</p>} */}
+              value={email}
+              onChange={handleChange}
+            />}
+            {errorsUser.email && <TextField
+              error
+              fullWidth
+              id="filled-error-helper-text"
+              label="Error"
+              name="email"
+              defaultValue={email}
+              helperText={errorsUser.email}
+              onChange={handleChange}
+              variant="filled"
+            />}
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <InputLabel htmlFor="standard-adornment-password">
                 Mot de passe
@@ -72,9 +88,10 @@ const ModalSignin = () => {
                 className={styles.input_pwd}
                 id="standard-adornment-password"
                 margin="dense"
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                onChange={handleChange("password")}
+                type={showPwd ? "text" : "password"}
+                name='password'
+                value={password}
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -82,13 +99,13 @@ const ModalSignin = () => {
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
                     >
-                      {values.showPassword ? <VisibilityOff name="showPassword" /> : <Visibility name="showPassword" />}
+                      {showPwd ? <VisibilityOff name="showPassword" /> : <Visibility name="showPassword" />}
                     </IconButton>
                   </InputAdornment>
                 }
               />
             </FormControl>
-            {/* {errors.password && <p className='error'>{errors.password}</p>} */}
+            {errorsUser.password && <p className={styles.error}>{errorsUser.password}</p>}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleOpenOrCloseForIn}>Annuler</Button>

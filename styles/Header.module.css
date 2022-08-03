@@ -4,6 +4,12 @@
     z-index: 10;
 }
 
+.error {
+    color: red;
+    margin-top: -2px;
+    font-size: small;
+  }
+
 .h1 { display: none; }
 
 .a {
