@@ -56,7 +56,7 @@ const ModalSignup = () => {
               />
               <PasswordFormProfil
                 errors={errorsUser}
-                data={signup}
+                formSignup={signup}
                 target={target}
               />
             </form>

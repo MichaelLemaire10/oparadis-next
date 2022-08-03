@@ -14,7 +14,7 @@ import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
 import { useDispatch, useSelector } from 'react-redux';
 import { setErrorsUser } from "../../src/reducers/users/slice";
-import { validationProfilDesc } from "../../src/selectors/validation";
+import { validationProfilDesc, validationProfilPwd } from "../../src/selectors/validation";
 
 const Profil = () => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Profil = () => {
   const submitTheFormCard = () => {
     // check input errors before sending the form data
     dispatch(setErrorsUser(validationProfilDesc(userFormDesc)));
-    // prevent form validation if password under 3 characters
+    // Last check with condition
     if (!errorsUser.firstname && !errorsUser.lastname
       && !errorsUser.phone_number && !errorsUser.email
       && !errorsUser.description) {
@@ -48,11 +48,15 @@ const Profil = () => {
   };
 
   const submitTheFormPwd = (e) => {
-    console.log("valider Mot de passe", e.currentTarget);
     //check input errors before sending the form data
-    // dispatch(setErrorsUser(validationProfilPwd(userObject)));
-    // prevent form validation if password under 3 characters
-    userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
+    dispatch(setErrorsUser(validationProfilPwd(userFormPwd)));
+    // prevent form validation if all password under 3 characters
+    if(  userFormPwd.password.length >= 3
+      && userFormPwd.repeat_password.length >= 3
+      && userFormPwd.old_password.length >= 3
+      ){
+        console.log('envoyer pwd');
+      };
   };
 
 
@@ -92,7 +96,7 @@ const Profil = () => {
         </DialogActions>
         <form className={styles.form_allPassword}>
           <PasswordForm 
-            data={userFormPwd} 
+            userFormPwd={userFormPwd} 
             errors={errorsUser} 
             target={target}
           />

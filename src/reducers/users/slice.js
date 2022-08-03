@@ -24,9 +24,9 @@ const userSlice = createSlice({
     setProfilDesc(state, action){
       state.userFormDesc = action.payload;
     },
-    
+
     setProfilPwd(state, action) {
-      state.userFormPassword = action.payload;
+      state.userFormPwd = action.payload;
     }
   },
 });

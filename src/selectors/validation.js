@@ -72,7 +72,7 @@ export const validationProfilDesc = ({
     errors.lastname = "Le nom est vide!";
   }
   if (!phone_number) {
-    errors.phone_number = "Le numéro est vide!";
+    errors.phone_number = "Le numéro de téléphone est vide!";
   } else if (phone_number.length <= 9 && phone_number.length >= 11) {
     errors.phone_number = "Veuillez rentrer un numéro à 10 chiffres!";
   }
@@ -81,8 +81,8 @@ export const validationProfilDesc = ({
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'Email est invalide format attendu jean@outlook.fr";
   }
-  if (description.length > 200) {
-    errors.description = "Max 200 caractères";
+  if (description.length > 150) {
+    errors.description = "Max 150 caractères";
   }
 
   return errors;
@@ -91,7 +91,7 @@ export const validationProfilDesc = ({
 export const validationProfilPwd = ({
   password,
   repeat_password,
-  old_password
+  old_password,
 }) => {
   const errors = {};
 
@@ -101,14 +101,17 @@ export const validationProfilPwd = ({
     errors.password = "3 caractères minimum";
   }
   if (!repeat_password) {
-    errors.repeat_password = "confirmez votre mot de passe";
+    errors.repeat_password = "Confirmez votre mot de passe";
   } else if (password !== repeat_password) {
     errors.repeat_password = "Mots de passes différents!";
     errors.password = "Mots de passes différents!";
+  } else if (repeat_password.length < 3) {
+    errors.repeat_password = "3 caractères minimum";
   }
   if (!old_password) {
-    errors.old_password = "Un mot de passe est requis";
+    errors.old_password = "L'ancien mot de passe est requis";
+  } else if (old_password.length < 3) {
+    errors.old_password = "3 caractères minimum";
   }
-
   return errors;
 };

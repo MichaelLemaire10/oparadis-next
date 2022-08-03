@@ -2,7 +2,7 @@ export const noImgPlant = "https://res.cloudinary.com/dhwbw94lc/image/upload/v16
 
 export const noImgAnimal = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658828607/image%20default/ncxztkg65sblzzn8qozu.jpg";
 
-export const noImgAvatar = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655720026/image%20default/mmtetrupmel5r4c8qcaf.png";
+export const noImgAvatar = "https://res.cloudinary.com/oparadis/image/upload/v1655907032/avatars/fpc9avx8ypafd2yxuo2b.png";
 
 export const noImgHouse = "https://res.cloudinary.com/dhwbw94lc/image/upload/v1658831225/image%20default/urlcrattyjx57uzwtqb5.jpg";
 

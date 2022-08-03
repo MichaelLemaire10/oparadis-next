@@ -1,24 +1,17 @@
 import React from "react";
 import styles from "../../../styles/Profil.module.css";
 import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
+  FormControl, IconButton, Input, InputAdornment, InputLabel,
 } from "@material-ui/core";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { setSignup } from "../../reducers/users/slice";
+import { setSignup, setProfilPwd } from "../../reducers/users/slice";
 
-const PasswordForm = ({ target, errors, data }) => {
+const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
   const dispatch = useDispatch();
-  const { password, repeat_password } = data;
+
   // State utiliser pour l'affichage du mot de passe et initialisé
-  const [values, setValues] = React.useState({
-    password: "",
-    repeat_password: "",
-    old_password: "",
+  const [showPwd, setShowPwd] = React.useState({
     showPassword: false,
     showRepeatPassword: false,
     showOldPassword: false,
@@ -28,14 +21,15 @@ const PasswordForm = ({ target, errors, data }) => {
   // if (target === 'modal') console.log('mettre une req vers reducer signup');
 
   // handle met à jour le state
-  const handleChange = (prop) => (event) => {
-    !target ? 
-    setValues({ ...data, [prop]: event.target.value })
+  const handleChange = (e) => {
+    const getName = e.target.getAttribute('name');
+    target ? 
+    dispatch(setSignup({ ...formSignup, [getName]: e.target.value }))
     : 
-    dispatch(setSignup({ ...data, [prop]: event.target.value }));
+    dispatch(setProfilPwd({ ...userFormPwd, [getName]: e.target.value }));
   };
   // affiche le mot de passe
-  const handleClickShowPwd = (getName) => () => setValues({ ...values, [getName]: !values[getName] });
+  const handleClickShowPwd = (getName) => () => setShowPwd({ ...showPwd, [getName]: !showPwd[getName] });
 
   const handleMouseDownPassword = (event) => event.preventDefault();
 
@@ -49,9 +43,10 @@ const PasswordForm = ({ target, errors, data }) => {
           className={styles.input_pwd}
           id="standard-adornment-password"
           margin="dense"
-          type={values.showPassword ? "text" : "password"}
-          value={password}
-          onChange={handleChange("password")}
+          type={showPwd.showPassword ? "text" : "password"}
+          name="password"
+          value={target ? formSignup.password : userFormPwd.password}
+          onChange={handleChange}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -59,7 +54,7 @@ const PasswordForm = ({ target, errors, data }) => {
                 onClick={handleClickShowPwd("showPassword")}
                 onMouseDown={handleMouseDownPassword}
               >
-                {values.showPassword ? <VisibilityOff name="showPassword" /> : <Visibility name="showPassword" />}
+                {showPwd.showPassword ? <VisibilityOff name="showPassword" /> : <Visibility name="showPassword" />}
               </IconButton>
             </InputAdornment>
           }
@@ -76,9 +71,10 @@ const PasswordForm = ({ target, errors, data }) => {
           id="standard-adornment-repeat-password"
           className={styles.input_pwd}
           margin="dense"
-          type={values.showRepeatPassword ? "text" : "password"}
-          value={repeat_password}
-          onChange={handleChange("repeat_password")}
+          type={showPwd.showRepeatPassword ? "text" : "password"}
+          name="repeat_password"
+          value={target ? formSignup.repeat_password : userFormPwd.repeat_password}
+          onChange={handleChange}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -86,7 +82,7 @@ const PasswordForm = ({ target, errors, data }) => {
                 onClick={handleClickShowPwd("showRepeatPassword")}
                 onMouseDown={handleMouseDownPassword}
               >
-                {values.showRepeatPassword ? <VisibilityOff name="showRepeatPassword" /> : <Visibility name="showRepeatPassword" />}
+                {showPwd.showRepeatPassword ? <VisibilityOff name="showRepeatPassword" /> : <Visibility name="showRepeatPassword" />}
               </IconButton>
             </InputAdornment>
           }
@@ -104,9 +100,10 @@ const PasswordForm = ({ target, errors, data }) => {
             id="standard-adornment-old-password"
             className={styles.input_pwd}
             margin="dense"
-            type={values.showOldPassword ? "text" : "password"}
-            value={values.old_password}
-            onChange={handleChange("old_password")}
+            type={showPwd.showOldPassword ? "text" : "password"}
+          name="old_password"
+            value={userFormPwd.old_password}
+            onChange={handleChange}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -114,13 +111,14 @@ const PasswordForm = ({ target, errors, data }) => {
                   onClick={handleClickShowPwd("showOldPassword")}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  {values.showOldPassword ? <VisibilityOff name="showOldPassword" /> : <Visibility name="showOldPassword" />}
+                  {showPwd.showOldPassword ? <VisibilityOff name="showOldPassword" /> : <Visibility name="showOldPassword" />}
                 </IconButton>
               </InputAdornment>
             }
           />
         </FormControl>
       )}
+      {errors.old_password && <p className={styles.error}>{errors.old_password}</p>}
     </form>
   );
 };

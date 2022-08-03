@@ -1,16 +1,18 @@
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import imageLoader from "../../../imagesLoader";
 import styles from "../../../styles/Header.module.css";
-import { noImgAvatar as avatar } from "../../selectors/img";
 
 const ImgAvatar = ({ custom }) => {
 
+    const { user } = useSelector((state) => state.users);
+    
     return(
         <Image 
             className={styles.div_avatar}
             loader={imageLoader}
             alt="image d'un avatar"
-            src={avatar}
+            src={user.avatar}
             width={custom.width}
             height={custom.height}
             unoptimized

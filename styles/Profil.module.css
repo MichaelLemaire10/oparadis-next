@@ -10,6 +10,12 @@
 
 .error {
   color: red;
+  margin-top: -1px;
+  margin-bottom: -3px;
+  font-size: medium;
+}
+
+.desc_char {
   margin-top: -2px;
   font-size: small;
 }

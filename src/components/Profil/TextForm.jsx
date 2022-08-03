@@ -34,7 +34,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         <TextField
           error
           fullWidth
-          id="filled-error-helper-text"
+          id="filled-error-helper-text-firstname"
           label="Error"
           value={target ? formSignup.firstname : form.firstname}
           helperText={errors.firstname}
@@ -58,7 +58,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
       {errors.lastname && <TextField
         error
         fullWidth
-        id="filled-error-helper-text"
+        id="filled-error-helper-text-lastname"
         label="Error"
         name="lastname"
         value={target ? formSignup.lastname : form.lastname}
@@ -93,7 +93,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
       {errors.phone_number && <TextField
         error
         fullWidth
-        id="filled-error-helper-text"
+        id="filled-error-helper-text-phone"
         label="Error"
         name="phone_number"
         value={target ? formSignup.phone_number : form.phone_number}
@@ -117,7 +117,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
       {errors.email && <TextField
         error
         fullWidth
-        id="filled-error-helper-text"
+        id="filled-error-helper-text-email"
         label="Error"
         name="email"
         value={target ? formSignup.email : form.email}
