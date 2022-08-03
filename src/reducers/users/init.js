@@ -29,7 +29,6 @@ export const initialState = {
   },
 
   userFormDesc: {
-    id:"",
     email: "",
     firstname: "",
     lastname: "",
@@ -40,8 +39,7 @@ export const initialState = {
     description: "",
   },
 
-  userFormPassword: {
-    id:"",
+  userFormPwd: {
     password: "",
     repeat_password: "",
     old_password: "",

@@ -28,7 +28,7 @@ const ModalSignup = () => {
     //check input errors before sending the form data
     dispatch(setErrorsUser(validationSignup(signup)));
     // prevent form validation if password under 3 characters
-    if(password.length >= 3 && repeat_password === password) {
+    if (password.length >= 3 && repeat_password === password) {
       handleOpenOrCloseForUp();
     };
   };
@@ -49,8 +49,16 @@ const ModalSignup = () => {
               :
             </DialogContentText>
             <form className={styles.form_modal}>
-              <TextFormProfil errors={errorsUser} data={signup} />
-              <PasswordFormProfil errors={errorsUser} data={signup} target={target} />
+              <TextFormProfil
+                errors={errorsUser}
+                formSignup={signup}
+                target={target}
+              />
+              <PasswordFormProfil
+                errors={errorsUser}
+                data={signup}
+                target={target}
+              />
             </form>
           </DialogContent>
           <DialogActions>

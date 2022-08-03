@@ -1,17 +1,18 @@
 import React from "react";
 import styles from "../../../styles/Profil.module.css";
 import { TextField } from "@material-ui/core";
-import { setSignup } from "../../reducers/users/slice";
+import { setSignup, setProfilDesc } from "../../reducers/users/slice";
 import { useDispatch } from "react-redux";
 
-const ProfilForm = ({ errors, data }) => {
-
+const TextForm = ({ errors, data, form, formSignup, target}) => {
   const dispatch = useDispatch();
-  const { firstname, lastname, pseudo, phone_number, email } = data;
 
   const handleSignUpInputChange = (e) => {
     const getName = e.target.getAttribute('name');
-    dispatch(setSignup({ ...data, [getName]: e.target.value }));
+    target ? 
+    dispatch(setSignup({ ...formSignup, [getName]: e.target.value }))
+    :
+    dispatch(setProfilDesc({ ...form, [getName]: e.target.value }))
   };
 
   return (
@@ -25,7 +26,8 @@ const ProfilForm = ({ errors, data }) => {
         type="text"
         variant="standard"
         name="firstname"
-        value={firstname}
+        defaultValue={target ? formSignup.firstname : data.firstname}
+        value={target ? formSignup.firstname : form.firstname}
         onChange={handleSignUpInputChange}
       />}
       {errors.firstname &&
@@ -34,7 +36,7 @@ const ProfilForm = ({ errors, data }) => {
           fullWidth
           id="filled-error-helper-text"
           label="Error"
-          defaultValue={firstname}
+          value={target ? formSignup.firstname : form.firstname}
           helperText={errors.firstname}
           name="firstname"
           onChange={handleSignUpInputChange}
@@ -49,7 +51,8 @@ const ProfilForm = ({ errors, data }) => {
         type="text"
         variant="standard"
         name="lastname"
-        value={lastname}
+        defaultValue={target ? formSignup.lastname : data.lastname}
+        value={target ? formSignup.lastname : form.lastname}
         onChange={handleSignUpInputChange}
       />}
       {errors.lastname && <TextField
@@ -58,7 +61,7 @@ const ProfilForm = ({ errors, data }) => {
         id="filled-error-helper-text"
         label="Error"
         name="lastname"
-        defaultValue={lastname}
+        value={target ? formSignup.lastname : form.lastname}
         helperText={errors.lastname}
         onChange={handleSignUpInputChange}
         variant="filled"
@@ -71,7 +74,7 @@ const ProfilForm = ({ errors, data }) => {
         type="text"
         variant="standard"
         name="pseudo"
-        value={pseudo}
+        value={target ? formSignup.pseudo : data.pseudo}
         onChange={handleSignUpInputChange}
       />
 
@@ -83,7 +86,8 @@ const ProfilForm = ({ errors, data }) => {
         type="text"
         variant="standard"
         name="phone_number"
-        value={phone_number}
+        defaultValue={target ? formSignup.phone_number : data.phone_number}
+        value={target ? formSignup.phone_number : form.phone_number}
         onChange={handleSignUpInputChange}
       />}
       {errors.phone_number && <TextField
@@ -92,7 +96,7 @@ const ProfilForm = ({ errors, data }) => {
         id="filled-error-helper-text"
         label="Error"
         name="phone_number"
-        defaultValue={phone_number}
+        value={target ? formSignup.phone_number : form.phone_number}
         helperText={errors.phone_number}
         onChange={handleSignUpInputChange}
         variant="filled"
@@ -106,7 +110,8 @@ const ProfilForm = ({ errors, data }) => {
         type="email"
         variant="standard"
         name="email"
-        value={email}
+        defaultValue={target ? formSignup.email : data.email}
+        value={target ? formSignup.email : form.email}
         onChange={handleSignUpInputChange}
       />}
       {errors.email && <TextField
@@ -115,7 +120,7 @@ const ProfilForm = ({ errors, data }) => {
         id="filled-error-helper-text"
         label="Error"
         name="email"
-        defaultValue={email}
+        value={target ? formSignup.email : form.email}
         helperText={errors.email}
         onChange={handleSignUpInputChange}
         variant="filled"
@@ -125,4 +130,4 @@ const ProfilForm = ({ errors, data }) => {
   );
 };
 
-export default ProfilForm;
+export default TextForm;

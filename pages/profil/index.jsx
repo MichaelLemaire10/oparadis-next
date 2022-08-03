@@ -13,10 +13,18 @@ import AvatarForm from "../../src/components/Profil/AvatarForm";
 import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
 import { useDispatch, useSelector } from 'react-redux';
+import { setErrorsUser } from "../../src/reducers/users/slice";
+import { validationProfilDesc } from "../../src/selectors/validation";
 
 const Profil = () => {
   const dispatch = useDispatch();
-  const { user, errorsUser, userFormPassword } = useSelector((state) => state.users);
+  const {
+    user,
+    errorsUser,
+    userFormPwd,
+    userFormDesc,
+  } = useSelector((state) => state.users);
+  const target = '';
 
   // New styles pour le bouton
   const theme = createTheme({
@@ -28,19 +36,23 @@ const Profil = () => {
     },
   });
 
-  const submitTheFormCard = (e) => {
-    console.log("valider carte", e.currentTarget);
+  const submitTheFormCard = () => {
     // check input errors before sending the form data
-    // setErrors(validation(userObject));
+    dispatch(setErrorsUser(validationProfilDesc(userFormDesc)));
     // prevent form validation if password under 3 characters
-    // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
+    if (!errorsUser.firstname && !errorsUser.lastname
+      && !errorsUser.phone_number && !errorsUser.email
+      && !errorsUser.description) {
+      console.log("envoyer desc");
+    };
   };
+
   const submitTheFormPwd = (e) => {
     console.log("valider Mot de passe", e.currentTarget);
     //check input errors before sending the form data
-    // setErrors(validation(userObject));
+    // dispatch(setErrorsUser(validationProfilPwd(userObject)));
     // prevent form validation if password under 3 characters
-    // userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
+    userObject.password.length && userObject.repeat_password.length < 3 ? dispatch(formError()) : dispatch(signUp());
   };
 
 
@@ -50,12 +62,24 @@ const Profil = () => {
       <DialogContent className={styles.form}>
         <DialogTitle>Mon profil</DialogTitle>
         <form className={styles.form_card}>
-          <TextForm data={user} errors={errorsUser} />
-          <AvatarForm data={user} />
-          <DescForm data={user} errors={errorsUser} />
+          <TextForm
+            data={user}
+            form={userFormDesc}
+            errors={errorsUser}
+            target={target}
+          />
+          <AvatarForm
+            data={user}
+            form={userFormDesc}
+          />
+          <DescForm
+            data={user}
+            form={userFormDesc}
+            errors={errorsUser}
+          />
         </form>
         <DialogActions>
-        <ThemeProvider theme={theme} >
+          <ThemeProvider theme={theme} >
             <Button
               variant="contained"
               color="primary"
@@ -67,7 +91,11 @@ const Profil = () => {
           </ThemeProvider>
         </DialogActions>
         <form className={styles.form_allPassword}>
-          <PasswordForm data={userFormPassword} errors={errorsUser} />
+          <PasswordForm 
+            data={userFormPwd} 
+            errors={errorsUser} 
+            target={target}
+          />
         </form>
         <DialogActions>
           <ThemeProvider theme={theme} >

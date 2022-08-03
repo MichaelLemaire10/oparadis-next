@@ -11,7 +11,7 @@ import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { setSignup } from "../../reducers/users/slice";
 
-const Password = ({ target, errors, data }) => {
+const PasswordForm = ({ target, errors, data }) => {
   const dispatch = useDispatch();
   const { password, repeat_password } = data;
   // State utiliser pour l'affichage du mot de passe et initialisé
@@ -125,4 +125,4 @@ const Password = ({ target, errors, data }) => {
   );
 };
 
-export default Password;
+export default PasswordForm;
