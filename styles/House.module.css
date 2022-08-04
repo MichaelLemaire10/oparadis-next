@@ -17,14 +17,29 @@
 }
 .button_delete {
   position: absolute;
-  right: 10px;
+  right: 400px;
   bottom: 15px;
+  padding: 2px;
+  border-radius: 100%;
+  background-color: rgb(255, 221, 221);
+}
+.button_delete:hover {
+  border: 2px solid rgb(252, 80, 80);
+  background-color: aliceblue;
 }
 
 .button_update {
+  border-radius: 100%;
+  padding: 2px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  z-index: 5;
+  top: -10px;
+  right: -10px;
+  background-color: rgb(196, 227, 255);
+}
+.button_update:hover {
+  border: 2px solid rgb(196, 227, 255);
+  background-color: aliceblue;
 }
 
 /* section photo */
@@ -109,6 +124,7 @@
   border-radius: 30px;
   grid-area: 2 / 1 / 4 / 4;
   width: 785px;
+  position: relative;
 }
 .desc_detailed {
   text-align: start;
@@ -171,6 +187,7 @@
   border-radius: 30px;
   width: 250px;
   grid-area: 3 / 4 / 4 / 5;
+  position: relative;
 }
 .supply_icon {
   display: flex;

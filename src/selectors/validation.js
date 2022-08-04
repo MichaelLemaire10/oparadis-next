@@ -9,15 +9,15 @@ export const validationSignup = ({
   const errors = {};
 
   if (!firstname) {
-    errors.firstname = "Le prénom est vide!";
+    errors.firstname = "Le prénom est vide";
   }
   if (!lastname) {
-    errors.lastname = "Le nom est vide!";
+    errors.lastname = "Le nom est vide";
   }
   if (!phone_number) {
-    errors.phone_number = "Le numéro est vide!";
+    errors.phone_number = "Le numéro est vide";
   } else if (phone_number.length <= 9 && phone_number.length >= 11) {
-    errors.phone_number = "Veuillez rentrer un numéro à 10 chiffres!";
+    errors.phone_number = "Veuillez rentrer un numéro à 10 chiffres";
   }
   if (!email) {
     errors.email = "L'email est vide!";
@@ -32,8 +32,8 @@ export const validationSignup = ({
   if (!repeat_password) {
     errors.repeat_password = "confirmez votre mot de passe";
   } else if (password !== repeat_password) {
-    errors.repeat_password = "Mots de passes différents!";
-    errors.password = "Mots de passes différents!";
+    errors.repeat_password = "Mots de passes différents";
+    errors.password = "Mots de passes différents";
   }
 
   return errors;
@@ -43,7 +43,7 @@ export const validationSignin = ({ email, password }) => {
   const errors = {};
 
   if (!email) {
-    errors.email = "L'email est vide!";
+    errors.email = "L'email est vide";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'Email est invalide format attendu jean@outlook.fr";
   }
@@ -66,18 +66,18 @@ export const validationProfilDesc = ({
   const errors = {};
 
   if (!firstname) {
-    errors.firstname = "Le prénom est vide!";
+    errors.firstname = "Le prénom est vide";
   }
   if (!lastname) {
-    errors.lastname = "Le nom est vide!";
+    errors.lastname = "Le nom est vide";
   }
   if (!phone_number) {
-    errors.phone_number = "Le numéro de téléphone est vide!";
+    errors.phone_number = "Le numéro de téléphone est vide";
   } else if (phone_number.length <= 9 && phone_number.length >= 11) {
-    errors.phone_number = "Veuillez rentrer un numéro à 10 chiffres!";
+    errors.phone_number = "Veuillez rentrer un numéro à 10 chiffres";
   }
   if (!email) {
-    errors.email = "L'email est vide!";
+    errors.email = "L'email est vide";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'Email est invalide format attendu jean@outlook.fr";
   }
@@ -103,8 +103,8 @@ export const validationProfilPwd = ({
   if (!repeat_password) {
     errors.repeat_password = "Confirmez votre mot de passe";
   } else if (password !== repeat_password) {
-    errors.repeat_password = "Mots de passes différents!";
-    errors.password = "Mots de passes différents!";
+    errors.repeat_password = "Mots de passes différents";
+    errors.password = "Mots de passes différents";
   } else if (repeat_password.length < 3) {
     errors.repeat_password = "3 caractères minimum";
   }

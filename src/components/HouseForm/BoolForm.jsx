@@ -2,9 +2,13 @@ import React from "react";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
 import styles from "../../../styles/Form.module.css";
-import { ThemeProvider, Button } from "@material-ui/core";
+import ButtonClose from "../button/buttonClose";
+import ButtonValidation from "../button/buttonValidation";
 
-function BoolForm({ theme }) {
+const BoolForm = () => {
+  const styleBtnClose = { styles: styles.button_close };
+  const styleBtnVld = { styles: styles.button_validation };
+  const target = 'boolForm';
 
   const [done, setDone] = React.useState({
     internet: false,
@@ -18,22 +22,16 @@ function BoolForm({ theme }) {
     parking: false,
   });
 
-  const submitFormBool = (e) => {
-    e.preventDefault();
-    console.log('envoie des bool');
-  }
   // fonction pour valider un bool
   const handleOnChange = (e) => {
     const getName = e.target.getAttribute('name');
-    const boolInput = {
-      ...done,
-      [getName]: !done[getName],
-    };
-    setDone(boolInput);
+    setDone({ ...done, [getName]: !done[getName] });
   };
 
   return (
     <section className={styles.supply}>
+      <ButtonClose custom={styleBtnClose} target={target} />
+      <ButtonValidation custom={styleBtnVld} target={target} />
       <div className={styles.supply_icon}>
         <label htmlFor="internet" className={styles.icon}>
           <input
@@ -207,16 +205,6 @@ function BoolForm({ theme }) {
           />
         </label>
       </div>
-      <ThemeProvider theme={theme}>
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          onClick={submitFormBool}
-        >
-          Envoyer
-        </Button>
-      </ThemeProvider>
     </section>
   );
 }

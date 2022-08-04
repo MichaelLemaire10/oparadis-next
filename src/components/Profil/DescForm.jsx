@@ -3,14 +3,14 @@ import { TextareaAutosize } from "@material-ui/core";
 import { setProfilDesc } from "../../reducers/users/slice";
 import { useDispatch } from "react-redux";
 
-const DescForm = ({ data, form }) => {
+const DescForm = ({ data, form, errors }) => {
     const dispatch = useDispatch();
 
     const handleChange = (e) => dispatch(setProfilDesc({ ...form, description: e.target.value }));
 
     return (
-        <div className={styles.form_desc}>
-            Description
+        <div className={errors.description ? `${styles.form_desc} ${styles.error}` : styles.form_desc}>
+            Description {errors.description ? errors.description : ''}
             <TextareaAutosize
                 className={styles.form_desc__texte}
                 aria-label="maximum height"

@@ -1,6 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const ButtonDelete = ({ custom }) => {
+    
     const handleDeleteHouse = () => {
         console.log("delete");
     };

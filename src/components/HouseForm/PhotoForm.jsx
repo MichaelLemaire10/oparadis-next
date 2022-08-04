@@ -2,29 +2,20 @@ import React from "react";
 import styles from "../../../styles/Form.module.css";
 import BigPhoto from "./PhotoForm/BigPhoto";
 import LittlePhoto from "./PhotoForm/LittlePhoto";
-import { ThemeProvider, Button } from "@material-ui/core";
+import ButtonClose from "../button/buttonClose";
+import ButtonValidation from "../button/buttonValidation";
 
-function PhotoForm({ theme }) {
-
-  const submitFormPhoto = (e) => {
-    e.preventDefault();
-    console.log('envoie des photos');
-  };
+const PhotoForm = () => {
+  const styleBtnClose = {styles: styles.button_close};
+  const styleBtnVld = {styles: styles.button_validation};
+  const target = 'photoForm';
 
   return (
     <section className={styles.photos}>
+      <ButtonClose custom={styleBtnClose} target={target} />
+      <ButtonValidation custom={styleBtnVld} target={target} />
       <BigPhoto />
       <LittlePhoto />
-        <ThemeProvider theme={theme}>
-          <Button 
-            variant="contained"
-            color="primary"
-            type="submit"
-            onClick={submitFormPhoto}
-          >
-            Envoyer
-          </Button>
-        </ThemeProvider>
     </section>
   );
 }

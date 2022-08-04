@@ -34,10 +34,10 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         <TextField
           error
           fullWidth
+          margin="dense"
           id="filled-error-helper-text-firstname"
-          label="Error"
+          label={`Error: ${errors.firstname}`}
           value={target ? formSignup.firstname : form.firstname}
-          helperText={errors.firstname}
           name="firstname"
           onChange={handleSignUpInputChange}
           variant="filled"
@@ -58,11 +58,11 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
       {errors.lastname && <TextField
         error
         fullWidth
+        margin="dense"
         id="filled-error-helper-text-lastname"
-        label="Error"
+        label={`Error: ${errors.lastname}`}
         name="lastname"
         value={target ? formSignup.lastname : form.lastname}
-        helperText={errors.lastname}
         onChange={handleSignUpInputChange}
         variant="filled"
       />}
@@ -93,11 +93,11 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
       {errors.phone_number && <TextField
         error
         fullWidth
+        margin="dense"
         id="filled-error-helper-text-phone"
-        label="Error"
+        label={`Error: ${errors.phone_number}`}
         name="phone_number"
         value={target ? formSignup.phone_number : form.phone_number}
-        helperText={errors.phone_number}
         onChange={handleSignUpInputChange}
         variant="filled"
       />}
@@ -118,10 +118,10 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         error
         fullWidth
         id="filled-error-helper-text-email"
-        label="Error"
+        label={`Error: ${errors.email}`}
+        margin="dense"
         name="email"
         value={target ? formSignup.email : form.email}
-        helperText={errors.email}
         onChange={handleSignUpInputChange}
         variant="filled"
       />}

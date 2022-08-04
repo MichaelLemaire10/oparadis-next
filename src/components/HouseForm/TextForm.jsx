@@ -2,7 +2,8 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 import styles from "../../../styles/Form.module.css";
-import { ThemeProvider, Button } from "@material-ui/core";
+import ButtonClose from "../button/buttonClose";
+import ButtonValidation from "../button/buttonValidation";
 
 const types = [
   {
@@ -41,19 +42,21 @@ const countries = [
   },
 ];
 
-const TextForm = ({ theme }) => {
+const TextForm = () => {
+  const styleBtnClose = {styles: styles.button_close};
+  const styleBtnVld = {styles: styles.button_validation};
+  const target = 'textForm';
+
   const [type, setType] = React.useState("Maison");
   const [country, setCountry] = React.useState("France");
 
   const handleChangeType = (event) => setType(event.target.value);
   const handleChangeCountry = (event) => setCountry(event.target.value);
 
-  const submitFormText = (e) => {
-    e.preventDefault();
-    console.log('envoie du text');
-  }
   return (
     <section className={styles.desc}>
+      <ButtonClose custom={styleBtnClose} target={target} />
+      <ButtonValidation custom={styleBtnVld} target={target} />
       <h3 className={styles.displayNone}>Description du logement</h3>
       <div className={styles.desc_detailed}>
         <Box
@@ -199,17 +202,6 @@ const TextForm = ({ theme }) => {
             </div>
           </div>
         </Box>
-        <ThemeProvider theme={theme}>
-          <Button
-            className={styles.button_send}
-            variant="contained"
-            color="primary"
-            type="submit"
-            onClick={submitFormText}
-          >
-            Envoyer
-          </Button>
-        </ThemeProvider>
       </div>
     </section>
   );
