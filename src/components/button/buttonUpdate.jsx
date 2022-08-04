@@ -1,18 +1,25 @@
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { useDispatch } from 'react-redux';
+import { 
+    setShowFormBool, 
+    setShowFormText,
+    setShowFormPhoto
+} from '../../reducers/booleans/slice';
 
 const ButtonUpdate = ({ custom, target }) => {
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         
         switch (target) {
             case 'photo':
-                console.log('case photo');
+                dispatch(setShowFormPhoto(true));
                 break;
             case 'text':
-                console.log('case text');
+                dispatch(setShowFormText(true));
                 break;
             case 'bool':
-                console.log('case bool');
+                dispatch(setShowFormBool(true));
                 break;
             default:
                 break;

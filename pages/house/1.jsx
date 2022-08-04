@@ -8,12 +8,17 @@ import SectionText from "../../src/components/House/Text";
 import SectionBool from "../../src/components/House/Bool";
 import SectionAnimal from "../../src/components/Animal/Animal";
 import SectionPlant from "../../src/components/Plant/Plant";
+import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
+import SectionFormText from "../../src/components/HouseForm/TextForm";
+import SectionFormBool from "../../src/components/HouseForm/BoolForm";
 import ButtonDelete from "../../src/components/button/buttonDelete";
+import { useSelector } from "react-redux";
 
 const HouseById = () => {
   
   const zoom = 14;
   const btnDelete = { styles: styles.button_delete };
+  const { formPhoto, formText, formBool } = useSelector((state) => state.booleans);
 
   return (
     <div className={styles.main}>
@@ -23,15 +28,15 @@ const HouseById = () => {
         </h2>
         <ButtonDelete custom={btnDelete} />
       </div>
-      <SectionPhoto />
+      {formPhoto ? <SectionFormPhoto /> :<SectionPhoto />}
       <div className={styles.container}>
         <SectionUser />
         <SectionCalendar />
-        <SectionText />
+        {formText ? <SectionFormText /> : <SectionText />}
         <section className={styles.map}>
           <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
         </section>
-        <SectionBool />
+        {formBool ? <SectionFormBool /> : <SectionBool />}
         <SectionAnimal />
         <SectionPlant />
       </div>

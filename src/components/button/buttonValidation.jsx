@@ -1,18 +1,25 @@
 import CheckIcon from '@mui/icons-material/Check';
+import { useDispatch } from 'react-redux';
+import {
+    setShowFormBool,
+    setShowFormText,
+    setShowFormPhoto
+} from '../../reducers/booleans/slice';
 
 const ButtonValidation = ({ custom, target }) => {
+    const dispatch = useDispatch();
 
     const handleClick = () => {
 
         switch (target) {
             case 'photoForm':
-                console.log('case check photoForm');
-                break;
-            case 'boolForm':
-                console.log('case check boolForm');
+                dispatch(setShowFormPhoto(false));
                 break;
             case 'textForm':
-                console.log('case check textForm');
+                dispatch(setShowFormText(false));
+                break;
+            case 'boolForm':
+                dispatch(setShowFormBool(false));
                 break;
             default:
                 break;

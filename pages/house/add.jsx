@@ -22,19 +22,7 @@ const HouseAdd = () => {
 
   return (
     <div className={styles.main}>
-      <h2>Ajouter un logement</h2>
-      <form className={styles.main}>
-          <SectionFormPhoto theme={theme} />
-          <div className={styles.container}>
-            <SectionFormText />
-            <section className={styles.map}>
-              <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
-            </section>
-            <SectionFormBool theme={theme} />
-            <SectionAnimal theme={theme} />
-            <SectionPlant theme={theme} />
-          </div>
-      </form>
+      <h2>Page voué à disparaître</h2>
     </div>
   );
 };

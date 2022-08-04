@@ -1,17 +1,24 @@
 import CloseIcon from '@mui/icons-material/Close';
+import { useDispatch } from 'react-redux';
+import {
+    setShowFormBool,
+    setShowFormText,
+    setShowFormPhoto
+} from '../../reducers/booleans/slice';
 
 const ButtonClose = ({ custom, target }) => {
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         switch (target) {
             case 'photoForm':
-                console.log('case close photoForm');
-                break;
-            case 'boolForm':
-                console.log('case close boolForm');
+                dispatch(setShowFormPhoto(false));
                 break;
             case 'textForm':
-                console.log('case close textForm');
+                dispatch(setShowFormText(false));
+                break;
+            case 'boolForm':
+                dispatch(setShowFormBool(false));
                 break;
             default:
                 break;

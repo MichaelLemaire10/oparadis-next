@@ -14,13 +14,13 @@ const booleanSlice = createSlice({
     setOpenModalSignup(state, action) {
       state.modalSignup = action.payload;
     },
-    setOpenFormPhoto(state, action) {
+    setShowFormPhoto(state, action) {
       state.formPhoto = action.payload;
     },
-    setOpenFormText(state, action) {
+    setShowFormText(state, action) {
       state.formText = action.payload;
     },
-    setOpenFormBool(state, action) {
+    setShowFormBool(state, action) {
       state.formBool = action.payload;
     },
   },
@@ -30,8 +30,8 @@ export const {
   setOpenMenu,
   setOpenModalSignin,
   setOpenModalSignup,
-  setOpenFormPhoto,
-  setOpenFormText,
-  setOpenFormBool,
+  setShowFormPhoto,
+  setShowFormText,
+  setShowFormBool,
 } = booleanSlice.actions;
 export default booleanSlice.reducer;
