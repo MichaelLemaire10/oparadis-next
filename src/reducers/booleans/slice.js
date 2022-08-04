@@ -11,16 +11,16 @@ const booleanSlice = createSlice({
     setOpenModalSignin: (state, action) => {
       state.modalSignin = action.payload;
     },
-    setOpenModalSignup(state, action) {
+    setOpenModalSignup: (state, action) => {
       state.modalSignup = action.payload;
     },
-    setShowFormPhoto(state, action) {
+    setShowFormPhoto: (state, action) => {
       state.formPhoto = action.payload;
     },
-    setShowFormText(state, action) {
+    setShowFormText: (state, action) => {
       state.formText = action.payload;
     },
-    setShowFormBool(state, action) {
+    setShowFormBool: (state, action) => {
       state.formBool = action.payload;
     },
   },

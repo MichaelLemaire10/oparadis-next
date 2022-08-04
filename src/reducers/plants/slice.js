@@ -5,7 +5,7 @@ const plantSlice = createSlice({
     name: 'plants',
     initialState,
     reducers: {
-      getPlant(state) {
+      getPlant: (state) => {
         state.plant = 'menthe'
       },
     },

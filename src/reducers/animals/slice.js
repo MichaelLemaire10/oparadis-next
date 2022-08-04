@@ -5,7 +5,7 @@ const animalSlice = createSlice({
     name: 'animals',
     initialState,
     reducers: {
-      getAnimal(state) {
+      getAnimal:(state) => {
         state.animal = 'Chat'
       },
     },

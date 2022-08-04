@@ -5,11 +5,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    getUser(state, action) {
+    getUser: (state, action) => {
       state.user = action.payload;
     },
 
-    setErrorsUser(state, action) {
+    setErrorsUser: (state, action) => {
       state.errorsUser = action.payload;
     },
 
@@ -17,15 +17,15 @@ const userSlice = createSlice({
       state.signup = action.payload;
     },
 
-    setSignin(state, action) {
+    setSignin: (state, action) => {
       state.signin = action.payload;
     },
 
-    setProfilDesc(state, action){
+    setProfilDesc: (state, action) =>{
       state.userFormDesc = action.payload;
     },
 
-    setProfilPwd(state, action) {
+    setProfilPwd: (state, action) => {
       state.userFormPwd = action.payload;
     }
   },
