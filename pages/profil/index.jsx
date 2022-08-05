@@ -37,26 +37,33 @@ const Profil = () => {
   });
 
   const submitTheFormCard = () => {
-    // check input errors before sending the form data
-    dispatch(setErrorsUser(validationProfilDesc(userFormDesc)));
-    // Last check with condition
-    if (!errorsUser.firstname && !errorsUser.lastname
-      && !errorsUser.phone_number && !errorsUser.email
-      && !errorsUser.description) {
-      console.log("envoyer desc");
-    };
+    if (!userFormDesc.firstname && !userFormDesc.lastname
+      && !userFormDesc.phone_number && !userFormDesc.email
+      && !userFormDesc.description) {
+      console.log('Pas de changement');
+    }
+    else {
+      // check input errors before sending the form data
+      dispatch(setErrorsUser(validationProfilDesc(userFormDesc)));
+      // Last check with condition
+      if (!errorsUser.firstname && !errorsUser.lastname
+        && !errorsUser.phone_number && !errorsUser.email
+        && !errorsUser.description) {
+        console.log("envoyer desc");
+      };
+    }
   };
 
   const submitTheFormPwd = (e) => {
     //check input errors before sending the form data
     dispatch(setErrorsUser(validationProfilPwd(userFormPwd)));
     // prevent form validation if all password under 3 characters
-    if(  userFormPwd.password.length >= 3
+    if (userFormPwd.password.length >= 3
       && userFormPwd.repeat_password.length >= 3
       && userFormPwd.old_password.length >= 3
-      ){
-        console.log('envoyer pwd');
-      };
+    ) {
+      console.log('envoyer pwd');
+    };
   };
 
 
@@ -95,9 +102,9 @@ const Profil = () => {
           </ThemeProvider>
         </DialogActions>
         <form className={styles.form_allPassword}>
-          <PasswordForm 
-            userFormPwd={userFormPwd} 
-            errors={errorsUser} 
+          <PasswordForm
+            userFormPwd={userFormPwd}
+            errors={errorsUser}
             target={target}
           />
         </form>

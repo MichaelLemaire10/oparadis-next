@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 
 const TextForm = ({ errors, data, form, formSignup, target}) => {
   const dispatch = useDispatch();
-  target ?  console.log('data:', formSignup.firstname) : console.log('data:', data.firstname);
-  console.log('target:', target);
 
   const handleSignUpInputChange = (e) => {
     const getName = e.target.getAttribute('name');
