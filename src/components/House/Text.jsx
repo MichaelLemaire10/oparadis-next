@@ -1,16 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import styles from "../../../styles/House.module.css";
-import ButtonUpdate from "../button/buttonUpdate";
+import ButtonUpdate from "../Button/ButtonUpdate";
 
 const Text = () => {
-
-  const buttonUpdate = {styles: styles.button_update};
   const target = 'text';
 
   return (
     <section className={styles.desc}>
-      <ButtonUpdate custom={buttonUpdate} target={target} />
+      <ButtonUpdate custom={styles.button_update} target={target} />
       <h3 className={styles.displayNone}>Description du logement</h3>
       <div className={styles.desc_detailed}>
         <h4 className={styles.desc_detailed__title}>Titre</h4>

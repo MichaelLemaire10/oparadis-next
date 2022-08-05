@@ -2,8 +2,8 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 import styles from "../../../styles/Form.module.css";
-import ButtonClose from "../button/buttonClose";
-import ButtonValidation from "../button/buttonValidation";
+import ButtonClose from "../Button/ButtonClose";
+import ButtonValidation from "../Button/ButtonValidation";
 
 const types = [
   {

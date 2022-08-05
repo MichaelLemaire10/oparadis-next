@@ -2,47 +2,56 @@ export const arrayIcon = [
   {
     id: 1,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196755/icon/wifi_tdnu4f.png",
-    name: "icon wifi",
+    alt: "icon internet",
+    name: "internet"
   },
   {
     id: 2,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/machine-a-laver_onetfi.png",
-    name: "icon washine-machine",
+    alt: "icon washine-machine",
+    name: "washing_machine"
   },
   {
     id: 3,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196755/icon/television_wfe4ae.png",
-    name: "icon TV",
+    alt: "icon TV",
+    name: "TV"
   },
   {
     id: 4,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/four_mvgmeg.png",
-    name: "icon hoven",
+    alt: "icon hoven",
+    name: "hoven"
   },
   {
     id: 5,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/micro-onde_vu1wyo.png",
-    name: "icon microwaven",
+    alt: "icon microwaven",
+    name: "microwaven"
   },
   {
     id: 6,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/dishwasher_plges9.png",
-    name: "icon dishwasher",
+    alt: "icon dishwasher",
+    name: "dishwasher"
   },
   {
     id: 7,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/baignoire_keicr6.png",
-    name: "icon bathtub",
+    alt: "icon bathtub",
+    name: "bathub"
   },
   {
     id: 8,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/douche_a5n1kv.png",
-    name: "icon shower",
+    alt: "icon shower",
+    name: "shower"
   },
   {
     id: 9,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196755/icon/parking_mejxtr.png",
-    name: "icon parking",
+    alt: "icon parking",
+    name: "parking"
   },
 ]
 

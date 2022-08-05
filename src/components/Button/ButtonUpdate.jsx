@@ -28,7 +28,7 @@ const ButtonUpdate = ({ custom, target }) => {
 
     return (
         <ModeEditIcon
-            className={custom.styles}
+            className={custom}
             onClick={handleClick}
             fontSize="medium"
             color="primary"

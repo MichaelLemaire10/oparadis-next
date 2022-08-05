@@ -8,7 +8,7 @@ const ButtonDelete = ({ custom }) => {
 
     return (
         <DeleteIcon
-            className={custom.styles}
+            className={custom}
             onClick={handleDeleteHouse}
             fontSize="large"
             color="error"

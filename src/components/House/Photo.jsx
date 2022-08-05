@@ -3,16 +3,14 @@ import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
 import { noImgHouse as imgHouse } from "../../../src/selectors/img";
 import styles from "../../../styles/House.module.css";
-import ButtonUpdate from "../button/buttonUpdate";
+import ButtonUpdate from "../Button/ButtonUpdate";
 
 const Photo = () => {
-
-  const buttonUpdate = {styles: styles.button_update};
   const target = 'photo';
 
   return (
     <section className={styles.photos}>
-      <ButtonUpdate custom={buttonUpdate} target={target} />
+      <ButtonUpdate custom={styles.button_update} target={target} />
       <div className={styles.photos_big}>
         <Image
           className={styles.photos_img}

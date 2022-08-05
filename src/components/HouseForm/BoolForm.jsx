@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
 import styles from "../../../styles/Form.module.css";
-import ButtonClose from "../button/buttonClose";
-import ButtonValidation from "../button/buttonValidation";
+import ButtonClose from "../Button/ButtonClose";
+import ButtonValidation from "../Button/ButtonValidation";
 
 const BoolForm = () => {
   const styleBtnClose = { styles: styles.button_close };

@@ -11,13 +11,12 @@ import SectionPlant from "../../src/components/Plant/Plant";
 import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
 import SectionFormBool from "../../src/components/HouseForm/BoolForm";
-import ButtonDelete from "../../src/components/button/buttonDelete";
+import ButtonDelete from "../../src/components/Button/ButtonDelete";
 import { useSelector } from "react-redux";
 
 const HouseById = () => {
   
   const zoom = 14;
-  const btnDelete = { styles: styles.button_delete };
   const { formPhoto, formText, formBool } = useSelector((state) => state.booleans);
 
   return (
@@ -26,7 +25,7 @@ const HouseById = () => {
         <h2>
           Mon logement
         </h2>
-        <ButtonDelete custom={btnDelete} />
+        <ButtonDelete custom={styles.button_delete} />
       </div>
       {formPhoto ? <SectionFormPhoto /> :<SectionPhoto />}
       <div className={styles.container}>

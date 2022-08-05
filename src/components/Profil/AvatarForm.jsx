@@ -8,7 +8,6 @@ import { setProfilDesc } from "../../reducers/users/slice";
 
 
 const AvatarForm = ({ data, form }) => {
-  // console.log('form:', form.avatar.length);
   const dispatch = useDispatch();
   
   // State to display the picture
