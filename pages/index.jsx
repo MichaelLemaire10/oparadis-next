@@ -8,11 +8,14 @@ import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
 import { updateHouse } from "../src/reducers/houses/slice";
 import { useDispatch, useSelector } from "react-redux";
+import { useGetHomeQuery } from "../src/services/house";
 
 const Home = ({ arrayHouse }) => {
-  const dispatch = useDispatch();
-  const test = useSelector((state) => state.houses.title);
-  const handleTest = () => dispatch(updateHouse('blabla'));
+  // const dispatch = useDispatch();
+  // const test = useSelector((state) => state.houses.title);
+  // const handleTest = () => dispatch(updateHouse('blabla'));
+  const { data } = useGetHomeQuery();
+  console.log('data:', data);
 
   return (
     <div className={styles.container}>

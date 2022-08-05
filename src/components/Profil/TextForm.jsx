@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 
 const TextForm = ({ errors, data, form, formSignup, target}) => {
   const dispatch = useDispatch();
+  target ?  console.log('data:', formSignup.firstname) : console.log('data:', data.firstname);
+  console.log('target:', target);
 
   const handleSignUpInputChange = (e) => {
     const getName = e.target.getAttribute('name');
@@ -26,8 +28,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         type="text"
         variant="standard"
         name="firstname"
-        defaultValue={target ? formSignup.firstname : data.firstname}
-        value={target ? formSignup.firstname : form.firstname}
+        value={target ? formSignup.firstname : form.firstname ? form.firstname : data.firstname}
         onChange={handleSignUpInputChange}
       />}
       {errors.firstname &&
@@ -51,8 +52,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         type="text"
         variant="standard"
         name="lastname"
-        defaultValue={target ? formSignup.lastname : data.lastname}
-        value={target ? formSignup.lastname : form.lastname}
+        value={target ? formSignup.lastname : form.lastname ? form.lastname : data.lastname}
         onChange={handleSignUpInputChange}
       />}
       {errors.lastname && <TextField
@@ -74,7 +74,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         type="text"
         variant="standard"
         name="pseudo"
-        value={target ? formSignup.pseudo : data.pseudo}
+        value={target ? formSignup.pseudo : form.pseudo ? form.pseudo : data.pseudo}
         onChange={handleSignUpInputChange}
       />
 
@@ -86,8 +86,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         type="text"
         variant="standard"
         name="phone_number"
-        defaultValue={target ? formSignup.phone_number : data.phone_number}
-        value={target ? formSignup.phone_number : form.phone_number}
+        value={target ? formSignup.phone_number : form.phone_number ? form.phone_number : data.phone_number}
         onChange={handleSignUpInputChange}
       />}
       {errors.phone_number && <TextField
@@ -110,8 +109,7 @@ const TextForm = ({ errors, data, form, formSignup, target}) => {
         type="email"
         variant="standard"
         name="email"
-        defaultValue={target ? formSignup.email : data.email}
-        value={target ? formSignup.email : form.email}
+        value={target ? formSignup.email : form.email ? form.email : data.email}
         onChange={handleSignUpInputChange}
       />}
       {errors.email && <TextField

@@ -14,6 +14,6 @@ import { rootReducer } from '../reducers';
     }
   };
   
-  export const makeStore = () => configureStore({reducer});
+  export const makeStore = () => configureStore({ reducer });
   
   export const wrapper = createWrapper(makeStore, { debug: true });

@@ -29,7 +29,7 @@
 
 .button_delete:hover {
   border: 2px solid rgb(252, 80, 80);
-  background-color: aliceblue;
+  background-color: white;
 }
 
 .button_update {
@@ -44,7 +44,7 @@
 
 .button_update:hover {
   border: 2px solid rgb(196, 227, 255);
-  background-color: aliceblue;
+  background-color: white;
 }
 
 /* section photo */
