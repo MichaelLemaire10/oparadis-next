@@ -6,14 +6,12 @@ import ButtonClose from "../Button/ButtonClose";
 import ButtonValidation from "../Button/ButtonValidation";
 
 const PhotoForm = () => {
-  const styleBtnClose = {styles: styles.button_close};
-  const styleBtnVld = {styles: styles.button_validation};
   const target = 'photoForm';
 
   return (
     <section className={styles.photos}>
-      <ButtonClose custom={styleBtnClose} target={target} />
-      <ButtonValidation custom={styleBtnVld} target={target} />
+      <ButtonClose custom={styles.button_close} target={target} />
+      <ButtonValidation custom={styles.button_validation} target={target} />
       <BigPhoto />
       <LittlePhoto />
     </section>

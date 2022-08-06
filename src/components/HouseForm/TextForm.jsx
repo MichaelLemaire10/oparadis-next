@@ -1,63 +1,75 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Box, TextField } from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../../../styles/Form.module.css";
 import ButtonClose from "../Button/ButtonClose";
 import ButtonValidation from "../Button/ButtonValidation";
+import { setHouseFormDesc, setHouseFormDescType, setHouseFormDescCountry } from "../../reducers/houses/slice";
 
 const types = [
   {
+    id: 1,
     value: "Maison",
-    label: "Maison",
   },
   {
+    id: 2,
     value: "Appartement",
-    label: "Appartement",
   },
   {
+    id: 3,
     value: "Chateau",
-    label: "Chateau",
   },
   {
+    id: 4,
     value: "Loft",
-    label: "Loft",
   },
 ];
 const countries = [
   {
+    id: 1,
     value: "France",
-    label: "France",
   },
   {
+    id: 2,
     value: "Italie",
-    label: "Italie",
   },
   {
+    id: 3,
     value: "Belgique",
-    label: "Belgique",
   },
   {
+    id: 4,
     value: "Espagne",
-    label: "Espagne",
   },
 ];
 
 const TextForm = () => {
-  const styleBtnClose = {styles: styles.button_close};
-  const styleBtnVld = {styles: styles.button_validation};
+  const dispatch = useDispatch();
+  const { houseFormDesc } = useSelector(state => state.houses);
+  const { 
+    address, zipcode, city, title, rooms, bedrooms, 
+    surface, area, floor, description, type, country
+  } = houseFormDesc;
+  
   const target = 'textForm';
 
-  const [type, setType] = React.useState("Maison");
-  const [country, setCountry] = React.useState("France");
-
-  const handleChangeType = (event) => setType(event.target.value);
-  const handleChangeCountry = (event) => setCountry(event.target.value);
-
+  const handleChangeType = (e) => {
+    const type = types.filter(t => t.value === e.target.value);
+    dispatch(setHouseFormDescType({...houseFormDesc, type : { id: type[0].id, type: e.target.value}}));
+  };
+  const handleChangeCountry = (e) => {
+    const country = countries.filter(t => t.value === e.target.value);
+    dispatch(setHouseFormDescCountry({...houseFormDesc, country: { id: country[0].id, country: e.target.value}}))
+  };
+  const handleChange = (e) => {
+    const getName = e.target.getAttribute('name');
+    dispatch(setHouseFormDesc({ ...houseFormDesc, [getName]: e.target.value }));
+  }
   return (
     <section className={styles.desc}>
-      <ButtonClose custom={styleBtnClose} target={target} />
-      <ButtonValidation custom={styleBtnVld} target={target} />
-      <h3 className={styles.displayNone}>Description du logement</h3>
+      <ButtonClose custom={styles.button_close} target={target} />
+      <ButtonValidation custom={styles.button_validation} target={target} />
       <div className={styles.desc_detailed}>
         <Box
           component="form"
@@ -71,7 +83,10 @@ const TextForm = () => {
                 <TextField
                   id="standard-title"
                   label="Titre"
-                  type="search"
+                  value={title}
+                  name="title"
+                  onChange={handleChange}
+                  type="text"
                   variant="standard"
                 />
           </h4>
@@ -81,8 +96,8 @@ const TextForm = () => {
                 <TextField
                   id="standard-select-currency-native-type"
                   select
+                  defaultValue={type.type}
                   label="Selectionner le type"
-                  value={type}
                   onChange={handleChangeType}
                   SelectProps={{
                     native: true,
@@ -91,40 +106,46 @@ const TextForm = () => {
                   sx={{ width: "20ch" }}
                 >
                   {types.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                    <option key={option.id} value={option.value}>
+                      {option.value}
                     </option>
                   ))}
                 </TextField>
                 <TextField
                   id="standard-address"
                   label="Adresse"
-                  type="search"
+                  value={address}
+                  name="address"
+                  onChange={handleChange}
+                  type="text"
                   variant="standard"
                   sx={{ width: "20ch" }}
                 />
-                {" "}
                 <TextField
                   id="standard-zip-code"
                   label="Code postal"
-                  type="search"
+                  type="text"
+                  value={zipcode}
+                  name="zipcode"
+                  onChange={handleChange}
                   variant="standard"
                   sx={{ width: "11ch" }}
                 />
-                {" "}
-                <TextField
+                 <TextField
                   id="standard-city"
                   label="Ville"
-                  type="search"
+                  type="text"
+                  value={city}
+                  name="city"
+                  onChange={handleChange}
                   variant="standard"
                   sx={{ width: "20ch" }}
                 />
-                {" "}
                 <TextField
                   id="standard-select-currency-native-country"
                   select
                   label="Selectionner le pays"
-                  value={country}
+                  defaultValue={country.country}
                   onChange={handleChangeCountry}
                   SelectProps={{
                     native: true,
@@ -133,15 +154,18 @@ const TextForm = () => {
                   sx={{ width: "15ch" }}
                 >
                   {countries.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                    <option key={option.id} value={option.value}>
+                      {option.value}
                     </option>
                   ))}
                 </TextField>
                 <TextField
                   id="standard-number-pieces"
-                  label="Nombres de pièces"
+                  label="Nombres de chambres"
                   type="number"
+                  value={rooms}
+                  name="rooms"
+                  onChange={handleChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -153,8 +177,11 @@ const TextForm = () => {
                 {" "}
                 <TextField
                   id="standard-number-room"
-                  label="Nombres de chambres"
+                  label="Nombres de lits"
                   type="number"
+                  value={bedrooms}
+                  name="bedrooms"
+                  onChange={handleChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -164,6 +191,9 @@ const TextForm = () => {
                   id="standard-number-surface"
                   label="Surface de la maison"
                   type="number"
+                  value={surface}
+                  name="surface"
+                  onChange={handleChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -173,6 +203,9 @@ const TextForm = () => {
                   id="standard-number-area"
                   label="Taille du terrain"
                   type="number"
+                  value={area}
+                  name="area"
+                  onChange={handleChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -182,6 +215,9 @@ const TextForm = () => {
                   id="standard-number-stage"
                   label="Nombre d'étage"
                   type="number"
+                  value={floor}
+                  name="floor"
+                  onChange={handleChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -195,6 +231,9 @@ const TextForm = () => {
               label="Description"
               fullWidth
               placeholder=""
+              value={description}
+              name="description"
+              onChange={handleChange}
               rows={3}
               multiline
               variant="standard"

@@ -1,38 +1,29 @@
 import styles from "../../../../styles/House.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
+import { useSelector } from "react-redux";
 
 const Icon = ({ obj }) => {
-
-    const boolObj = {
-        internet: true,
-        washing_machine: true,
-        TV: false,
-        hoven: true,
-        microwaven: true,
-        dishwasher: false,
-        bathub: true,
-        shower: true,
-        parking: true
-    };
+    const { house } = useSelector(state => state.houses);
     
     let bool;
-    for (const key in boolObj) if (key === obj.name) bool = boolObj[key];
-
+    for (const key in house) if (key === obj.name) bool = house[key];
+    
     return (
         <>
-            {bool && (<p className={styles.icon}>
-                <Image
-                    src={obj.src}
-                    className={styles.icon_img}
-                    loader={imagesLoader}
-                    unoptimized
-                    width="64"
-                    height="64"
-                    alt={obj.alt}
-                />
-            </p>)
-            }
+            {bool && (
+                <p className={styles.icon}>
+                    <Image
+                        src={obj.src}
+                        className={styles.icon_img}
+                        loader={imagesLoader}
+                        unoptimized
+                        width="64"
+                        height="64"
+                        alt={obj.alt}
+                    />
+                </p>
+            )}
         </>
     );
 };

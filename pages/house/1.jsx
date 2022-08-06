@@ -27,7 +27,7 @@ const HouseById = () => {
         </h2>
         <ButtonDelete custom={styles.button_delete} />
       </div>
-      {formPhoto ? <SectionFormPhoto /> :<SectionPhoto />}
+      {formPhoto ? <SectionFormPhoto /> : <SectionPhoto />}
       <div className={styles.container}>
         <SectionUser />
         <SectionCalendar />

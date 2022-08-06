@@ -27,7 +27,7 @@ const ButtonClose = ({ custom, target }) => {
 
     return (
         <CloseIcon
-            className={custom.styles}
+            className={custom}
             onClick={handleClick}
             fontSize="medium"
             color="neutral"

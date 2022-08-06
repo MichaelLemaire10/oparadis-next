@@ -5,15 +5,42 @@ const houseSlice = createSlice({
   name: "houses",
   initialState,
   reducers: {
-    getHouses: (state, action) => {
-      state.houses = action.payload;
+    getFourHouses: (state, action) => {
+      state.fourHouses = action.payload;
     },
-    updateHouse: (state, action) => {
-      console.log("type:", action.type);
-      state.title = action.payload;
+    getSearchHouses: (state, action) => {
+      state.searchHouses = action.payload;
+    },
+    getHouse: (state, action) => {
+      state.house = action.payload;
+    },
+    setHouseFormPhoto: (state, action) => {
+      state.houseFormPhoto.country = action.payload;
+    },
+    setHouseFormDesc: (state, action) => {
+      state.houseFormDesc = action.payload;
+    },
+    setHouseFormDescType: (state, action) => {
+      state.houseFormDesc.type = action.payload;
+    },
+    setHouseFormDescCountry: (state, action) => {
+      state.houseFormDesc.country = action.payload;
+    },
+    setHouseFormBool: (state, action) => {
+      state.houseFormBool = action.payload;
     },
   },
 });
 
-export const { getHouses, updateHouse } = houseSlice.actions;
+export const {
+  getFourHouses,
+  getSearchHouses,
+  getHouse,
+  setHouseFormPhoto,
+  setHouseFormDesc,
+  setHouseFormDescType,
+  setHouseFormDescCountry,
+  setHouseFormBool
+} = houseSlice.actions;
+
 export default houseSlice.reducer;

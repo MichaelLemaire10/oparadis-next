@@ -18,7 +18,7 @@ export const initialState = {
   },
 
   user: {
-    id:"",
+    id: "",
     email: "Bob@bikini.io",
     firstname: "Bob",
     lastname: "L'éponge",
