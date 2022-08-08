@@ -17,7 +17,8 @@ import { useSelector } from "react-redux";
 const HouseById = () => {
   
   const zoom = 14;
-  const { formPhoto, formText, formBool } = useSelector((state) => state.booleans);
+  const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
+  const { errorsHouse } = useSelector( state => state.houses);
 
   return (
     <div className={styles.main}>
@@ -31,7 +32,7 @@ const HouseById = () => {
       <div className={styles.container}>
         <SectionUser />
         <SectionCalendar />
-        {formText ? <SectionFormText /> : <SectionText />}
+        {formText ? <SectionFormText errors={errorsHouse} /> : <SectionText />}
         <section className={styles.map}>
           <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
         </section>

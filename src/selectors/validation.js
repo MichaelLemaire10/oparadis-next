@@ -1,3 +1,24 @@
+//  House //
+export const validationHouse = ({
+  address,
+  zipcode,
+  city,
+}) => {
+  const errors = {};
+
+  if (!address) {
+    errors.address = "L'adresse est obligatoire";
+  }
+  if (!zipcode) {
+    errors.zipcode = "CP est obligatoire";
+  }
+  if (!city) {
+    errors.city = " la ville est obligatoire";
+  }
+  return errors;
+};
+
+// User //
 export const validationSignup = ({
   firstname,
   lastname,
@@ -22,7 +43,7 @@ export const validationSignup = ({
   if (!email) {
     errors.email = "L'email est vide!";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
-    errors.email = "L'Email est invalide format attendu jean@outlook.fr";
+    errors.email = "L'Email est invalide";
   }
   if (!password) {
     errors.password = "Un mot de passe est requis";
@@ -45,7 +66,7 @@ export const validationSignin = ({ email, password }) => {
   if (!email) {
     errors.email = "L'email est vide";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
-    errors.email = "L'Email est invalide format attendu jean@outlook.fr";
+    errors.email = "L'Email est invalide";
   }
   if (!password) {
     errors.password = "Un mot de passe est requis";
@@ -79,7 +100,7 @@ export const validationProfilDesc = ({
   if (!email) {
     errors.email = "L'email est vide";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
-    errors.email = "L'Email est invalide format attendu jean@outlook.fr";
+    errors.email = "L'Email est invalide";
   }
   if (description.length > 150) {
     errors.description = "Max 150 caractères";

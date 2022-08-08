@@ -1,5 +1,5 @@
 export const initialState = {
-  errorshouse: {},
+  errorsHouse: {},
 
   fourHouses: [],
 
@@ -14,7 +14,7 @@ export const initialState = {
     address: "42 avenue des ananas",
     zipcode: "00 007",
     city: "Bikini bottom",
-    title: "L'ananas sous le mer",
+    title: "L'ananas sous la mer",
     rooms: 2,
     bedrooms: 2,
     surface: 60,
@@ -42,7 +42,7 @@ export const initialState = {
   houseFormDesc: {
     id: "",
     address: "42 avenue des ananas",
-    zipcode: "00 007",
+    zipcode: "",
     city: "Bikini bottom",
     title: "L'ananas sous le mer",
     rooms: 2,

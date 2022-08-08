@@ -40,6 +40,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           Mot de passe
         </InputLabel>
         <Input
+          error={errors.password}
           className={styles.input_pwd}
           id="standard-adornment-password"
           margin="dense"
@@ -68,6 +69,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           Vérifiez votre mot de passe
         </InputLabel>
         <Input
+          error={errors.repeat_password}
           id="standard-adornment-repeat-password"
           className={styles.input_pwd}
           margin="dense"
@@ -97,6 +99,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
             Ancien mot de passe
           </InputLabel>
           <Input
+            error={errors.old_password}
             id="standard-adornment-old-password"
             className={styles.input_pwd}
             margin="dense"

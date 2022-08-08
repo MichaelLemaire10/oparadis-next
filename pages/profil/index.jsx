@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  DialogTitle,
   DialogContent,
   DialogActions,
   Button,
@@ -40,7 +39,8 @@ const Profil = () => {
     },
   });
 
-  const submitTheFormCard = () => {
+  const submitTheFormCard = (e) => {
+    // e.preventDefault();
     if (
       userFormDesc.firstname === user.firstname
       && userFormDesc.lastname === user.lastname
@@ -56,9 +56,12 @@ const Profil = () => {
       // check input errors before sending the form data
       dispatch(setErrorsUser(validationProfilDesc(userFormDesc)));
       // Last check with condition
-      if (!errorsUser.firstname && !errorsUser.lastname
-        && !errorsUser.phone_number && !errorsUser.email
-        && !errorsUser.description) {
+      if (
+        userFormDesc.firstname && userFormDesc.lastname
+        && userFormDesc.phone_number 
+        && userFormDesc.email && !errorsUser.email
+        && userFormDesc.description
+        ) {
         console.log("envoyer desc");
       };
     }

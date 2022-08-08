@@ -14,7 +14,7 @@ import { validationSignup } from '../../selectors/validation';
 const ModalSignup = () => {
   const dispatch = useDispatch();
   const { signup, errorsUser } = useSelector((state) => state.users);
-  const { password, repeat_password } = signup;
+  const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
   const target = 'modal';
 
   // Selector //
@@ -28,7 +28,11 @@ const ModalSignup = () => {
     //check input errors before sending the form data
     dispatch(setErrorsUser(validationSignup(signup)));
     // prevent form validation if password under 3 characters
-    if (password.length >= 3 && repeat_password === password) {
+    if (
+      firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
+      && password.length >= 3 && repeat_password === password
+      ) {
+        console.log('signup')
       handleOpenOrCloseForUp();
     };
   };

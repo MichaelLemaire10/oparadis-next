@@ -4,15 +4,15 @@ import { TextField } from "@material-ui/core";
 import { setSignup, setProfilDesc } from "../../reducers/users/slice";
 import { useDispatch } from "react-redux";
 
-const TextForm = ({ errors, form, formSignup, target}) => {
+const TextForm = ({ errors, form, formSignup, target }) => {
   const dispatch = useDispatch();
   
-  const handleSignUpInputChange = (e) => {
+  const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
     target ? 
     dispatch(setSignup({ ...formSignup, [getName]: e.target.value }))
     :
-    dispatch(setProfilDesc({ ...form, [getName]: e.target.value }))
+    dispatch(setProfilDesc({ ...form, [getName]: e.target.value }));
   };
 
   return (
@@ -27,7 +27,7 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         variant="standard"
         name="firstname"
         value={target ? formSignup.firstname : form.firstname}
-        onChange={handleSignUpInputChange}
+        onChange={handleChange}
       />}
       {errors.firstname &&
         <TextField
@@ -38,8 +38,8 @@ const TextForm = ({ errors, form, formSignup, target}) => {
           label={`Error: ${errors.firstname}`}
           value={target ? formSignup.firstname : form.firstname}
           name="firstname"
-          onChange={handleSignUpInputChange}
-          variant="filled"
+          onChange={handleChange}
+          variant="standard"
         />}
 
       {!errors.lastname && <TextField
@@ -51,7 +51,7 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         variant="standard"
         name="lastname"
         value={target ? formSignup.lastname : form.lastname}
-        onChange={handleSignUpInputChange}
+        onChange={handleChange}
       />}
       {errors.lastname && <TextField
         error
@@ -61,8 +61,8 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         label={`Error: ${errors.lastname}`}
         name="lastname"
         value={target ? formSignup.lastname : form.lastname}
-        onChange={handleSignUpInputChange}
-        variant="filled"
+        onChange={handleChange}
+        variant="standard"
       />}
 
       <TextField
@@ -73,7 +73,7 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         variant="standard"
         name="pseudo"
         value={target ? formSignup.pseudo : form.pseudo}
-        onChange={handleSignUpInputChange}
+        onChange={handleChange}
       />
 
       {!errors.phone_number && <TextField
@@ -85,7 +85,7 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         variant="standard"
         name="phone_number"
         value={target ? formSignup.phone_number : form.phone_number}
-        onChange={handleSignUpInputChange}
+        onChange={handleChange}
       />}
       {errors.phone_number && <TextField
         error
@@ -95,8 +95,8 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         label={`Error: ${errors.phone_number}`}
         name="phone_number"
         value={target ? formSignup.phone_number : form.phone_number}
-        onChange={handleSignUpInputChange}
-        variant="filled"
+        onChange={handleChange}
+        variant="standard"
       />}
 
       {!errors.email && <TextField
@@ -108,7 +108,7 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         variant="standard"
         name="email"
         value={target ? formSignup.email : form.email}
-        onChange={handleSignUpInputChange}
+        onChange={handleChange}
       />}
       {errors.email && <TextField
         error
@@ -118,8 +118,8 @@ const TextForm = ({ errors, form, formSignup, target}) => {
         margin="dense"
         name="email"
         value={target ? formSignup.email : form.email}
-        onChange={handleSignUpInputChange}
-        variant="filled"
+        onChange={handleChange}
+        variant="standard"
       />}
 
     </div>

@@ -44,51 +44,52 @@ const countries = [
   },
 ];
 
-const TextForm = () => {
+const TextForm = ({ targetPage, errors }) => {
   const dispatch = useDispatch();
   const { houseFormDesc } = useSelector(state => state.houses);
-  const { 
-    address, zipcode, city, title, rooms, bedrooms, 
+  const {
+    address, zipcode, city, title, rooms, bedrooms,
     surface, area, floor, description, type, country
   } = houseFormDesc;
-  
+
   const target = 'textForm';
 
   const handleChangeType = (e) => {
     const type = types.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescType({...houseFormDesc, type : { id: type[0].id, type: e.target.value}}));
+    dispatch(setHouseFormDescType({ ...houseFormDesc, type: { id: type[0].id, type: e.target.value } }));
   };
   const handleChangeCountry = (e) => {
     const country = countries.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescCountry({...houseFormDesc, country: { id: country[0].id, country: e.target.value}}))
+    dispatch(setHouseFormDescCountry({ ...houseFormDesc, country: { id: country[0].id, country: e.target.value } }))
   };
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
     dispatch(setHouseFormDesc({ ...houseFormDesc, [getName]: e.target.value }));
-  }
+  };
+
   return (
     <section className={styles.desc}>
-      <ButtonClose custom={styles.button_close} target={target} />
-      <ButtonValidation custom={styles.button_validation} target={target} />
+      {!targetPage && <ButtonClose custom={styles.button_close} target={target} />}
+      {!targetPage && <ButtonValidation custom={styles.button_validation} target={target} />}
       <div className={styles.desc_detailed}>
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 0.5},
+            "& .MuiTextField-root": { m: 0.5 },
           }}
           noValidate
           autoComplete="on"
         >
           <h4 className={styles.desc_detailed__title}>
-                <TextField
-                  id="standard-title"
-                  label="Titre"
-                  value={title}
-                  name="title"
-                  onChange={handleChange}
-                  type="text"
-                  variant="standard"
-                />
+            <TextField
+              id="standard-title"
+              label="Titre"
+              value={title}
+              name="title"
+              onChange={handleChange}
+              type="text"
+              variant="standard"
+            />
           </h4>
           <div className={styles.desc_detailed__info}>
             <div className={styles.desc_detailed__text}>
@@ -111,7 +112,8 @@ const TextForm = () => {
                     </option>
                   ))}
                 </TextField>
-                <TextField
+                {!errors.address && <TextField
+                  required
                   id="standard-address"
                   label="Adresse"
                   value={address}
@@ -120,8 +122,20 @@ const TextForm = () => {
                   type="text"
                   variant="standard"
                   sx={{ width: "20ch" }}
-                />
-                <TextField
+                />}
+                {errors.address &&
+                  <TextField
+                    error
+                    id="filled-error-helper-text-address"
+                    label={errors.address}
+                    value={address}
+                    name="address"
+                    onChange={handleChange}
+                    variant="standard"
+                    sx={{ width: "20ch" }}
+                  />}
+                {!errors.zipcode && <TextField
+                  required
                   id="standard-zip-code"
                   label="Code postal"
                   type="text"
@@ -129,9 +143,21 @@ const TextForm = () => {
                   name="zipcode"
                   onChange={handleChange}
                   variant="standard"
-                  sx={{ width: "11ch" }}
-                />
-                 <TextField
+                  sx={{ width: "15ch" }}
+                />}
+                {errors.zipcode &&
+                  <TextField
+                  error
+                  id="filled-error-helper-text-zip-code"
+                  label={errors.zipcode}
+                  value={zipcode}
+                  name="zipcode"
+                  onChange={handleChange}
+                  variant="standard"
+                  sx={{ width: "15ch" }}
+                  />}
+                {!errors.city && <TextField
+                  required
                   id="standard-city"
                   label="Ville"
                   type="text"
@@ -140,7 +166,18 @@ const TextForm = () => {
                   onChange={handleChange}
                   variant="standard"
                   sx={{ width: "20ch" }}
-                />
+                />}
+                {errors.city &&
+                  <TextField
+                  error
+                  id="filled-error-helper-text-city"
+                  label={errors.city}
+                  value={city}
+                  name="city"
+                  onChange={handleChange}
+                  variant="standard"
+                  sx={{ width: "20ch" }}
+                  />}
                 <TextField
                   id="standard-select-currency-native-country"
                   select
@@ -226,18 +263,18 @@ const TextForm = () => {
               </div>
             </div>
             <div className={styles.desc_detailed__desc}>
-            <TextField
-              id="standard-textarea"
-              label="Description"
-              fullWidth
-              placeholder=""
-              value={description}
-              name="description"
-              onChange={handleChange}
-              rows={3}
-              multiline
-              variant="standard"
-            />
+              <TextField
+                id="standard-textarea"
+                label="Description"
+                fullWidth
+                placeholder=""
+                value={description}
+                name="description"
+                onChange={handleChange}
+                rows={3}
+                multiline
+                variant="standard"
+              />
             </div>
           </div>
         </Box>

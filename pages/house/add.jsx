@@ -1,15 +1,22 @@
+import React from "react";
 import styles from "../../styles/Form.module.css";
-import { LeafletWithNoSSR } from "../../src/selectors/LeafletWithNoSSR";
-import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
-import SectionFormBool from "../../src/components/HouseForm/BoolForm";
-import SectionAnimal from "../../src/components/Animal/Animal";
-import SectionPlant from "../../src/components/Plant/Plant";
-import { createTheme } from "@material-ui/core";
+import {
+  DialogActions,
+  Button,
+  createTheme,
+  ThemeProvider,
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { setErrorsHouse } from "../../src/reducers/houses/slice";
+import { validationHouse } from "../../src/selectors/validation";
+
 
 const HouseAdd = () => {
-  const zoom = 14;
-  
+  const dispatch = useDispatch();
+  const { errorsHouse, houseFormDesc } = useSelector(state => state.houses);
+  const targetPage = 'addHouse';
+
   // New styles pour le bouton
   const theme = createTheme({
     palette: {
@@ -20,9 +27,42 @@ const HouseAdd = () => {
     },
   });
 
+  const submitTheFormDesc = () => {
+    // check input errors before sending the form data
+    dispatch(setErrorsHouse(validationHouse(houseFormDesc)));
+    // Last check with condition
+    submitForm();
+  };
+
+  const submitForm = () => {
+    if (
+      houseFormDesc.address && houseFormDesc.zipcode 
+      && houseFormDesc.city&& !errorsHouse.address 
+      && !errorsHouse.zipcode && !errorsHouse.city
+      ) {
+      console.log("envoyer desc");
+    };
+  };
+
   return (
     <div className={styles.main}>
-      <h2>Page voué à disparaître</h2>
+      <h2>Créer un logement</h2>
+      <SectionFormText
+        errors={errorsHouse}
+        targetPage={targetPage}
+      />
+      <DialogActions>
+        <ThemeProvider theme={theme} >
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={submitTheFormDesc}
+          >
+            Envoyer
+          </Button>
+        </ThemeProvider>
+      </DialogActions>
     </div>
   );
 };
