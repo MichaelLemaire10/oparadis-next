@@ -5,12 +5,12 @@ import styles from "../../../styles/House.module.css";
 import ButtonUpdate from "../Button/ButtonUpdate";
 
 const Text = () => {
-  const { house } = useSelector( state => state.houses);
+  const { houseDesc } = useSelector( state => state.houses);
   const { 
     title, address, zipcode, city,
     rooms, bedrooms, surface, area, floor,
     description, type, country
-  } = house;
+  } = houseDesc;
   const target = 'text';
 
   return (

@@ -11,8 +11,11 @@ const houseSlice = createSlice({
     getSearchHouses: (state, action) => {
       state.searchHouses = action.payload;
     },
-    getHouse: (state, action) => {
-      state.house = action.payload;
+    getHouseDesc: (state, action) => {
+      state.houseDesc = action.payload;
+    },
+    getHouseBool: (state, action) => {
+      state.houseBool = action.payload;
     },
     setErrorsHouse: (state, action) => {
       state.errorsHouse = action.payload;
@@ -38,7 +41,8 @@ const houseSlice = createSlice({
 export const {
   getFourHouses,
   getSearchHouses,
-  getHouse,
+  getHouseDesc,
+  getHouseBool,
   setErrorsHouse,
   setHouseFormPhoto,
   setHouseFormDesc,

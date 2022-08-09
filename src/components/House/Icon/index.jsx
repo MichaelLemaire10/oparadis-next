@@ -4,10 +4,10 @@ import imagesLoader from "../../../../imagesLoader";
 import { useSelector } from "react-redux";
 
 const Icon = ({ obj }) => {
-    const { house } = useSelector(state => state.houses);
+    const { houseBool } = useSelector(state => state.houses);
     
     let bool;
-    for (const key in house) if (key === obj.name) bool = house[key];
+    for (const key in houseBool) if (key === obj.name) bool = houseBool[key];
     
     return (
         <>

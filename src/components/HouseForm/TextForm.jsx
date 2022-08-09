@@ -7,60 +7,30 @@ import ButtonClose from "../Button/ButtonClose";
 import ButtonValidation from "../Button/ButtonValidation";
 import { setHouseFormDesc, setHouseFormDescType, setHouseFormDescCountry } from "../../reducers/houses/slice";
 
-const types = [
-  {
-    id: 1,
-    value: "Maison",
-  },
-  {
-    id: 2,
-    value: "Appartement",
-  },
-  {
-    id: 3,
-    value: "Chateau",
-  },
-  {
-    id: 4,
-    value: "Loft",
-  },
-];
-const countries = [
-  {
-    id: 1,
-    value: "France",
-  },
-  {
-    id: 2,
-    value: "Italie",
-  },
-  {
-    id: 3,
-    value: "Belgique",
-  },
-  {
-    id: 4,
-    value: "Espagne",
-  },
-];
-
 const TextForm = ({ targetPage, errors }) => {
   const dispatch = useDispatch();
-  const { houseFormDesc } = useSelector(state => state.houses);
+  const { houseFormDesc, types, countries } = useSelector(state => state.houses);
   const {
     address, zipcode, city, title, rooms, bedrooms,
     surface, area, floor, description, type, country
   } = houseFormDesc;
 
+  const objType = types.find((t) => t.id === type);
+  console.log('objType:', objType);
+  console.log('valueType:', objType.value);
+  
+  const objCountry = countries.find((c) => c.id === country);
+  console.log('valueCountry:', objCountry.value);
+
   const target = 'textForm';
 
   const handleChangeType = (e) => {
     const type = types.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescType({ ...houseFormDesc, type: { id: type[0].id, type: e.target.value } }));
+    dispatch(setHouseFormDescType({ ...houseFormDesc, type: type[0].id }));
   };
   const handleChangeCountry = (e) => {
     const country = countries.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescCountry({ ...houseFormDesc, country: { id: country[0].id, country: e.target.value } }))
+    dispatch(setHouseFormDescCountry({ ...houseFormDesc, id: country[0].id }))
   };
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
@@ -97,7 +67,7 @@ const TextForm = ({ targetPage, errors }) => {
                 <TextField
                   id="standard-select-currency-native-type"
                   select
-                  defaultValue={type.type}
+                  defaultValue={objType.value}
                   label="Selectionner le type"
                   onChange={handleChangeType}
                   SelectProps={{
@@ -182,7 +152,7 @@ const TextForm = ({ targetPage, errors }) => {
                   id="standard-select-currency-native-country"
                   select
                   label="Selectionner le pays"
-                  defaultValue={country.country}
+                  defaultValue={objCountry.value}
                   onChange={handleChangeCountry}
                   SelectProps={{
                     native: true,

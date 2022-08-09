@@ -30,14 +30,10 @@ const HouseAdd = () => {
   const submitTheFormDesc = () => {
     // check input errors before sending the form data
     dispatch(setErrorsHouse(validationHouse(houseFormDesc)));
-    // Last check with condition
-    submitForm();
-  };
-
-  const submitForm = () => {
+    // Last check with condition 
     if (
       houseFormDesc.address && houseFormDesc.zipcode 
-      && houseFormDesc.city&& !errorsHouse.address 
+      && houseFormDesc.city && !errorsHouse.address 
       && !errorsHouse.zipcode && !errorsHouse.city
       ) {
       console.log("envoyer desc");

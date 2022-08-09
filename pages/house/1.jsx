@@ -15,7 +15,7 @@ import ButtonDelete from "../../src/components/Button/ButtonDelete";
 import { useSelector } from "react-redux";
 
 const HouseById = () => {
-  
+
   const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
   const { errorsHouse } = useSelector( state => state.houses);

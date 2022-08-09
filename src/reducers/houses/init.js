@@ -5,11 +5,45 @@ export const initialState = {
 
   searchHouses: [],
 
-  types: [],
+  types: [
+    {
+      id: 1,
+      value: "Maison",
+    },
+    {
+      id: 2,
+      value: "Appartement",
+    },
+    {
+      id: 3,
+      value: "Chateau",
+    },
+    {
+      id: 4,
+      value: "Loft",
+    },
+  ],
 
-  country: [],
+  countries: [
+    {
+      id: 1,
+      value: "France",
+    },
+    {
+      id: 2,
+      value: "Italie",
+    },
+    {
+      id: 3,
+      value: "Belgique",
+    },
+    {
+      id: 4,
+      value: "Espagne",
+    },
+  ],
 
-  house: {
+  houseDesc: {
     id: "",
     address: "42 avenue des ananas",
     zipcode: "00 007",
@@ -21,11 +55,15 @@ export const initialState = {
     area: 500,
     floor: 3,
     description: "Ananas pour passer un super séjour",
-    type: { id:1, type: 'Maison'},
-    country: {id:1, country: 'France'},
+    type: 1,
+    country: 1,
     latitude: "",
     longitude: "",
-    map: "",
+    map: ""
+  },
+  
+  houseBool: {
+    id:"",
     internet: false,
     washing_machine: true,
     TV: true,
@@ -34,7 +72,7 @@ export const initialState = {
     dishwasher: true,
     bathub: false,
     shower: true,
-    parking: false,
+    parking: false
   },
 
   houseFormPhoto: {},
@@ -42,20 +80,20 @@ export const initialState = {
   houseFormDesc: {
     id: "",
     address: "42 avenue des ananas",
-    zipcode: "",
+    zipcode: "00 007",
     city: "Bikini bottom",
-    title: "L'ananas sous le mer",
+    title: "L'ananas sous la mer",
     rooms: 2,
     bedrooms: 2,
     surface: 60,
     area: 500,
     floor: 3,
     description: "Ananas pour passer un super séjour",
-    type: { id:4, type: 'Loft' },
-    country: { id:3, country: 'Belgique' },
+    type: 1,
+    country: 1,
     latitude: "",
     longitude: "",
-    map: "",
+    map: ""
   },
 
   houseFormBool: {

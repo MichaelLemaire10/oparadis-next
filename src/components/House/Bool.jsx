@@ -6,12 +6,12 @@ import ButtonUpdate from "../Button/ButtonUpdate";
 import { useSelector } from "react-redux";
 
 function Bool() {
-  const { house } = useSelector(state => state.houses);
+  const { houseBool } = useSelector(state => state.houses);
   const target = 'bool';
 
   let bool;
   let i = 0;
-  for (const key in house) if (house[key] === false) i++;
+  for (const key in houseBool) if (houseBool[key] === false) i++;
   i === 9 ? bool = false : bool = true ;
   
   return (

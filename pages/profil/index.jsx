@@ -25,8 +25,8 @@ const Profil = () => {
     userFormDesc,
   } = useSelector((state) => state.users);
   const target = '';
-
-  //! A supprimer quand les ajax sera pret !//
+  
+    //! A supprimer quand les ajax sera pret !//
   React.useEffect(() => { dispatch(setProfilDesc(user)) }, []);
 
   // New styles pour le bouton
@@ -39,16 +39,9 @@ const Profil = () => {
     },
   });
 
-  const submitTheFormCard = (e) => {
-    // e.preventDefault();
+  const submitTheFormCard = () => {
     if (
-      userFormDesc.firstname === user.firstname
-      && userFormDesc.lastname === user.lastname
-      && userFormDesc.pseudo === user.pseudo
-      && userFormDesc.phone_number === user.phone_number
-      && userFormDesc.email === user.email
-      && userFormDesc.avatar === user.avatar
-      && userFormDesc.description === user.description
+      Object.entries(user).toString() === Object.entries(userFormDesc).toString()
     ) {
       console.log('Pas de changement');
     }
