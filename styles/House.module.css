@@ -10,6 +10,17 @@
   display: none;
 }
 
+/*! a supprimer quand le calendrier sera en place !*/
+.photos_img_travaux {
+  border-radius: 30px;
+}
+
+.p {
+  position: relative;
+}
+
+/*! end !*/
+
 .title {
   display: flex;
   justify-content: center;
@@ -135,8 +146,10 @@
 /* section calendar */
 .calendar {
   border-radius: 30px;
+  border: 1px solid rgb(207, 214, 250);
   background-color: rgb(248, 249, 255);
   grid-area: 1 / 2 / 2 / 5;
+  position: relative;
 }
 
 /* section description */

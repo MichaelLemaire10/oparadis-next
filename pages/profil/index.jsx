@@ -13,7 +13,7 @@ import DescForm from "../../src/components/Profil/DescForm";
 import PasswordForm from "../../src/components/Profil/PasswordForm";
 import ButtonDelete from "../../src/components/Button/ButtonDelete";
 import { useDispatch, useSelector } from 'react-redux';
-import { setErrorsUser, setProfilDesc } from "../../src/reducers/users/slice";
+import { getUser, setErrorsUser, setProfilDesc } from "../../src/reducers/users/slice";
 import { validationProfilDesc, validationProfilPwd } from "../../src/selectors/validation";
 
 const Profil = () => {
@@ -55,6 +55,7 @@ const Profil = () => {
         && userFormDesc.email && !errorsUser.email
         && userFormDesc.description
         ) {
+        dispatch(getUser(userFormDesc));
         console.log("envoyer desc");
       };
     }

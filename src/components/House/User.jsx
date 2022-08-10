@@ -1,16 +1,21 @@
 import styles from "../../../styles/House.module.css"
 import ImgAvatar from "../Image/ImgAvatar";
+import { useSelector } from "react-redux";
 
 const SectionUser = () => {
-  const custom = { width: "60px", height: "60px" };
+  const { user } = useSelector(state => state.users);
+
+  const custom = { width: "80px", height: "80px" };
     return (
         <section className={styles.user}>
           <p className={styles.user_info}>
             <ImgAvatar custom={custom} />
-            <span className={styles.user_info__pseudo}>Pseudo</span> 
+            <span className={styles.user_info__pseudo}>
+              {user.pseudo}
+            </span> 
           </p> 
           <p className={styles.user_desc}>
-           Lorem ipsum dolor sit amet consectetur adipisicing elit.  Dolore eius labore reprehenderit, dignissimos impedit expedita est fugit esse sit quia ex.
+            {user.description}
           </p>
         </section>
     )

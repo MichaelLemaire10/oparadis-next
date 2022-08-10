@@ -20,6 +20,7 @@ const ButtonValidation = ({ custom, target }) => {
                     Object.entries(houseDesc).toString() === Object.entries(houseFormDesc).toString()
                 ) {
                     console.log("Pas de changement");
+                    dispatch(setShowFormText(false));
                 } else {
                     if (houseFormDesc.address && houseFormDesc.zipcode
                         && houseFormDesc.city) {
@@ -32,9 +33,10 @@ const ButtonValidation = ({ custom, target }) => {
                 break;
             case 'boolForm':
                 if (
-                    Object.entries(houseBool).toString() === Object.entries(houseFormDesc).toString()
+                    Object.entries(houseBool).toString() === Object.entries(houseFormBool).toString()
                 ) {
                     console.log("Pas de changement");
+                    dispatch(setShowFormBool(false));
                 }
                 else {
                     dispatch(getHouseBool(houseFormBool));

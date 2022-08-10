@@ -8,8 +8,7 @@ const Text = () => {
 
   const { houseDesc, types, countries } = useSelector( state => state.houses);
   const { 
-    title, address, zipcode, city,
-    rooms, bedrooms, surface, area, floor,
+    title, address, zipcode, city, rooms, bedrooms, surface, area, floor,
     description, type, country
   } = houseDesc;
 

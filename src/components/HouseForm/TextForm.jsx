@@ -11,8 +11,8 @@ const TextForm = ({ targetPage, errors }) => {
   const dispatch = useDispatch();
   const { houseFormDesc, types, countries } = useSelector(state => state.houses);
   const {
-    address, zipcode, city, title, rooms, bedrooms,
-    surface, area, floor, description, type, country
+    address, zipcode, city, title, rooms, bedrooms,surface, area, floor, description,
+    type, country
   } = houseFormDesc;
 
   let objType = types.find((t) => t.id === type);
