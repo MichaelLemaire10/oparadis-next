@@ -15,7 +15,7 @@ const PhotoForm = () => {
   // fonction pour récuperer les images
   const handleOnChange = (changeEvent) => {
     const targetId = changeEvent.target.id;
-    console.log("targetId:", targetId);
+    console.log("targetId =>", targetId);
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
       switch (targetId) {

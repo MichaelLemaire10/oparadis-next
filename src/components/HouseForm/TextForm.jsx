@@ -15,22 +15,18 @@ const TextForm = ({ targetPage, errors }) => {
     surface, area, floor, description, type, country
   } = houseFormDesc;
 
-  const objType = types.find((t) => t.id === type);
-  console.log('objType:', objType);
-  console.log('valueType:', objType.value);
-  
-  const objCountry = countries.find((c) => c.id === country);
-  console.log('valueCountry:', objCountry.value);
+  let objType = types.find((t) => t.id === type);
+  let objCountry = countries.find((c) => c.id === country);
 
   const target = 'textForm';
 
   const handleChangeType = (e) => {
     const type = types.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescType({ ...houseFormDesc, type: type[0].id }));
+    dispatch(setHouseFormDescType(type[0].id));
   };
   const handleChangeCountry = (e) => {
     const country = countries.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescCountry({ ...houseFormDesc, id: country[0].id }))
+    dispatch(setHouseFormDescCountry(country[0].id))
   };
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
