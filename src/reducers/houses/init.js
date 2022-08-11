@@ -43,6 +43,41 @@ export const initialState = {
     },
   ],
 
+  photos: [
+    {
+      id: 1,
+      photo:
+        "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/n2li1ljlx47svs7wlnki.jpg",
+      main_photo: true,
+    },
+    {
+      id: 2,
+      photo:
+        "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/jrpobvjgn6sbnxosng4x.jpg",
+      main_photo: false,
+    },
+    {
+      id: 3,
+      photo:
+        "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/yoy8ngsxzsazbobuwlvx.jpg",
+      main_photo: false,
+    },
+    {
+      id: 4,
+      photo:
+        "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/u2h1ucd7yp2g7wwhwto3.jpg",
+      main_photo: false,
+    },
+    {
+      id: 5,
+      photo:
+        "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660204198/jbjrnhqfkyjhwvhgkiwn.jpg",
+      main_photo: false,
+    }
+  ],
+
+  photosForm: [],
+
   houseDesc: {
     id: "",
     address: "42 avenue des ananas",
@@ -59,11 +94,11 @@ export const initialState = {
     country: 1,
     latitude: "",
     longitude: "",
-    map: ""
+    map: "",
   },
-  
+
   houseBool: {
-    id:"",
+    id: "",
     internet: false,
     washing_machine: true,
     TV: true,
@@ -72,7 +107,7 @@ export const initialState = {
     dishwasher: true,
     bathub: false,
     shower: true,
-    parking: false
+    parking: false,
   },
 
   houseFormPhoto: {},
@@ -93,7 +128,7 @@ export const initialState = {
     country: 1,
     latitude: "",
     longitude: "",
-    map: ""
+    map: "",
   },
 
   houseFormBool: {
@@ -106,6 +141,6 @@ export const initialState = {
     dishwasher: true,
     bathub: false,
     shower: true,
-    parking: false
+    parking: false,
   },
 };

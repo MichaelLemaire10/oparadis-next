@@ -1,3 +1,5 @@
+import { noImgHouse } from "./img";
+
 export const arrayIcon = [
   {
     id: 1,
@@ -87,4 +89,28 @@ export const itemData = [
     title: 'Dev Back',
     author: 'Kerstone',
   },
+];
+
+
+export const arrayPhoto = [
+    {
+      id: 1,
+      photo: noImgHouse,
+      main_photo: false,
+    },
+    {
+      id: 2,
+      photo: noImgHouse,
+      main_photo: false,
+    },
+    {
+      id: 3,
+      photo: noImgHouse,
+      main_photo: false,
+    },
+    {
+      id: 4,
+      photo: noImgHouse,
+      main_photo: false,
+    }
 ];

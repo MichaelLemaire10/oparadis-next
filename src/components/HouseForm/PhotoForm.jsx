@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../../styles/Form.module.css";
-import BigPhoto from "./PhotoForm/BigPhoto";
-import LittlePhoto from "./PhotoForm/LittlePhoto";
+import BigPhoto from "./PhotoForm/BigPhotoForm";
+import LittlePhoto from "./PhotoForm/LittlePhotoForm";
 import ButtonClose from "../Button/ButtonClose";
 import ButtonValidation from "../Button/ButtonValidation";
 
