@@ -4,14 +4,10 @@ import ButtonUpdate from "../Button/ButtonUpdate";
 import BigPhoto from "./Photo/BigPhoto";
 import LittlePhoto from "./Photo/LittlePhoto";
 import { arrayPhoto } from "../../selectors/data";
-import { useDispatch, useSelector } from "react-redux";
-import { setHouseFormPhoto } from "../../reducers/houses/slice";
+import { useSelector } from "react-redux";
 
 const Photo = () => {
-  const dispatch = useDispatch();
   const { photos } = useSelector(state => state.houses);
-
-  React.useEffect(() => { dispatch(setHouseFormPhoto(photos)) }, []);
 
   const mainPhoto = photos.find(p => p.main_photo === true);
   const littlePhotos = photos.filter(p => p.main_photo === false);

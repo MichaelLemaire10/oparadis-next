@@ -5,7 +5,7 @@ import imagesLoader from "../../../../imagesLoader";
 import { noImgHouse as imgHouse } from "../../../selectors/img";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
-const PhotoForm = () => {
+const PhotoForm = ({ littlePhotos }) => {
   // State to display the picture
   const [img1, setImg1] = useState();
   const [img2, setImg2] = useState();

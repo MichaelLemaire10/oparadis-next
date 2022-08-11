@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
-import { noImgHouse as imgHouse } from "../../../selectors/img";
+import { noImgHouse } from "../../../selectors/img";
 import styles from "../../../../styles/Form.module.css";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { setHouseFormPhoto } from "../../../reducers/houses/slice";
+import { useDispatch } from "react-redux";
 
-function PhotoForm() {
+function PhotoForm({ mainPhoto }) {
+  const dispatch = useDispatch();
   //   State to display the picture
-  const [imageSrc, setImageSrc] = useState();
 
   const handleOnChange = (changeEvent) => {
     const reader = new FileReader();
     reader.onload = (onLoadEvent) => {
-      setImageSrc(onLoadEvent.target.result);
+      dispatch(
+        setHouseFormPhoto(
+          { ...mainPhoto, avatar: onLoadEvent.target.result, main_photo: true }));
     };
     reader.readAsDataURL(changeEvent.target.files[0]);
   };
@@ -31,26 +35,26 @@ function PhotoForm() {
             onChange={handleOnChange}
           />
         <PhotoCamera 
-        className={imageSrc? 
+        className={mainPhoto ? 
             `${styles.photos_button} ${styles.photos_button_opacity}`
         : `${styles.photos_button_opacity}`}
         />
-          {imageSrc && (
+          {mainPhoto && (
             <Image
               className={styles.photos_img}
               loader={imagesLoader}
               unoptimized
-              src={imageSrc}
+              src={mainPhoto.photo}
               alt="images house"
               layout="fill"
             />
           )}
-          {!imageSrc && (
+          {!mainPhoto && (
             <Image
               className={`${styles.photos_img} ${styles.photos_img_opacity} `}
               loader={imagesLoader}
               unoptimized
-              src={imgHouse}
+              src={noImgHouse}
               alt="images house"
               layout="fill"
             />
