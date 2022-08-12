@@ -27,7 +27,7 @@ function PhotoForm({ mainPhoto }) {
      reader.readAsDataURL(changeEvent.target.files[0]);
   };
 
-  const handleClick = () => {console.log('click')};
+  const handleClick = () => dispatch(setHouseFormPhoto({ id: 1, photo: null , main_photo: true }));
 
   return (
     <div className={`${styles.photos_big} ${styles.photos_hover}`}>
