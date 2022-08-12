@@ -38,12 +38,10 @@ const houseSlice = createSlice({
       state.houseFormBool = action.payload;
     },
     setHouseFormPhoto: (state, action) => {
-      console.log("state =>", state[0]);
+      console.log('action =>', action.payload)
       if (state[0]) {
-        const array = state.filter((s) => s.id !== action.payload.id);
-        console.log("array before =>", array);
+        const array = state.filter((s) => s.target !== action.payload.target);
         array.push(action.payload);
-        console.log("array after =>", array);
         state.photosForm = array;
       } else {
         let array = [];

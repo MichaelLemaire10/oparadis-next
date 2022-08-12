@@ -49,30 +49,35 @@ export const initialState = {
       photo:
         "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/n2li1ljlx47svs7wlnki.jpg",
       main_photo: true,
+      target: 4
     },
     {
       id: 2,
       photo:
         "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/jrpobvjgn6sbnxosng4x.jpg",
       main_photo: false,
+      target: 0
     },
     {
       id: 3,
       photo:
         "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/yoy8ngsxzsazbobuwlvx.jpg",
       main_photo: false,
+      target: 1
     },
     {
       id: 4,
       photo:
         "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660203440/u2h1ucd7yp2g7wwhwto3.jpg",
       main_photo: false,
+      target: 2
     },
     {
       id: 5,
       photo:
         "https://res.cloudinary.com/dhwbw94lc/image/upload/v1660204198/jbjrnhqfkyjhwvhgkiwn.jpg",
       main_photo: false,
+      target: 3
     }
   ],
 

@@ -5,16 +5,10 @@ import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
 import { noImgHouse } from "../../../selectors/img";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import DeleteIcon from '@mui/icons-material/Delete';
 import { setHouseFormPhoto } from "../../../reducers/houses/slice";
+import ButtonDeletePhoto from "../../Button/ButtonDeletePhoto";
 
 function PhotoForm({ mainPhoto }) {
-
-  // const { photosForm } = useSelector(state => state.houses);
-  // const mainPhoto = photosForm.find(p => p.main_photo === true);
-
-  console.log('mainPhoto =>', mainPhoto);
-
   const dispatch = useDispatch();
 
   const handleChange = (changeEvent) => {
@@ -22,24 +16,15 @@ function PhotoForm({ mainPhoto }) {
       reader.onload = (onLoadEvent) => {
         dispatch(
           setHouseFormPhoto(
-            { id: 1, photo: onLoadEvent.target.result, main_photo: true }));
+            { ...mainPhoto, photo: onLoadEvent.target.result, main_photo: true }));
       };
      reader.readAsDataURL(changeEvent.target.files[0]);
   };
 
-  const handleClick = () => dispatch(setHouseFormPhoto({ id: 1, photo: null , main_photo: true }));
 
   return (
     <div className={`${styles.photos_big} ${styles.photos_hover}`}>
-      {mainPhoto && (
-        <div className={styles.button_delete}>
-          <DeleteIcon
-            className={styles.button_delete}
-            onClick={handleClick}
-            fontSize="large"
-            color="error"
-          />
-        </div>)}
+      
       <label htmlFor="contained-button-file">
         <input
           className={styles.displayNone}
@@ -76,6 +61,7 @@ function PhotoForm({ mainPhoto }) {
           />
         )}
       </label>
+      {mainPhoto && <ButtonDeletePhoto bool={true} obj={{...mainPhoto}} />}
     </div>
   );
 }

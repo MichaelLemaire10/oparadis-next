@@ -11,8 +11,8 @@ import { useGetHomeQuery } from "../src/services/house";
 const Home = ({ arrayHouse }) => {
 
   //? Test ajax redux/query
-  const { data } = useGetHomeQuery();
-  console.log('page/home => data:', data);
+  // const { data } = useGetHomeQuery();
+  // console.log('page/home => data:', data);
 
   return (
     <div className={styles.container}>

@@ -10,6 +10,13 @@ const PhotoForm = () => {
   const { photosForm } = useSelector(state => state.houses);
 
   console.log('photosForm =>', photosForm);
+  
+  const custom = [
+    styles.one,
+    styles.two,
+    styles.three,
+    styles.four
+  ];
 
   const target = 'photoForm';
 
@@ -20,7 +27,7 @@ const PhotoForm = () => {
     <section className={styles.photos}>
       <ButtonClose custom={styles.button_close} target={target} />
       <ButtonValidation custom={styles.button_validation} target={target} />
-      <BigPhoto mainPhoto={mainPhoto && mainPhoto.photo ? mainPhoto : undefined} />
+      <BigPhoto mainPhoto={mainPhoto && mainPhoto.photo ? {...mainPhoto, target: 4} : undefined} />
       <LittlePhoto littlePhotos={littlePhotos} />
     </section>
   );
