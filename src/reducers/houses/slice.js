@@ -1,4 +1,3 @@
-import { Filter } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./init";
 
@@ -39,12 +38,12 @@ const houseSlice = createSlice({
       state.houseFormBool = action.payload;
     },
     setHouseFormPhoto: (state, action) => {
-      // console.log('state:', state[0])
+      console.log("state =>", state[0]);
       if (state[0]) {
-        const array = state.filter((s) => s.id != action.payload.id);
-        // console.log('array before =>', array);
+        const array = state.filter((s) => s.id !== action.payload.id);
+        console.log("array before =>", array);
         array.push(action.payload);
-        // console.log('array after =>', array);
+        console.log("array after =>", array);
         state.photosForm = array;
       } else {
         let array = [];

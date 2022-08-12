@@ -11,6 +11,15 @@
   display: none;
 }
 
+.button_delete {
+  background-color: rgb(255, 221, 221);
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 100%;
+  z-index: 10;
+}
+
 .button_close {
   border-radius: 100%;
   padding: 2px;
