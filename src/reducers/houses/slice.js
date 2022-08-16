@@ -38,9 +38,9 @@ const houseSlice = createSlice({
       state.houseFormBool = action.payload;
     },
     setHouseFormPhoto: (state, action) => {
-      console.log('action =>', action.payload)
-      if (state[0]) {
-        const array = state.filter((s) => s.target !== action.payload.target);
+      if (state.photosForm[0]) {
+        const array = state.photosForm.filter(
+          s => s.target !== action.payload.target);
         array.push(action.payload);
         state.photosForm = array;
       } else {

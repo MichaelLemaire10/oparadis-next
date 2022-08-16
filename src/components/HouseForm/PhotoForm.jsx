@@ -9,26 +9,38 @@ import ButtonValidation from "../Button/ButtonValidation";
 const PhotoForm = () => {
   const { photosForm } = useSelector(state => state.houses);
 
-  console.log('photosForm =>', photosForm);
-  
-  const custom = [
-    styles.one,
-    styles.two,
-    styles.three,
-    styles.four
-  ];
-
   const target = 'photoForm';
-
+  
   const mainPhoto = photosForm.find(p => p.main_photo === true);
-  const littlePhotos = photosForm.filter(p => p.main_photo === false);
+  const littlePhotoOne = photosForm.find(p => p.target === 0);
+  const littlePhotoTwo = photosForm.find(p => p.target === 1);
+  const littlePhotoThree = photosForm.find(p => p.target === 2);
+  const littlePhotoFour = photosForm.find(p => p.target === 3);
 
   return (
     <section className={styles.photos}>
       <ButtonClose custom={styles.button_close} target={target} />
       <ButtonValidation custom={styles.button_validation} target={target} />
-      <BigPhoto mainPhoto={mainPhoto && mainPhoto.photo ? {...mainPhoto, target: 4} : undefined} />
-      <LittlePhoto littlePhotos={littlePhotos} />
+      <BigPhoto 
+        mainPhoto={mainPhoto && mainPhoto.photo ?
+           {...mainPhoto, target: 4} : {target: 4}} 
+      />
+      <LittlePhoto 
+      obj={littlePhotoOne && littlePhotoOne.photo ?
+         {...littlePhotoOne, target: 0} : {target : 0}} 
+      />
+      <LittlePhoto 
+      obj={littlePhotoTwo && littlePhotoTwo.photo ?
+        {...littlePhotoTwo, target: 1} : {target : 1}} 
+      />
+      <LittlePhoto 
+      obj={littlePhotoThree && littlePhotoThree.photo ?
+        {...littlePhotoThree, target: 2} : {target : 2}} 
+      />
+      <LittlePhoto 
+      obj={littlePhotoFour && littlePhotoFour.photo ?
+        {...littlePhotoFour, target: 3} : {target : 3}} 
+      />
     </section>
   );
 }

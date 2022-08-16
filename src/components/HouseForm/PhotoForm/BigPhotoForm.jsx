@@ -25,22 +25,22 @@ function PhotoForm({ mainPhoto }) {
   return (
     <div className={`${styles.photos_big} ${styles.photos_hover}`}>
       
-      <label htmlFor="contained-button-file">
+      <label htmlFor={`file-${mainPhoto.target}`}>
         <input
           className={styles.displayNone}
           accept="image/*"
-          id="contained-button-file"
+          id={`file-${mainPhoto.target}`}
           multiple
           type="file"
-          name="file"
+          name={mainPhoto.target}
           onChange={handleChange}
         />
         <PhotoCamera
-          className={mainPhoto ?
+          className={mainPhoto.photo ?
             `${styles.photos_button} ${styles.photos_button_opacity}`
             : `${styles.photos_button_opacity}`}
         />
-        {mainPhoto && (
+        {mainPhoto.photo && (
           <Image
             className={styles.photos_img}
             loader={imagesLoader}
@@ -50,7 +50,7 @@ function PhotoForm({ mainPhoto }) {
             layout="fill"
           />
         )}
-        {!mainPhoto && (
+        {!mainPhoto.photo && (
           <Image
             className={`${styles.photos_img} ${styles.photos_img_opacity} `}
             loader={imagesLoader}
@@ -61,7 +61,7 @@ function PhotoForm({ mainPhoto }) {
           />
         )}
       </label>
-      {mainPhoto && <ButtonDeletePhoto bool={true} obj={{...mainPhoto}} />}
+      {mainPhoto.photo && <ButtonDeletePhoto bool={true} obj={{...mainPhoto}} />}
     </div>
   );
 }
