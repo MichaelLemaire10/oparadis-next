@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "../../../../styles/Form.module.css";
 import Image from "next/image";
@@ -20,7 +19,6 @@ const PhotoForm = ({ obj }) => {
 
   // fonction pour récuperer les images
   const handleChange = (changeEvent) => {
-  console.log('changeEvent =>', changeEvent.target.files);
 
     const reader = new FileReader();
       reader.onload = (onLoadEvent) => {

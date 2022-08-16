@@ -115,8 +115,6 @@ export const initialState = {
     parking: false,
   },
 
-  houseFormPhoto: {},
-
   houseFormDesc: {
     id: "",
     address: "42 avenue des ananas",

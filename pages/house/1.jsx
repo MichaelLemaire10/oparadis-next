@@ -12,13 +12,21 @@ import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
 import SectionFormBool from "../../src/components/HouseForm/BoolForm";
 import ButtonDelete from "../../src/components/Button/ButtonDelete";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { setHouseFormPhoto } from "../../src/reducers/houses/slice";
 
 const HouseById = () => {
 
   const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
-  const { errorsHouse } = useSelector( state => state.houses);
+  const { errorsHouse, photos, photosForm } = useSelector( state => state.houses);
+
+  //! à supprimer !//
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    photos.map(p => dispatch(setHouseFormPhoto(p)));
+  }, []);
 
   return (
     <div className={styles.main}>

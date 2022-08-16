@@ -1,17 +1,31 @@
 import CheckIcon from '@mui/icons-material/Check';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowFormBool, setShowFormText, setShowFormPhoto } from '../../reducers/booleans/slice';
-import { getHouseBool, getHouseDesc, setErrorsHouse } from '../../reducers/houses/slice';
+import { 
+    getHouseBool, getHouseDesc, setErrorsHouse, getHousePhoto 
+} from '../../reducers/houses/slice';
 import { validationHouse } from '../../selectors/validation';
 
 const ButtonValidation = ({ custom, target }) => {
     const dispatch = useDispatch();
-    const { houseFormBool, houseFormDesc, houseDesc, houseBool } = useSelector(state => state.houses);
+    const { 
+        houseFormBool, houseFormDesc, photosForm,
+         houseDesc, houseBool, photos 
+        } = useSelector(state => state.houses);
 
     const handleClick = () => {
         switch (target) {
             case 'photoForm':
-                dispatch(setShowFormPhoto(false));
+                console.log()
+                if (JSON.stringify(photos) === JSON.stringify(photosForm)) {
+                    console.log("Pas de changement");
+                    dispatch(setShowFormPhoto(false));
+                } else {
+                    const array = photosForm.filter(p => p.photo !== null);
+                    dispatch(getHousePhoto(array));
+                    dispatch(setShowFormPhoto(false));
+                    console.log("envoyer photo");
+                }
                 break;
             case 'textForm':
                 dispatch(setErrorsHouse(validationHouse(houseFormDesc)));

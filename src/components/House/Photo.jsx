@@ -12,13 +12,6 @@ const Photo = () => {
   const mainPhoto = photos.find(p => p.main_photo === true);
   const littlePhotos = photos.filter(p => p.main_photo === false);
 
-  const custom = [
-    styles.one,
-    styles.two,
-    styles.three,
-    styles.four
-  ];
-
   let bool;
   littlePhotos[0] ? bool = true : bool = false;
 
@@ -28,8 +21,8 @@ const Photo = () => {
     <section className={styles.photos}>
       <ButtonUpdate custom={styles.button_update} target={target} />
       <BigPhoto mainPhoto={mainPhoto} />
-      {bool && littlePhotos.map((p, i) => <LittlePhoto key={p.id} photo={p} styles={custom[i]} />)}
-      {!bool && arrayPhoto.map((p, i) => <LittlePhoto key={p.id} photo={p} styles={custom[i]} />)}
+      {bool && littlePhotos.map( p => <LittlePhoto key={p.id} obj={p} />)}
+      {!bool && arrayPhoto.map( p => <LittlePhoto key={p.id} obj={p} />)}
     </section>
   );
 }
