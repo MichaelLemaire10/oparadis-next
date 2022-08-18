@@ -11,8 +11,8 @@ function Bool() {
 
   let bool;
   let i = 0;
-  for (const key in houseBool) if (houseBool[key] === false) i++;
-  i === 9 ? bool = false : bool = true ;
+  for (const key in houseBool) if (houseBool[key] === true) i++;
+  i > 0 ? bool = true : bool = false ;
   
   return (
     <section className={styles.supply}>
