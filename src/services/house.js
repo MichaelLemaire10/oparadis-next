@@ -4,9 +4,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const houseApi = createApi({
   reducerPath: 'houseApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getHome: builder.query({
-      query: () => '/',
+      query: () => '/'
+      .then((res) => console.log('USER api', res))
+      .catch((err) => console.log('err', err)),
     }),
   }),
 })

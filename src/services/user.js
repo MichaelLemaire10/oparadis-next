@@ -4,13 +4,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getUser: builder.query({
-      query: () => `user/me`,
+      query: () => `user/me`
+        .then(() => console.log('useApi'))
+        .catch((err) => console.log('err', err)),
     }),
   }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { getUser } = userApi
+export const { useGetUserQuery } = userApi

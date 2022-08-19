@@ -16,8 +16,8 @@ import { validationSignin } from '../../selectors/validation';
 const ModalSignin = () => {
 
   const dispatch = useDispatch();
-  const { signin, errorsUser } = useSelector((state) => state.users );
-  const { email, password } = signin; 
+  const { signin, errorsUser } = useSelector((state) => state.users);
+  const { email, password } = signin;
   const [showPwd, setShowPwd] = React.useState(false);
 
   // Selector //
@@ -35,13 +35,13 @@ const ModalSignin = () => {
   //Submit //
   const submitSignInForm = () => {
     dispatch(setErrorsUser(validationSignin(signin)));
-
-    if(email != '' && password != '' && password.length >= 3) {
+    if (email != '' && /\S+@\S+\.\S+/.test(email) 
+    && password != '' && password.length >= 3) {
       console.log('connecter');
       handleOpenOrCloseForIn();
     };
   };
-  
+
   return (
     <div>
       <Modal
@@ -71,19 +71,20 @@ const ModalSignin = () => {
             {errorsUser.email && <TextField
               error
               fullWidth
-              id="filled-error-helper-text"
+              id="filled-error-helper-text-mail"
               label="Error"
               name="email"
               defaultValue={email}
               helperText={errorsUser.email}
               onChange={handleChange}
-              variant="filled"
+              variant="standard"
             />}
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <InputLabel htmlFor="standard-adornment-password">
                 Mot de passe
               </InputLabel>
               <Input
+                error={errorsUser.password}
                 required
                 className={styles.input_pwd}
                 id="standard-adornment-password"
