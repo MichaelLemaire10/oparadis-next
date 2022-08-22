@@ -34,4 +34,5 @@ export const {
   setShowFormText,
   setShowFormBool,
 } = booleanSlice.actions;
+
 export default booleanSlice.reducer;
