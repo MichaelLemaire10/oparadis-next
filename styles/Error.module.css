@@ -1,0 +1,43 @@
+.main {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    z-index: 0;
+    position: relative;
+}
+
+.down {
+    position: absolute;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+.up {
+    position: absolute;
+    width: 600px;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.number {
+    color: white;
+    font-weight: 900;
+    font-size: xxx-large;
+}
+
+.type {
+    color: white;
+    font-weight: 700;
+    font-size: xx-large;
+    margin-bottom: 10px;
+}
+
+.msg {
+    margin: 10px 0px;
+    color: white;
+    font-weight: 500;
+    font-size: x-large;
+}

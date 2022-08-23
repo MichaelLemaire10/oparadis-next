@@ -7,12 +7,11 @@ import { useGetHousesQuery } from '../../services/house';
 
 const Search = () => {
     const dispatch = useDispatch();
-    const { search, searchHouses } = useSelector(state => state.houses);
+    const { search } = useSelector(state => state.houses);
     const { data } = useGetHousesQuery();
 
     React.useEffect(() => {
       dispatch(getSearchHouses(data));
-      console.log('useEffect');
     }, [data]);
 
     const handleChange = (e) => dispatch(setSearch(e.target.value));
@@ -22,9 +21,8 @@ const Search = () => {
         if (search === '') {
             dispatch(getSearchHouses(data));
         } else {
-            const arrayFilter = searchHouses.filter(({ city }) =>
+            const arrayFilter = data.filter(({ city }) =>
             city.toLowerCase().includes(search.toLowerCase()));
-            console.log('arrayFilter =>', arrayFilter);
             dispatch(getSearchHouses(arrayFilter));
         };
     };
