@@ -1,16 +1,12 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { api } from './index';
 
-// Define a service using a base URL and expected endpoints
-export const plantApi = createApi({
-  reducerPath: 'plantApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
-  endpoints: builder => ({
-    getPlant: builder.query({
-      query: () => `plant`,
+const plantApi = api.injectEndpoints({
+  endpoints: (build) => ({
+    getHouses: build.query({
+      query: () => '/',
     }),
   }),
-})
+  overrideExisting: false,
+});
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { getPlant } = plantApi
+export const { useGetHousesQuery } = plantApi;

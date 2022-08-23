@@ -1,14 +1,8 @@
-// import { combineReducers } from 'redux';
-import { userApi } from "./user";
-import { houseApi } from "./house";
-import { photoApi } from "./photo";
-import { animalApi } from "./animal";
-import { plantApi } from "./plant";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const reducerApi = {
-    [userApi.reducerPath]: userApi.reducer,
-    [houseApi.reducerPath]: houseApi.reducer,
-    [photoApi.reducerPath]: photoApi.reducer,
-    [animalApi.reducerPath]: animalApi.reducer,
-    [plantApi.reducerPath]: plantApi.reducer,
-};
+// Define a service using a base URL and expected endpoints
+export const api = createApi({
+  reducerPath: 'api',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
+  endpoints: () => ({}),
+});

@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 //! import { rootReducer } from '../reducers';
-import { api } from "../services/house";
+import { api } from "../services";
 import booleansReducer from "../reducers/booleans/slice";
 import usersReducer from "../reducers/users/slice";
 import housesReducer from "../reducers/houses/slice";

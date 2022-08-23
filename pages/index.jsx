@@ -7,11 +7,12 @@ import HouseFour from "../src/components/Home/HouseFour";
 import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
 import { useGetHomeQuery } from "../src/services/house";
+import { useGetHousesQuery } from "../src/services/user";
 
 const Home = ({ arrayHouse }) => {
 
   //? Test ajax redux/query
-  const { data, isLoading, isError } = useGetHomeQuery();
+  const { data, isLoading, isError } = useGetHousesQuery();
   console.log('page/home => error:', isError);
   console.log('page/home => isLoading:', isLoading);
   console.log('page/home => data:', data);
