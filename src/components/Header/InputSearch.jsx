@@ -1,17 +1,34 @@
 import React from "react";
-import Link from "next/link";
 import styles from "../../../styles/Header.module.css";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearch, getSearchHouses } from "../../reducers/houses/slice";
+import { useGetHousesQuery } from '../../services/house';
 
 const Search = () => {
-    const [search, setSearch] = React.useState('');
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const { search, searchHouses } = useSelector(state => state.houses);
+    const { data } = useGetHousesQuery();
 
-    const handleChange = (e) => setSearch(e.target.value);
+    React.useEffect(() => {
+      dispatch(getSearchHouses(data));
+      console.log('useEffect');
+    }, [data]);
+
+    const handleChange = (e) => dispatch(setSearch(e.target.value));
+
     const handleSearch = () => {
-        setSearch('');
-        // const arrayFilter = await houses.filter((city) => city === search);
-        // dispatch(getHouses(arrayFilter));
+        data ? data : data = [];
+        if (search === '') {
+            dispatch(getSearchHouses(data));
+        } else {
+            const arrayFilter = searchHouses.filter(({ city }) =>
+            city.toLowerCase().includes(search.toLowerCase()));
+            console.log('arrayFilter =>', arrayFilter);
+            dispatch(getSearchHouses(arrayFilter));
+        };
     };
+
     return (
         <div className={styles.div_handles}>
             <input

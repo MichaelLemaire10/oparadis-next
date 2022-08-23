@@ -25,6 +25,9 @@ const houseSlice = createSlice({
     setErrorsHouse: (state, action) => {
       state.errorsHouse = action.payload;
     },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
     setHouseFormDesc: (state, action) => {
       state.houseFormDesc = action.payload;
     },
@@ -60,6 +63,7 @@ export const {
   getHouseBool,
   getHousePhoto,
   setErrorsHouse,
+  setSearch,
   setHouseFormDesc,
   setHouseFormDescType,
   setHouseFormDescCountry,

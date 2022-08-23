@@ -6,16 +6,8 @@ import HomeLogo from "../src/components/Home/homeLogo";
 import HouseFour from "../src/components/Home/HouseFour";
 import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
-import { useGetHomeQuery } from "../src/services/house";
-import { useGetHousesQuery } from "../src/services/user";
 
 const Home = ({ arrayHouse }) => {
-
-  //? Test ajax redux/query
-  const { data, isLoading, isError } = useGetHousesQuery();
-  console.log('page/home => error:', isError);
-  console.log('page/home => isLoading:', isLoading);
-  console.log('page/home => data:', data);
 
   return (
     <div className={styles.container}>
@@ -25,7 +17,6 @@ const Home = ({ arrayHouse }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
-        {/* <button onClick={handleTest}>test: {test}</button> */}
         <section className={styles.section_up}>
           <HomeLogo />
         </section>
@@ -43,7 +34,6 @@ const Home = ({ arrayHouse }) => {
 export const getStaticProps = async () => {
   const url = process.env.URL;
   const res = await axios.get(`${url}/`);
-  // const res = array;
   return {
     props: { arrayHouse: res.data },
   };

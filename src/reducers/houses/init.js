@@ -3,6 +3,8 @@ export const initialState = {
 
   fourHouses: [],
 
+  search: '',
+
   searchHouses: [],
 
   types: [
