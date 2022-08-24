@@ -20,7 +20,7 @@ const HouseById = () => {
 
   const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
-  const { errorsHouse, photos, photosForm } = useSelector( state => state.houses);
+  const { errorsHouse, photos, houseDesc } = useSelector(state => state.houses);
 
   //! à supprimer !//
   const dispatch = useDispatch();
@@ -42,7 +42,10 @@ const HouseById = () => {
         <SectionCalendar />
         {formText ? <SectionFormText errors={errorsHouse} /> : <SectionText />}
         <section className={styles.map}>
-          <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
+          <LeafletWithNoSSR
+            style={styles.leaflet}
+            zoom={zoom}
+            coordinates={new Array(houseDesc)} />
         </section>
         {formBool ? <SectionFormBool /> : <SectionBool />}
         <SectionAnimal />

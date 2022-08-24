@@ -15,12 +15,14 @@ import ButtonDelete from "../../src/components/Button/ButtonDelete";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { setHouseFormPhoto } from "../../src/reducers/houses/slice";
+import axios from "axios";
 
-const HouseById = () => {
+const HouseById = ({ data }) => {
+  console.log('data:', data);
 
   const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
-  const { errorsHouse, photos } = useSelector( state => state.houses);
+  const { errorsHouse, photos } = useSelector(state => state.houses);
 
   //! à supprimer quand ajax sera en place !//
   const dispatch = useDispatch();
@@ -36,20 +38,35 @@ const HouseById = () => {
         </h2>
         <ButtonDelete custom={styles.button_delete} />
       </div>
-      {formPhoto ? <SectionFormPhoto /> : <SectionPhoto />}
+      {formPhoto
+        ? <SectionFormPhoto />
+        : <SectionPhoto />}
       <div className={styles.container}>
         <SectionUser />
         <SectionCalendar />
-        {formText ? <SectionFormText errors={errorsHouse} /> : <SectionText />}
+        {formText
+          ? <SectionFormText errors={errorsHouse} />
+          : <SectionText />}
         <section className={styles.map}>
           <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
         </section>
-        {formBool ? <SectionFormBool /> : <SectionBool />}
+        {formBool
+          ? <SectionFormBool />
+          : <SectionBool />}
         <SectionAnimal />
         <SectionPlant />
       </div>
     </div>
   );
 };
+
+export const getServerSideProps = async (context) => {
+  const url = process.env.URL;
+  const res = await axios.get(`${url}/house/full/${context.query.id}`);
+
+  return {
+    props: { house: res.data }
+  }
+}
 
 export default HouseById;

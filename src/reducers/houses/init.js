@@ -86,7 +86,7 @@ export const initialState = {
   photosForm: [],
 
   houseDesc: {
-    id: "",
+    id: "1",
     address: "42 avenue des ananas",
     zipcode: "00 007",
     city: "Bikini bottom",
@@ -99,13 +99,13 @@ export const initialState = {
     description: "Ananas pour passer un super séjour",
     type: 1,
     country: 1,
-    latitude: "",
-    longitude: "",
+    latitude: "35.82994561135945",
+    longitude: "-41.43215638537038",
     map: "",
   },
 
   houseBool: {
-    id: "",
+    id: "1",
     internet: false,
     washing_machine: true,
     TV: true,
@@ -118,7 +118,7 @@ export const initialState = {
   },
 
   houseFormDesc: {
-    id: "",
+    id: "1",
     address: "42 avenue des ananas",
     zipcode: "00 007",
     city: "Bikini bottom",
@@ -131,13 +131,13 @@ export const initialState = {
     description: "Ananas pour passer un super séjour",
     type: 1,
     country: 1,
-    latitude: "",
-    longitude: "",
+    latitude: "35.82994561135945",
+    longitude: "-41.43215638537038",
     map: "",
   },
 
   houseFormBool: {
-    id: "",
+    id: "1",
     internet: false,
     washing_machine: true,
     TV: true,
