@@ -1,8 +1,7 @@
 import styles from '../styles/Error.module.css';
 import Image from 'next/image';
-import { noImgHouse } from '../src/selectors/img';
 
-const ErrorPage = ({ error }) => {
+const ErrorPage = () => {
 
     return (
         <div className={styles.main}>
@@ -14,9 +13,8 @@ const ErrorPage = ({ error }) => {
                 alt='images error'
             />
             <div className={styles.up}>
-                <div className={styles.number}>ERROR {error.status}</div>
-                <div className={styles.type}>{error.data.error}</div>
-                {/* <div className={styles.msg}>{error.data.message}</div> */}
+                <div className={styles.number}>ERROR 404</div>
+                <div className={styles.type}>Not found</div>
             </div>
         </div>
     );

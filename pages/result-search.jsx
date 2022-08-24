@@ -5,18 +5,23 @@ import { useSelector } from "react-redux";
 import HouseCard from "../src/components/HouseCard";
 import ErrorPage from "./404";
 import { useGetHousesQuery } from "../src/services/house";
+import Spinner from "../src/components/spinner";
 
 const ResultSearch = () => {
+
+  const { isError, isLoading } = useGetHousesQuery();
+
   const { searchHouses, search } = useSelector(state => state.houses);
-  const { error, isError, isLoading } = useGetHousesQuery();
-  console.log('isLoading:', isLoading);
+
+  let coordinates = [];
+  if (searchHouses) coordinates = searchHouses.map(h => ({ lat: h.latitude, lng: h.longitude, id: h.id, city: h.city }));
 
   const zoom = 4.5;
 
   return (
     <>
-      {/* {isLoading && <div>... loading</div>} */}
-      {isError && <ErrorPage error={error} />}
+      {isLoading && <Spinner />}
+      {isError && <ErrorPage />}
       {!isError && <div className={styles.main}>
         <section className={styles.section_left}>
           {!searchHouses && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
@@ -25,7 +30,7 @@ const ResultSearch = () => {
             )}
         </section>
         <section className={styles.section_right}>
-          <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
+          <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} coordinates={coordinates} />
         </section>
       </div>}
     </>
