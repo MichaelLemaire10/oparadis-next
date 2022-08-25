@@ -5,7 +5,7 @@ import imagesLoader from "../../../imagesLoader";
 import { noImgPlant as noImg } from "../../../src/selectors/img";
 
 const CardPlant = ({obj}) => {
-  const { src, type, notes } = obj;
+  const { photo, type, notes } = obj;
 
     return(
         <div className={styles.card_container}>
@@ -14,7 +14,7 @@ const CardPlant = ({obj}) => {
             <Image
               unoptimized
               layout="fill"
-              src={src ? src : noImg}
+              src={photo ? photo : noImg}
               className={styles.card_img}
               loader={imagesLoader}
               alt="image plante"

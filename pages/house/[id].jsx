@@ -60,7 +60,7 @@ const HouseById = ({ house }) => {
           ? <SectionFormBool />
           : <SectionBool house={house} sameId={sameId} />}
         {house.animals[0] && <SectionAnimal animals={house.animals} />}
-        {house.plants[0] && <SectionPlant plants={house.plant} />}
+        {house.plants[0] && <SectionPlant plants={house.plants} />}
       </div>
     </div>
   );

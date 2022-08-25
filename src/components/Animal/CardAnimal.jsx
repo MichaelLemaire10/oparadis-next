@@ -4,7 +4,7 @@ import imagesLoader from "../../../imagesLoader";
 import { noImgAnimal as noImg } from "../../selectors/img";
 
 const CardAnimal = ({obj}) => {
-  const { src, type , race, maladie, notes } = obj;
+  const { photo, type , race, maladie, notes } = obj;
   
     return (
         <div className={styles.card_container}>
@@ -13,7 +13,7 @@ const CardAnimal = ({obj}) => {
             <Image
               unoptimized
               layout='fill'
-              src={src ? src : noImg}
+              src={photo ? photo : noImg}
               className={styles.card_img}
               loader={imagesLoader}
               alt="image animal"

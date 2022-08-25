@@ -4,6 +4,7 @@ import styles from "../../../styles/House.module.css";
 import Card from "./CardPlant";
 
 function SectionPlant({ plants }) {
+  console.log('plants:', plants);
   // On récupere le numéro qui va etre utiliser 
   // avec la fonction "at()" ci-dessous
   const [page, setPage] = React.useState(0);

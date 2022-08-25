@@ -24,12 +24,13 @@ const Leaflet = ({ style, zoom, coordinates }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      {coordinates.map(({ id, city, latitude, longitude, map }) => (
+      {coordinates.map(({ id,title, city, latitude, longitude, map }) => (
         <Marker
           key={id}
           position={[latitude, longitude]}
         >
           <Popup>
+            <p>{title}</p>
             <Link href={map}>
               <a>{city}</a>
             </Link>

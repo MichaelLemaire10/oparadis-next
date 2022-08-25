@@ -18,9 +18,9 @@ const ResultSearch = () => {
   let coordinates = [];
   if (searchHouses) coordinates = searchHouses.map(h => (
     { latitude: h.latitude, longitude: h.longitude,
-       id: h.id, city: h.city, map: h.map }
+       id: h.id, city: h.city, map: h.map, title: h.title }
   ));
-  
+
   const zoom = 4.5;
 
   return (
