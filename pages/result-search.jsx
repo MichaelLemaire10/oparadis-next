@@ -17,8 +17,10 @@ const ResultSearch = () => {
 
   let coordinates = [];
   if (searchHouses) coordinates = searchHouses.map(h => (
-    { latitude: h.latitude, longitude: h.longitude, id: h.id, city: h.city }
+    { latitude: h.latitude, longitude: h.longitude,
+       id: h.id, city: h.city, map: h.map }
   ));
+  
   const zoom = 4.5;
 
   return (
@@ -30,7 +32,7 @@ const ResultSearch = () => {
           {!searchHouses && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
           {searchHouses &&
             searchHouses.map((
-              {id, title, type, country, city, photo }
+              { id, title, type, country, city, photo }
             ) => {
               const mainPhoto = photo.find(p => p.main_photo === true);
               return (
@@ -58,7 +60,10 @@ const ResultSearch = () => {
             })}
         </section>
         <section className={styles.section_right}>
-          <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} coordinates={coordinates} />
+          <LeafletWithNoSSR
+            style={styles.leaflet}
+            zoom={zoom}
+            coordinates={coordinates} />
         </section>
       </div>}
     </>

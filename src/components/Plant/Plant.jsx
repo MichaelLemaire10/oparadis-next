@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import styles from "../../../styles/House.module.css";
-import { ArrayPlant } from "../../selectors/ArrayData";
 import Card from "./CardPlant";
 
-function SectionPlant() {
+function SectionPlant({ plants }) {
   // On récupere le numéro qui va etre utiliser 
   // avec la fonction "at()" ci-dessous
   const [page, setPage] = React.useState(0);
@@ -13,7 +12,7 @@ function SectionPlant() {
   // Quand le state "page" est modifié alors on exécute la fonction 
   // pour mettre à jour le state ainsi que la fonction "at"qui va 
   // récuperer les infos qui sont à l'index défini dans le state "page".
-  React.useEffect(() => { setPlant(ArrayPlant.at(page)) }, [page]);
+  React.useEffect(() => { setPlant(plants.at(page)) }, [page]);
 
   return (
     <section className={`${styles.plant} ${styles.card}`}>
@@ -28,7 +27,7 @@ function SectionPlant() {
         :
         <button disabled className={`${styles.button_slide} ${styles.button_slide_left}`} >{"<"}</button>
       }
-      {page < ArrayPlant.length - 1 ?
+      {page < plants.length - 1 ?
         <button
           className={`${styles.button_slide} ${styles.button_slide_right}`}
           onClick={() => setPage(++page)}

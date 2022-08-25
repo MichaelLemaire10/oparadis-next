@@ -17,12 +17,11 @@ import React from "react";
 import { setHouseFormPhoto } from "../../src/reducers/houses/slice";
 import axios from "axios";
 
-const HouseById = ({ data }) => {
-  console.log('data:', data);
+const HouseById = ({ house }) => {
 
   const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
-  const { errorsHouse, photos } = useSelector(state => state.houses);
+  const { errorsHouse, photos, houseDesc } = useSelector(state => state.houses);
 
   //! à supprimer quand ajax sera en place !//
   const dispatch = useDispatch();
@@ -30,31 +29,38 @@ const HouseById = ({ data }) => {
     photos.map(p => dispatch(setHouseFormPhoto(p)));
   }, []);
 
+  const sameId = houseDesc.id === house.id;
+
   return (
     <div className={styles.main}>
+      {sameId &&
       <div className={styles.title}>
         <h2>
           Mon logement
         </h2>
         <ButtonDelete custom={styles.button_delete} />
-      </div>
+      </div>}
       {formPhoto
         ? <SectionFormPhoto />
-        : <SectionPhoto />}
+        : <SectionPhoto photos={house.photo} sameId={sameId} />}
       <div className={styles.container}>
         <SectionUser />
         <SectionCalendar />
         {formText
           ? <SectionFormText errors={errorsHouse} />
-          : <SectionText />}
+          : <SectionText house={house} sameId={sameId} />}
         <section className={styles.map}>
-          <LeafletWithNoSSR style={styles.leaflet} zoom={zoom} />
+          <LeafletWithNoSSR 
+            style={styles.leaflet} 
+            zoom={zoom} 
+            coordinates={new Array(house)}
+          />
         </section>
         {formBool
           ? <SectionFormBool />
-          : <SectionBool />}
-        <SectionAnimal />
-        <SectionPlant />
+          : <SectionBool house={house} sameId={sameId} />}
+        {house.animals[0] && <SectionAnimal animals={house.animals} />}
+        {house.plants[0] && <SectionPlant plants={house.plant} />}
       </div>
     </div>
   );
@@ -62,7 +68,7 @@ const HouseById = ({ data }) => {
 
 export const getServerSideProps = async (context) => {
   const url = process.env.URL;
-  const res = await axios.get(`${url}/house/full/${context.query.id}`);
+  const res = await axios.get(`${url}/home/full/${context.query.id}`);
 
   return {
     props: { house: res.data }

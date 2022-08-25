@@ -34,6 +34,7 @@ const MenuListComposition = () => {
   const openMenu = useSelector(state => state.booleans.menu);
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
   const openModalSignup = useSelector(state => state.booleans.modalSignup);
+  const { houseDesc } = useSelector(state => state.houses);
 
   // Handle //
   const handleModalSignin = () => {
@@ -126,7 +127,7 @@ const MenuListComposition = () => {
                     <Link href="/profil">
                       <MenuItem onClick={handleClose}>Mon profil</MenuItem>
                     </Link>
-                    <Link href="/house/1">
+                    <Link href={`/house/${houseDesc.id}`}>
                       <MenuItem onClick={handleClose}>Mon logement</MenuItem>
                     </Link>
                     <Link href="/house/add">

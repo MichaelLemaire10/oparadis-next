@@ -1,10 +1,8 @@
 import styles from "../../../../styles/House.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../../imagesLoader";
-import { useSelector } from "react-redux";
 
-const Icon = ({ obj }) => {
-    const { houseBool } = useSelector(state => state.houses);
+const Icon = ({ obj, houseBool }) => {
     
     let bool;
     for (const key in houseBool) if (key === obj.name) bool = houseBool[key];
