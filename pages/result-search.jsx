@@ -12,7 +12,6 @@ import Spinner from "../src/components/spinner";
 const ResultSearch = () => {
 
   const { isError, isLoading } = useGetHousesQuery();
-
   const { searchHouses, search } = useSelector(state => state.houses);
 
   let coordinates = [];

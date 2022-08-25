@@ -19,9 +19,10 @@ import axios from "axios";
 
 const HouseById = ({ house }) => {
 
-  const zoom = 14;
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
   const { errorsHouse, photos, houseDesc } = useSelector(state => state.houses);
+  const zoom = 14;
+  const sameId = houseDesc.id === house.id;
 
   //! à supprimer quand ajax sera en place !//
   const dispatch = useDispatch();
@@ -29,7 +30,6 @@ const HouseById = ({ house }) => {
     photos.map(p => dispatch(setHouseFormPhoto(p)));
   }, []);
 
-  const sameId = houseDesc.id === house.id;
 
   return (
     <div className={styles.main}>
@@ -44,7 +44,7 @@ const HouseById = ({ house }) => {
         ? <SectionFormPhoto />
         : <SectionPhoto photos={house.photo} sameId={sameId} />}
       <div className={styles.container}>
-        <SectionUser />
+        <SectionUser user={house.user} />
         <SectionCalendar />
         {formText
           ? <SectionFormText errors={errorsHouse} />

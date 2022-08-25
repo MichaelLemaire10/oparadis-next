@@ -9,9 +9,12 @@ import DarkMode from "./Header/ButtonDarkMode";
 import ImgAvatar from "./Image/ImgAvatar";
 import InputSearch from "./Header/InputSearch";
 import MenuList from "./Header/Menu";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  
+
+  const { user } = useSelector(state => state.users);
+
   const custom = {
     width: "40px",
     height: "40px",
@@ -40,7 +43,7 @@ const Header = () => {
       <div className={styles.div}>
         <DarkMode />
         <MenuList />
-        <ImgAvatar custom={custom} />
+        <ImgAvatar custom={custom} avatar={user.avatar} />
       </div>
     </header>
   );

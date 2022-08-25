@@ -86,7 +86,7 @@ export const initialState = {
   photosForm: [],
 
   houseDesc: {
-    id: "cl78tst0119745jv260pn38jg",
+    id: "cl7946f5e19748ov25ulzobzb",
     address: "42 avenue des ananas",
     zipcode: "00 007",
     city: "Bikini bottom",
