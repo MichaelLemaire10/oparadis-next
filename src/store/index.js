@@ -7,6 +7,7 @@ import usersReducer from "../reducers/users/slice";
 import housesReducer from "../reducers/houses/slice";
 import animalsReducer from "../reducers/animals/slice";
 import plantsReducer from "../reducers/plants/slice";
+import authReducer from '../reducers/auth/slice';
 
 //! Impossible d'utiliser la fonction combineReducers pour le moment
 //! Probleme entre la config de redux/query et redux/toolkit
@@ -30,10 +31,12 @@ export const makeStore = () =>
       users: usersReducer,
       animals: animalsReducer,
       plants: plantsReducer,
+      auth: authReducer,
       [api.reducerPath]: api.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(api.middleware),
+      devTools: true
   });
 
 export const wrapper = createWrapper(makeStore, { debug: true });
