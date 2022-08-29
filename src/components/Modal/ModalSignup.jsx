@@ -10,9 +10,11 @@ import {
 } from '@material-ui/core';
 import { setErrorsUser } from '../../reducers/users/slice';
 import { validationSignup } from '../../selectors/validation';
+import { useSetSignupMutation } from '../../services/auth';
 
 const ModalSignup = () => {
   const dispatch = useDispatch();
+  const [ setSignup ] = useSetSignupMutation();
   const { signup, errorsUser } = useSelector((state) => state.users);
   const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
   const target = 'modal';
@@ -32,7 +34,7 @@ const ModalSignup = () => {
       firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
       && password.length >= 3 && repeat_password === password
       ) {
-        console.log('signup')
+        setSignup(signup);
       handleOpenOrCloseForUp();
     };
   };
