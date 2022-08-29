@@ -1,6 +1,6 @@
 export const initialState = {
 
-  accessToken: '123',
+  accessToken: null,
 
   refreshToken: null,
 

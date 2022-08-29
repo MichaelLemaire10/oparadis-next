@@ -15,7 +15,10 @@ const Leaflet = ({ style, zoom, coordinates }) => {
 
   return (
     <MapContainer
-      center={[latMin[0], lngMax[0]]}
+      center={[
+        latMin[0] ? latMin[0] : 48.862725,
+        lngMax[0] ? lngMax[0] : 2.287592
+      ]}
       zoom={zoom}
       scrollWheelZoom={true}
       className={style}
@@ -24,7 +27,7 @@ const Leaflet = ({ style, zoom, coordinates }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      {coordinates.map(({ id,title, city, latitude, longitude, map }) => (
+      {coordinates.map(({ id, title, city, latitude, longitude, map }) => (
         <Marker
           key={id}
           position={[latitude, longitude]}

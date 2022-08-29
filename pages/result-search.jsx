@@ -11,14 +11,25 @@ import Spinner from "../src/components/spinner";
 
 const ResultSearch = () => {
 
-  const { isError, isLoading } = useGetHousesQuery();
+  const { data, isError, isLoading } = useGetHousesQuery();
   const { searchHouses, search } = useSelector(state => state.houses);
 
   let coordinates = [];
+  let array;
   if (searchHouses) coordinates = searchHouses.map(h => (
-    { latitude: h.latitude, longitude: h.longitude,
-       id: h.id, city: h.city, map: h.map, title: h.title }
+    {
+      latitude: h.latitude, longitude: h.longitude,
+      id: h.id, city: h.city, map: h.map, title: h.title
+    }
   ));
+  if (data) coordinates = data.map(h => (
+    {
+      latitude: h.latitude, longitude: h.longitude,
+      id: h.id, city: h.city, map: h.map, title: h.title
+    }
+  ));
+
+  array = searchHouses ? searchHouses : data;
 
   const zoom = 4.5;
 
@@ -28,9 +39,9 @@ const ResultSearch = () => {
       {isError && <ErrorPage />}
       {!isError && <div className={styles.main}>
         <section className={styles.section_left}>
-          {!searchHouses && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
-          {searchHouses &&
-            searchHouses.map((
+          {!array && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
+          {array &&
+            array.map((
               { id, title, type, country, city, photo }
             ) => {
               const mainPhoto = photo.find(p => p.main_photo === true);
