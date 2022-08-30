@@ -12,17 +12,23 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setSignin, setErrorsUser } from '../../reducers/users/slice';
 import { validationSignin } from '../../selectors/validation';
+import { useSetSigninMutation } from '../../services/auth';
 
 const ModalSignin = () => {
-
   const dispatch = useDispatch();
-  const { signin, errorsUser } = useSelector((state) => state.users);
-  const { email, password } = signin;
   const [showPwd, setShowPwd] = React.useState(false);
 
+  const [ setSignin, { isError, error, isSuccess, isLoading } ] = useSetSigninMutation();
+  console.log('isLoading:', isLoading);
+  console.log('isSuccess:', isSuccess);
+  console.log('error:', error);
+  console.log('isError:', isError);
+  
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
-  const openModalSignup = useSelector((state) => state.booleans.modalSignup);
+  const openModalSignup = useSelector(state => state.booleans.modalSignup);
+  const { signin, errorsUser } = useSelector((state) => state.users);
+  const { email, password } = signin;
 
   // Handle //
   const handleOpenOrCloseForIn = () => { 
@@ -34,7 +40,7 @@ const ModalSignin = () => {
     dispatch(setSignin({ ...signin, [getName]: e.target.value }));
   };
   const handleClickShowPassword = () => setShowPwd(!showPwd);
-  const handleMouseDownPassword = event => event.preventDefault();
+  const handleMouseDownPassword = e => e.preventDefault();
 
   //Submit //
   const submitSignInForm = () => {
