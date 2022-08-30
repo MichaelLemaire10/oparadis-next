@@ -29,7 +29,7 @@ export const validationSignup = ({
 }) => {
   const errors = {};
   
-  console.log('email:', email);
+  console.log('email:', email)
   
   if (!firstname) {
     errors.firstname = "Le prénom est vide";
@@ -44,12 +44,10 @@ export const validationSignup = ({
   }
   if (!email) {
     errors.email = "L'email est vide!";
-  } else if (!/\S+@\S+\.\S+/.test(email)) {
-    errors.email = "L'Email est invalide";
-  }
-  else if (email === 403) {
-    console.log('error mail 403');
+  } else if (email === 403) {
     errors.email = "Ce mail est déjà utilisé";
+  }else if (!/\S+@\S+\.\S+/.test(email)) {
+    errors.email = "L'Email est invalide";
   }
   if (!password) {
     errors.password = "Un mot de passe est requis";
@@ -71,13 +69,17 @@ export const validationSignin = ({ email, password }) => {
 
   if (!email) {
     errors.email = "L'email est vide";
+  } else if (email === 400) {
+    errors.email = "L'email est incorrect";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
-    errors.email = "L'Email est invalide";
-  }
+    errors.email = "L'email est invalide";
+  } 
   if (!password) {
     errors.password = "Un mot de passe est requis";
   } else if (password.length < 3) {
     errors.password = "3 caractères minimum";
+  } else if (password === 403) {
+    errors.password = "Le mot de passe est incorrect";
   }
 
   return errors;

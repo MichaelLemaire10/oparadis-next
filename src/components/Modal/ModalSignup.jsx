@@ -17,7 +17,7 @@ const ModalSignup = () => {
   const dispatch = useDispatch();
   const target = 'modal';
 
-  const [setSignup, { isLoading, isSuccess, error, isError }] = useSetSignupMutation();
+  const [setSignupMutation, { isLoading, isSuccess, error, isError }] = useSetSignupMutation();
 
   // Selector //
   const { signup, errorsUser } = useSelector((state) => state.users);
@@ -27,7 +27,7 @@ const ModalSignup = () => {
 
   // useEffect //
   React.useEffect(() => {
-    if (error && error.status === 403) {
+    if (error && error.status === 403 && error.data.message === "Credentials already in use") {
       dispatch(setErrorsUser(validationSignup({ ...signup, email: 403 })));
     };
   }, [dispatch, error, isError, signup]);
@@ -51,7 +51,7 @@ const ModalSignup = () => {
       firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
       && password.length >= 3 && repeat_password === password
     ) {
-      setSignup(signup);
+      setSignupMutation(signup);
     };
   };
   

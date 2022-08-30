@@ -2,11 +2,12 @@ import { api } from './index';
 
 const userApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUser: build.query({
-      query: () => '/',
+    getMe: build.query({
+      query: () => '/users/me',
     }),
+
   }),
   overrideExisting: false,
 });
 
-export const { useGetHousesQuery } = userApi;
+export const { useGetMeQuery } = userApi;

@@ -10,25 +10,33 @@ import {
   DialogContentText, TextField, DialogActions, FormControl, InputLabel, Input, InputAdornment, IconButton
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { setSignin, setErrorsUser } from '../../reducers/users/slice';
+import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { validationSignin } from '../../selectors/validation';
 import { useSetSigninMutation } from '../../services/auth';
+import Spinner from '../spinner';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
+  const { logged } = useSelector(state => state.auth);
   const [showPwd, setShowPwd] = React.useState(false);
 
-  const [ setSignin, { isError, error, isSuccess, isLoading } ] = useSetSigninMutation();
-  console.log('isLoading:', isLoading);
-  console.log('isSuccess:', isSuccess);
-  console.log('error:', error);
-  console.log('isError:', isError);
-  
+  // Ajax//
+  const [ setSigninMutation, { isError, error, isLoading } ] = useSetSigninMutation();
+
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
   const openModalSignup = useSelector(state => state.booleans.modalSignup);
-  const { signin, errorsUser } = useSelector((state) => state.users);
+  const { signin, errorsUser } = useSelector(state => state.users);
   const { email, password } = signin;
+
+  // useEffect //
+  React.useEffect(() => {
+    if (error && error.status === 400) {
+      dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
+    }else if (error && error.status === 403 && error.data.message === "Invalid credentials") {
+      dispatch(setErrorsUser(validationSignin({ ...signin, password: 403 })));
+    };
+  }, [dispatch, error, isError, signin]);
 
   // Handle //
   const handleOpenOrCloseForIn = () => { 
@@ -47,11 +55,10 @@ const ModalSignin = () => {
     dispatch(setErrorsUser(validationSignin(signin)));
     if (email != '' && /\S+@\S+\.\S+/.test(email) 
     && password != '' && password.length >= 3) {
-      console.log('connecter');
+      setSigninMutation(signin);
       handleOpenOrCloseForIn();
     };
   };
-
   return (
     <div>
       <Modal
@@ -61,6 +68,7 @@ const ModalSignin = () => {
         aria-describedby="parent-modal-description"
       >
         <Box className={styles.div_menu__modal}>
+          {isLoading && <Spinner />}
           <DialogTitle>Connexion</DialogTitle>
           <DialogContent>
             <DialogContentText>

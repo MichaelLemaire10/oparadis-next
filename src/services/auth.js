@@ -16,6 +16,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: data,
       }),
+
     }),
   }),
   overrideExisting: false,
