@@ -18,45 +18,45 @@ const ModalSignup = () => {
   const target = 'modal';
 
   const [setSignupMutation, { isLoading, isSuccess, error, isError }] = useSetSignupMutation();
-
+  
   // Selector //
   const { signup, errorsUser } = useSelector((state) => state.users);
   const openModalSignup = useSelector((state) => state.booleans.modalSignup);
-
+  
   const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
-
+  
   // useEffect //
   React.useEffect(() => {
     if (error && error.status === 403 && error.data.message === "Credentials already in use") {
       dispatch(setErrorsUser(validationSignup({ ...signup, email: 403 })));
     };
   }, [dispatch, error, isError, signup]);
-
+  
   React.useEffect(() => {
     if (isSuccess) {
-        dispatch(setSignin({ email, password }));
+      dispatch(setSignin({ email, password }));
         dispatch(setOpenModalSignin(true));
-    };
-  }, [dispatch, email, isSuccess, password]);
+      };
+    }, [dispatch, email, isSuccess, password]);
+    
+    // Handle //
+    const handleOpenOrCloseForUp = () => { if (openModalSignup) dispatch(setOpenModalSignup(!openModalSignup)) };
+    
+    // Submit //
+    const submitTheForm = () => {
+      //check input errors before sending the form data
+      dispatch(setErrorsUser(validationSignup(signup)));
+      // prevent form validation if password under 3 characters
+      if (
+        firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
+        && password.length >= 3 && repeat_password === password
+        ) {
+          setSignupMutation(signup);
+        };
+      };
 
-  // Handle //
-  const handleOpenOrCloseForUp = () => { if (openModalSignup) dispatch(setOpenModalSignup(!openModalSignup)) };
-
-  // Submit //
-  const submitTheForm = () => {
-    //check input errors before sending the form data
-    dispatch(setErrorsUser(validationSignup(signup)));
-    // prevent form validation if password under 3 characters
-    if (
-      firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
-      && password.length >= 3 && repeat_password === password
-    ) {
-      setSignupMutation(signup);
-    };
-  };
-  
-  return (
-    <div>
+      return (
+        <div>
       <Modal
         open={openModalSignup}
         onClose={handleOpenOrCloseForUp}

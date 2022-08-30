@@ -18,19 +18,16 @@ export const initialState = {
   },
 
   user: {
-    id: "",
     email: "",
     firstname: "",
     lastname: "",
     pseudo: "",
     phone_number: "",
-    avatar: null,
-    // avatar: "https://res.cloudinary.com/oparadis/image/upload/v1659708883/avatars/wwfddypsyw4lmdeofpyh.jpg",
-    description: null,
+    avatar: "https://res.cloudinary.com/oparadis/image/upload/v1659708883/avatars/wwfddypsyw4lmdeofpyh.jpg",
+    description: "",
   },
 
   userFormDesc: {
-    id:"",
     email: "",
     firstname: "",
     lastname: "",

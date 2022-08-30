@@ -19,7 +19,6 @@ const ModalSignin = () => {
   const dispatch = useDispatch();
   const { logged } = useSelector(state => state.auth);
   const [showPwd, setShowPwd] = React.useState(false);
-
   // Ajax//
   const [ setSigninMutation, { isError, error, isLoading } ] = useSetSigninMutation();
 

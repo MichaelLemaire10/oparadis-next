@@ -8,8 +8,7 @@ import { useGetHousesQuery } from '../../services/house';
 const Search = () => {
     const dispatch = useDispatch();
     const { search } = useSelector(state => state.houses);
-    const { data } = useGetHousesQuery();
-    console.log('data:', data);
+    const { data, refetch } = useGetHousesQuery({ skip: true });
 
     React.useEffect(() => {
       dispatch(getSearchHouses(data));
@@ -19,7 +18,6 @@ const Search = () => {
 
     const handleSearch = () => {
         refetch();
-        console.log('data =>', data);
         data ? data : data = [];
         if (search === '') {
             dispatch(getSearchHouses(data));
