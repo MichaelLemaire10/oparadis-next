@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenModalSignin } from "../../reducers/booleans/slice";
+import { setOpenModalSignin, setOpenModalSignup } from "../../reducers/booleans/slice";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -22,9 +22,13 @@ const ModalSignin = () => {
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
+  const openModalSignup = useSelector((state) => state.booleans.modalSignup);
 
   // Handle //
-  const handleOpenOrCloseForIn = () => { if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin)) };
+  const handleOpenOrCloseForIn = () => { 
+    if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin));
+    if (openModalSignup) dispatch(setOpenModalSignup(false));
+  };
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
     dispatch(setSignin({ ...signin, [getName]: e.target.value }));

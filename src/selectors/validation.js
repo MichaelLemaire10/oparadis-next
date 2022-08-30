@@ -28,7 +28,9 @@ export const validationSignup = ({
   repeat_password,
 }) => {
   const errors = {};
-
+  
+  console.log('email:', email);
+  
   if (!firstname) {
     errors.firstname = "Le prénom est vide";
   }
@@ -44,6 +46,10 @@ export const validationSignup = ({
     errors.email = "L'email est vide!";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'Email est invalide";
+  }
+  else if (email === 403) {
+    console.log('error mail 403');
+    errors.email = "Ce mail est déjà utilisé";
   }
   if (!password) {
     errors.password = "Un mot de passe est requis";

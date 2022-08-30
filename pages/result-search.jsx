@@ -35,47 +35,50 @@ const ResultSearch = () => {
 
   return (
     <>
-      {isLoading && <Spinner />}
       {isError && <ErrorPage />}
-      {!isError && <div className={styles.main}>
-        <section className={styles.section_left}>
-          {!array && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
-          {array &&
-            array.map((
-              { id, title, type, country, city, photo }
-            ) => {
-              const mainPhoto = photo.find(p => p.main_photo === true);
-              return (
-                <Link key={id} href={`/house/${id}`}>
-                  <article className={styles.card}>
-                    <div className={styles.card_img}>
-                      <Image
-                        layout="fill"
-                        className={styles.card_img__img}
-                        src={mainPhoto ? mainPhoto.photo : noImgHouse}
-                        alt="image logement"
-                      />
-                    </div>
-                    <div className={styles.card_text}>
-                      <h2 className={styles.card_text__name}>{title}</h2>
-                      <p>{type.type}</p>
-                      <div className={styles.card_text__location}>
-                        <p>{city},</p>
-                        <p>{country.country}</p>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              )
-            })}
-        </section>
-        <section className={styles.section_right}>
-          <LeafletWithNoSSR
-            style={styles.leaflet}
-            zoom={zoom}
-            coordinates={coordinates} />
-        </section>
-      </div>}
+      {!isError &&
+        <div className={styles.main}>
+          {isLoading && <Spinner />}
+          {!isLoading &&
+            <section className={styles.section_left}>
+              {!array && <div>Nous n'avons pas trouvé de logement dans la ville : {search}</div>}
+              {array &&
+                array.map((
+                  { id, title, type, country, city, photo }
+                ) => {
+                  const mainPhoto = photo.find(p => p.main_photo === true);
+                  return (
+                    <Link key={id} href={`/house/${id}`}>
+                      <article className={styles.card}>
+                        <div className={styles.card_img}>
+                          <Image
+                            layout="fill"
+                            className={styles.card_img__img}
+                            src={mainPhoto ? mainPhoto.photo : noImgHouse}
+                            alt="image logement"
+                          />
+                        </div>
+                        <div className={styles.card_text}>
+                          <h2 className={styles.card_text__name}>{title}</h2>
+                          <p>{type.type}</p>
+                          <div className={styles.card_text__location}>
+                            <p>{city},</p>
+                            <p>{country.country}</p>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  )
+                })}
+            </section>}
+          {!isLoading &&
+            <section className={styles.section_right}>
+              <LeafletWithNoSSR
+                style={styles.leaflet}
+                zoom={zoom}
+                coordinates={coordinates} />
+            </section>}
+        </div>}
     </>
   )
 };

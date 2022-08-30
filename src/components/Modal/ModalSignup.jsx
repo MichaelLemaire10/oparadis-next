@@ -1,26 +1,43 @@
 import * as React from 'react';
 import styles from "../../../styles/Header.module.css";
+import { useDispatch, useSelector } from 'react-redux';
 import TextFormProfil from "../Profil/TextForm";
 import PasswordFormProfil from '../Profil/PasswordForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { setOpenModalSignup } from "../../reducers/booleans/slice";
+import Spinner from '../spinner';
+import { setOpenModalSignup, setOpenModalSignin } from "../../reducers/booleans/slice";
 import {
   Box, DialogContent, DialogTitle, Modal,
   DialogContentText, DialogActions, Button
 } from '@material-ui/core';
-import { setErrorsUser } from '../../reducers/users/slice';
+import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { validationSignup } from '../../selectors/validation';
 import { useSetSignupMutation } from '../../services/auth';
 
 const ModalSignup = () => {
   const dispatch = useDispatch();
-  const [ setSignup ] = useSetSignupMutation();
-  const { signup, errorsUser } = useSelector((state) => state.users);
-  const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
   const target = 'modal';
 
+  const [setSignup, { isLoading, isSuccess, error, isError }] = useSetSignupMutation();
+
   // Selector //
-  const openModalSignup = useSelector((state) => state.booleans.modalSignup)
+  const { signup, errorsUser } = useSelector((state) => state.users);
+  const openModalSignup = useSelector((state) => state.booleans.modalSignup);
+
+  const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
+
+  // useEffect //
+  React.useEffect(() => {
+    if (error && error.status === 403) {
+      dispatch(setErrorsUser(validationSignup({ ...signup, email: 403 })));
+    };
+  }, [dispatch, error, isError, signup]);
+
+  React.useEffect(() => {
+    if (isSuccess) {
+        dispatch(setSignin({ email, password }));
+        dispatch(setOpenModalSignin(true));
+    };
+  }, [dispatch, email, isSuccess, password]);
 
   // Handle //
   const handleOpenOrCloseForUp = () => { if (openModalSignup) dispatch(setOpenModalSignup(!openModalSignup)) };
@@ -33,12 +50,11 @@ const ModalSignup = () => {
     if (
       firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
       && password.length >= 3 && repeat_password === password
-      ) {
-        setSignup(signup);
-      handleOpenOrCloseForUp();
+    ) {
+      setSignup(signup);
     };
   };
-
+  
   return (
     <div>
       <Modal
@@ -48,11 +64,11 @@ const ModalSignup = () => {
         aria-describedby="parent-modal-description"
       >
         <Box className={styles.div_menu__modal}>
+          {isLoading && <Spinner />}
           <DialogTitle>Inscription</DialogTitle>
           <DialogContent>
             <DialogContentText className={styles.padding}>
-              Veuillez renseigner les informations pour votre inscription
-              :
+              Veuillez renseigner les informations pour votre inscription :
             </DialogContentText>
             <form className={styles.form_modal}>
               <TextFormProfil
