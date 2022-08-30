@@ -9,6 +9,7 @@ const Search = () => {
     const dispatch = useDispatch();
     const { search } = useSelector(state => state.houses);
     const { data } = useGetHousesQuery();
+    console.log('data:', data);
 
     React.useEffect(() => {
       dispatch(getSearchHouses(data));
@@ -17,6 +18,8 @@ const Search = () => {
     const handleChange = (e) => dispatch(setSearch(e.target.value));
 
     const handleSearch = () => {
+        refetch();
+        console.log('data =>', data);
         data ? data : data = [];
         if (search === '') {
             dispatch(getSearchHouses(data));

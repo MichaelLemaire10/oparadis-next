@@ -30,6 +30,7 @@ const ModalSignin = () => {
   const { email, password } = signin;
 
   // useEffect //
+  // Error //
   React.useEffect(() => {
     if (error && error.status === 400) {
       dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
