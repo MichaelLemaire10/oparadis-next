@@ -3,31 +3,19 @@ import { setCredentials, logOut, setLogged } from "../reducers/auth/slice";
 
 const baseQueryAuth = fetchBaseQuery({
   baseUrl: process.env.url,
-  credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.accessToken;
-    if (token) {
-      headers.set("authorization", `Bearer ${token}`);
-      console.log("headers/token =>", headers);
-    } else {
-      console.log("headers =>", headers);
+      headers.set('Authorization', token ? `Bearer ${token}` : '');
       return headers;
-    }
   },
 });
 
 const baseQueryAuthRefreshToken = fetchBaseQuery({
   baseUrl: process.env.url,
-  credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.refreshToken;
-    if (token) {
-      headers.set("authorization", `Bearer ${token}`);
-      // console.log("headers/token =>", headers);
-    } else {
-      // console.log("headers =>", headers);
+    headers.set('Authorization', token ? `Bearer ${token}` : '');
       return headers;
-    }
   },
 });
 
@@ -53,9 +41,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     };
   } else {
     // Route protected by a token
-    console.log('test =>', api);
+    console.log('route auth');
     let result = await baseQueryAuth(args, api, extraOptions);
-    console.log("result Auth =>", result);
+    // console.log("result Auth =>", result);
 
     // if accessToken isn't valide
     if (result?.error?.status && result.error === 403) {
@@ -82,11 +70,12 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
         await baseQueryAuthRefreshToken("/auth/logout", api, extraOptions);
         api.dispatch(logOut());
         api.dispatch(setLogged(false));
-      }
+      };
       // if accessToken is valide return result
       return result;
-    }
-  }
+    };
+    return result;
+  };
 };
 
 // Define a service using a base URL and expected endpoints

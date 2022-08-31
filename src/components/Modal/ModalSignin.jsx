@@ -18,24 +18,16 @@ import Spinner from '../spinner';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
-  const { logged, accessToken } = useSelector(state => state.auth);
-  console.log('accessToken:', accessToken);
-  console.log('logged:', logged);
+  const { logged } = useSelector(state => state.auth);
   const [showPwd, setShowPwd] = React.useState(false);
 
   // Ajax//
-  const [setSigninMutation, { isError,  isLoading }] = useSetSigninMutation();
-  const { data, refetch, error } = useGetMeQuery({ skip: true });
-  console.log('error:', error);
-  console.log('data:', data);
+  const [setSigninMutation, { isError, error, isLoading }] = useSetSigninMutation();
+  const { data, refetch, isFetching, isSuccess } = useGetMeQuery({ skip: true });
+  console.log('isSuccess:', isSuccess);
 
   // useEffect //
-  React.useEffect(() => {
-    if (logged) {
-      console.log('refetch');
-      refetch();
-    }
-  }, [logged, refetch]);
+  React.useEffect(() => { if (logged) refetch() }, [logged, refetch]);
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
@@ -43,16 +35,7 @@ const ModalSignin = () => {
   const { signin, errorsUser } = useSelector(state => state.users);
   const { email, password } = signin;
 
-  // useEffect //
-  // Error //
-  React.useEffect(() => {
-    if (error && error.status === 400) {
-      dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
-    } else if (error && error.status === 403 && error.data.message === "Invalid credentials") {
-      dispatch(setErrorsUser(validationSignin({ ...signin, password: 403 })));
-    };
-  }, [dispatch, error, isError, signin]);
-
+  
   // Handle //
   const handleOpenOrCloseForIn = () => {
     if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin));
@@ -65,16 +48,31 @@ const ModalSignin = () => {
   const handleClickShowPassword = () => setShowPwd(!showPwd);
   const handleMouseDownPassword = e => e.preventDefault();
 
+  // useEffect //
+  React.useEffect(() => {
+    if (error && error.status === 400) {
+      dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
+    } else if (error && error.status === 403 && error.data.message === "Invalid credentials") {
+      dispatch(setErrorsUser(validationSignin({ ...signin, password: 403 })));
+    };
+  }, [dispatch, error, isError, signin]);
+  React.useEffect(() => {
+    if(isSuccess) {
+      // manque les photos du logement
+      console.log('data =>', data);
+      if(logged) handleOpenOrCloseForIn();
+    };
+  }, [isSuccess]);
+  
   //Submit //
-  const submitSignInForm = () => {
+  const submitSignInForm = async () => {
     dispatch(setErrorsUser(validationSignin(signin)));
     if (email != '' && /\S+@\S+\.\S+/.test(email)
       && password != '' && password.length >= 3) {
-      setSigninMutation(signin);
-      handleOpenOrCloseForIn();
+      await setSigninMutation(signin);
     };
-
   };
+
   return (
     <div>
       <Modal
@@ -84,7 +82,7 @@ const ModalSignin = () => {
         aria-describedby="parent-modal-description"
       >
         <Box className={styles.div_menu__modal}>
-          {isLoading && <Spinner />}
+          {isLoading || isFetching && <Spinner />}
           <DialogTitle>Connexion</DialogTitle>
           <DialogContent>
             <DialogContentText>
