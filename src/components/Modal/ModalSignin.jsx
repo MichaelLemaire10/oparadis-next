@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useSetSigninMutation } from '../../services/auth';
+import { useGetMeQuery } from '../../services/user';
 import { setOpenModalSignin, setOpenModalSignup } from "../../reducers/booleans/slice";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -12,15 +14,28 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { validationSignin } from '../../selectors/validation';
-import { useSetSigninMutation } from '../../services/auth';
 import Spinner from '../spinner';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
-  const { logged } = useSelector(state => state.auth);
+  const { logged, accessToken } = useSelector(state => state.auth);
+  console.log('accessToken:', accessToken);
+  console.log('logged:', logged);
   const [showPwd, setShowPwd] = React.useState(false);
+
   // Ajax//
-  const [ setSigninMutation, { isError, error, isLoading } ] = useSetSigninMutation();
+  const [setSigninMutation, { isError,  isLoading }] = useSetSigninMutation();
+  const { data, refetch, error } = useGetMeQuery({ skip: true });
+  console.log('error:', error);
+  console.log('data:', data);
+
+  // useEffect //
+  React.useEffect(() => {
+    if (logged) {
+      console.log('refetch');
+      refetch();
+    }
+  }, [logged, refetch]);
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
@@ -33,13 +48,13 @@ const ModalSignin = () => {
   React.useEffect(() => {
     if (error && error.status === 400) {
       dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
-    }else if (error && error.status === 403 && error.data.message === "Invalid credentials") {
+    } else if (error && error.status === 403 && error.data.message === "Invalid credentials") {
       dispatch(setErrorsUser(validationSignin({ ...signin, password: 403 })));
     };
   }, [dispatch, error, isError, signin]);
 
   // Handle //
-  const handleOpenOrCloseForIn = () => { 
+  const handleOpenOrCloseForIn = () => {
     if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin));
     if (openModalSignup) dispatch(setOpenModalSignup(false));
   };
@@ -53,11 +68,12 @@ const ModalSignin = () => {
   //Submit //
   const submitSignInForm = () => {
     dispatch(setErrorsUser(validationSignin(signin)));
-    if (email != '' && /\S+@\S+\.\S+/.test(email) 
-    && password != '' && password.length >= 3) {
+    if (email != '' && /\S+@\S+\.\S+/.test(email)
+      && password != '' && password.length >= 3) {
       setSigninMutation(signin);
       handleOpenOrCloseForIn();
     };
+
   };
   return (
     <div>

@@ -8,9 +8,9 @@ const baseQueryAuth = fetchBaseQuery({
     const token = getState().auth.accessToken;
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
-      // console.log("headers/token =>", headers);
+      console.log("headers/token =>", headers);
     } else {
-      // console.log("headers =>", headers);
+      console.log("headers =>", headers);
       return headers;
     }
   },
@@ -34,11 +34,12 @@ const baseQueryAuthRefreshToken = fetchBaseQuery({
 const baseQuery = fetchBaseQuery({ baseUrl: process.env.url });
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-
-  if (args === "/houses" || "/auth/*") {
+  if (
+    api.endpoint === "getHouses" || api.endpoint === "setSignin" || 
+    api.endpoint === "setSignup"
+   ) {
     let result = await baseQuery(args, api, extraOptions);
-
-    if (args.url === "/auth/login") {
+    if (api.endpoint === "setSignin") {
       // dispatch result.data in the store
       if (result.data) {
         api.dispatch(setCredentials(result.data));
@@ -49,9 +50,10 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       }
     } else {
       return result;
-    }
+    };
   } else {
     // Route protected by a token
+    console.log('test =>', api);
     let result = await baseQueryAuth(args, api, extraOptions);
     console.log("result Auth =>", result);
 

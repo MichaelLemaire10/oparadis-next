@@ -27,9 +27,8 @@ export const validationSignup = ({
   password,
   repeat_password,
 }) => {
-  const errors = {};
   
-  console.log('email:', email)
+  const errors = {};
   
   if (!firstname) {
     errors.firstname = "Le prénom est vide";
