@@ -15,6 +15,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { validationSignin } from '../../selectors/validation';
 import Spinner from '../spinner';
+import { setMe } from '../../selectors/function';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,8 @@ const ModalSignin = () => {
   React.useEffect(() => {
     if(isSuccess) {
       // manque les photos du logement
-      console.log('data =>', data);
+      setMe(data, dispatch);
+      console.log('data after');
       if(logged) handleOpenOrCloseForIn();
     };
   }, [isSuccess]);

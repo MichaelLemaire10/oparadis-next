@@ -5,11 +5,11 @@ const plantSlice = createSlice({
     name: 'plants',
     initialState,
     reducers: {
-      getPlant: (state) => {
-        state.plant = 'menthe'
+      getPlants: (state, action) => {
+        state.plants = action.payload;
       },
     },
   })
   
-export const { getPlant } = plantSlice.actions
+export const { getPlants } = plantSlice.actions
 export default plantSlice.reducer

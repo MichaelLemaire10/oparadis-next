@@ -40,6 +40,10 @@ const houseSlice = createSlice({
     setHouseFormBool: (state, action) => {
       state.houseFormBool = action.payload;
     },
+    setPhotos: (state, action) => {
+      state.photosForm = action.payload;
+      state.photos = action.payload;
+    },
     setHouseFormPhoto: (state, action) => {
       if (state.photosForm[0]) {
         const array = state.photosForm.filter(
@@ -68,6 +72,7 @@ export const {
   setHouseFormDescType,
   setHouseFormDescCountry,
   setHouseFormBool,
+  setPhotos,
   setHouseFormPhoto,
 } = houseSlice.actions;
 

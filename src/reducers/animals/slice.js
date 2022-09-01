@@ -5,11 +5,11 @@ const animalSlice = createSlice({
     name: 'animals',
     initialState,
     reducers: {
-      getAnimal:(state) => {
-        state.animal = 'Chat'
+      getAnimals: (state, action) => {
+        state.animals = action.payload;
       },
     },
   })
   
-export const { getAnimal } = animalSlice.actions
+export const { getAnimals } = animalSlice.actions
 export default animalSlice.reducer
