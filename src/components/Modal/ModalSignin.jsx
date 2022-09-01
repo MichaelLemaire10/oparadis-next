@@ -23,7 +23,6 @@ import { setLogged } from '../../reducers/auth/slice';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
-  const { logged } = useSelector(state => state.auth);
   const [showPwd, setShowPwd] = React.useState(false);
 
   // Ajax//
@@ -64,10 +63,9 @@ const ModalSignin = () => {
     if (data) {
       //! manque les photos du logement
       setMe({ data, dispatch });
-      console.log('data after');
       setTimeout(() => {
         setLogged(true);
-      }, 500);
+      }, 300);
       // close the modal 0.5 sec after dispatch
       setTimeout(() => {
        handleOpenOrCloseForIn();

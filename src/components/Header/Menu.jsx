@@ -4,7 +4,7 @@ import logoBurgerMenu from "../../../public/logo_burger_menu.png";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import { MenuList, MenuItem, Popper, Paper, Grow } from "@material-ui/core";
-import { makeStyles, createStyles} from "@material-ui/core/styles";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 import styles from "../../../styles/Header.module.css";
 import imageLoader from "../../../imagesLoader";
 import ModalSignup from "../Modal/ModalSignup";
@@ -29,13 +29,16 @@ const MenuListComposition = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const anchorRef = React.useRef(null);
-  
+
   // Selector //
   const openMenu = useSelector(state => state.booleans.menu);
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
   const openModalSignup = useSelector(state => state.booleans.modalSignup);
   const { houseDesc } = useSelector(state => state.houses);
-
+  const { logged } = useSelector(state => state.auth);
+  console.log('logged =>', logged);
+  console.log('houseDesc =>', houseDesc);
+  
   // Handle //
   const handleModalSignin = () => {
     dispatch(setOpenModalSignin(true));
@@ -122,28 +125,37 @@ const MenuListComposition = () => {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleModalSignup}>Inscription</MenuItem>
-                    <MenuItem onClick={handleModalSignin}>Connexion</MenuItem>
-                    <Link href="/profil">
-                      <MenuItem onClick={handleClose}>Mon profil</MenuItem>
-                    </Link>
-                    <Link href={`/house/${houseDesc.id}`}>
-                      <MenuItem onClick={handleClose}>Mon logement</MenuItem>
-                    </Link>
-                    <Link href="/house/add">
-                      <MenuItem onClick={handleClose}>
-                        Créer un logement
-                      </MenuItem>
-                    </Link>
-                    <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
+                    {!logged && <>
+                      <MenuItem onClick={handleModalSignup}>Inscription</MenuItem>
+                      <MenuItem onClick={handleModalSignin}>Connexion</MenuItem>
+                    </>}
+                    {logged &&
+                      <>
+                        <Link href="/profil">
+                          <MenuItem onClick={handleClose}>Mon profil</MenuItem>
+                        </Link>
+                        {houseDesc ?
+                            <Link href={`/house/${houseDesc.id}`}>
+                              <MenuItem onClick={handleClose}>Mon logement</MenuItem>
+                            </Link>
+                            :
+                            <Link href="/house/add">
+                              <MenuItem onClick={handleClose}>
+                                Créer un logement
+                              </MenuItem>
+                            </Link>
+                        }
+                        <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
+                      </>
+                    }
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
             </Grow>
           )}
         </Popper>
-        {openModalSignup && ( <ModalSignup /> )}
-        {openModalSignin && ( <ModalSignin /> )}
+        {openModalSignup && (<ModalSignup />)}
+        {openModalSignin && (<ModalSignin />)}
       </div>
     </div>
   );
