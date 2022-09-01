@@ -9,13 +9,17 @@ import Button from '@mui/material/Button';
 import styles from "../../../styles/Header.module.css";
 import {
   DialogTitle, DialogContent,
-  DialogContentText, TextField, DialogActions, FormControl, InputLabel, Input, InputAdornment, IconButton
+  DialogContentText, TextField,
+  DialogActions, FormControl,
+  InputLabel, Input, InputAdornment,
+  IconButton
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { validationSignin } from '../../selectors/validation';
-import Spinner from '../spinner';
 import { setMe } from '../../selectors/function';
+import Spinner from '../spinner';
+import { setLogged } from '../../reducers/auth/slice';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
@@ -23,12 +27,8 @@ const ModalSignin = () => {
   const [showPwd, setShowPwd] = React.useState(false);
 
   // Ajax//
-  const [setSigninMutation, { isError, error, isLoading }] = useSetSigninMutation();
-  const { data, refetch, isFetching, isSuccess } = useGetMeQuery({ skip: true });
-  console.log('isSuccess:', isSuccess);
-
-  // useEffect //
-  React.useEffect(() => { if (logged) refetch() }, [logged, refetch]);
+  const [setSigninMutation, { isError, error, isLoading, isSuccess }] = useSetSigninMutation();
+  const { data, refetch, isFetching } = useGetMeQuery({ skip: true });
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
@@ -36,7 +36,6 @@ const ModalSignin = () => {
   const { signin, errorsUser } = useSelector(state => state.users);
   const { email, password } = signin;
 
-  
   // Handle //
   const handleOpenOrCloseForIn = () => {
     if (openModalSignin) dispatch(setOpenModalSignin(!openModalSignin));
@@ -50,6 +49,9 @@ const ModalSignin = () => {
   const handleMouseDownPassword = e => e.preventDefault();
 
   // useEffect //
+  // Launch a query when logged is true
+  React.useEffect(() => { if (isSuccess) refetch() }, [isSuccess, refetch]);
+
   React.useEffect(() => {
     if (error && error.status === 400) {
       dispatch(setErrorsUser(validationSignin({ ...signin, email: 400 })));
@@ -57,15 +59,22 @@ const ModalSignin = () => {
       dispatch(setErrorsUser(validationSignin({ ...signin, password: 403 })));
     };
   }, [dispatch, error, isError, signin]);
+
   React.useEffect(() => {
-    if(isSuccess) {
-      // manque les photos du logement
-      setMe(data, dispatch);
+    if (data) {
+      //! manque les photos du logement
+      setMe({ data, dispatch });
       console.log('data after');
-      if(logged) handleOpenOrCloseForIn();
+      setTimeout(() => {
+        setLogged(true);
+      }, 500);
+      // close the modal 0.5 sec after dispatch
+      setTimeout(() => {
+       handleOpenOrCloseForIn();
+      }, 500);
     };
-  }, [isSuccess]);
-  
+  }, [data]);
+
   //Submit //
   const submitSignInForm = async () => {
     dispatch(setErrorsUser(validationSignin(signin)));

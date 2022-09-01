@@ -10,7 +10,7 @@ import {
 } from "../reducers/houses/slice";
 
 export const setMe = ({ data, dispatch }) => {
-  console.log("data =>", data);
+  console.time("speed data =>");
   if (data) {
     const user = {
       email: data.email,
@@ -67,14 +67,14 @@ export const setMe = ({ data, dispatch }) => {
   // const mainPhoto = photos.find( p => p.main_photo === true);
   // mainPhoto.target = 4
   // const arrayFilter = photos.filter( p => p.main_photo === false);
-  // const newArray = arrayFilter.map((p, i) => {
-  // { ...p, target: i }
-  // });
+  // const newArray = arrayFilter.map((p, i) => { ...p, target: i });
   // newArray.push({ ...mainPhoto, traget: 4 });
   // console.log('newArray:', newArray);
   // dispatch(setPhotos(newArray));
   // };
-  
+
   if (data.plants[0]) dispatch(getPlants(data.plants));
   if (data.animals[0]) dispatch(getAnimals(data.animals));
+
+  console.timeEnd("speed data =>");
 };

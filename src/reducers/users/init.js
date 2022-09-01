@@ -33,7 +33,7 @@ export const initialState = {
     lastname: "",
     pseudo: "",
     phone_number: "",
-    avatar: null,
+    avatar: "",
     description: "",
   },
 

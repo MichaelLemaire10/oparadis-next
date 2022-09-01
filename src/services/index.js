@@ -31,7 +31,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       // dispatch result.data in the store
       if (result.data) {
         api.dispatch(setCredentials(result.data));
-        api.dispatch(setLogged(true));
         return result;
       } else {
         return result;
