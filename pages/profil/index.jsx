@@ -24,10 +24,7 @@ const Profil = () => {
     userFormPwd,
     userFormDesc,
   } = useSelector((state) => state.users);
-  const target = '';
-  
-    //! A supprimer quand les ajax sera pret !//
-  React.useEffect(() => { dispatch(setProfilDesc(user)) }, []);
+  const target = 'profil';
 
   // New styles pour le bouton
   const theme = createTheme({
@@ -55,6 +52,7 @@ const Profil = () => {
         && userFormDesc.email && !errorsUser.email
         && userFormDesc.description
         ) {
+        // requete ajax
         dispatch(getUser(userFormDesc));
         console.log("envoyer desc");
       };
@@ -69,10 +67,10 @@ const Profil = () => {
       && userFormPwd.repeat_password.length >= 3
       && userFormPwd.old_password.length >= 3
     ) {
+      //requete ajax
       console.log('envoyer pwd');
     };
   };
-
 
   return (
     <div className={styles.main}>
@@ -81,7 +79,7 @@ const Profil = () => {
           <h2>
             Mon profil
           </h2>
-          <ButtonDelete custom={styles.button_delete} />
+          <ButtonDelete custom={styles.button_delete} target={target} />
         </div>
         <form className={styles.form_card}>
           <TextForm

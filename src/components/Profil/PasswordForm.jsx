@@ -17,13 +17,10 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
     showOldPassword: false,
   });
 
-  // Condition pour executer un requete differente a la base de donnée
-  // if (target === 'modal') console.log('mettre une req vers reducer signup');
-
   // handle met à jour le state
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
-    target ? 
+    target === 'modal'? 
     dispatch(setSignup({ ...formSignup, [getName]: e.target.value }))
     : 
     dispatch(setProfilPwd({ ...userFormPwd, [getName]: e.target.value }));
@@ -46,7 +43,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           margin="dense"
           type={showPwd.showPassword ? "text" : "password"}
           name="password"
-          value={target ? formSignup.password : userFormPwd.password}
+          value={target === 'modal'? formSignup.password : userFormPwd.password}
           onChange={handleChange}
           endAdornment={
             <InputAdornment position="end">
@@ -75,7 +72,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           margin="dense"
           type={showPwd.showRepeatPassword ? "text" : "password"}
           name="repeat_password"
-          value={target ? formSignup.repeat_password : userFormPwd.repeat_password}
+          value={target === 'modal' ? formSignup.repeat_password : userFormPwd.repeat_password}
           onChange={handleChange}
           endAdornment={
             <InputAdornment position="end">
@@ -93,7 +90,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
       </FormControl>
       {errors.repeat_password && <p className={styles.error}>{errors.repeat_password}</p>}
 
-      {!target && (
+      {target === 'profil' && (
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
           <InputLabel htmlFor="standard-adornment-old-password">
             Ancien mot de passe

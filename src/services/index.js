@@ -34,13 +34,13 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
         return result;
       } else {
         return result;
-      }
+      };
     } else {
       return result;
     };
   } else {
     // Route protected by a token
-    console.log('route auth');
+    // console.log('route auth');
     let result = await baseQueryAuth(args, api, extraOptions);
     // console.log("result Auth =>", result);
 

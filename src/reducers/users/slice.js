@@ -27,6 +27,14 @@ const userSlice = createSlice({
 
     setProfilPwd: (state, action) => {
       state.userFormPwd = action.payload;
+    },
+    resetUser: (state) => {
+      console.log('state:', state.user);
+      state.user = state.user;
+      state.userFormDesc = state.userFormDesc;
+    },
+    resetPwd: (state) => {
+      state.userFormPwd = state.userFormPwd;
     }
   },
 });
@@ -37,6 +45,8 @@ export const {
   setSignin, 
   setSignup,
   setProfilDesc,
-  setProfilPwd
+  setProfilPwd,
+  resetUser,
+  resetPwd
 } = userSlice.actions;
 export default userSlice.reducer;

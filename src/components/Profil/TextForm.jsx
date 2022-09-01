@@ -9,7 +9,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
   
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
-    target ? 
+    target === 'modal'? 
     dispatch(setSignup({ ...formSignup, [getName]: e.target.value }))
     :
     dispatch(setProfilDesc({ ...form, [getName]: e.target.value }));
@@ -26,7 +26,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         type="text"
         variant="standard"
         name="firstname"
-        value={target ? formSignup.firstname : form.firstname}
+        value={target === 'modal'? formSignup.firstname : form.firstname}
         onChange={handleChange}
       />}
       {errors.firstname &&
@@ -36,7 +36,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
           margin="dense"
           id="filled-error-helper-text-firstname"
           label={`Error: ${errors.firstname}`}
-          value={target ? formSignup.firstname : form.firstname}
+          value={target === 'modal'? formSignup.firstname : form.firstname}
           name="firstname"
           onChange={handleChange}
           variant="standard"
@@ -50,7 +50,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         type="text"
         variant="standard"
         name="lastname"
-        value={target ? formSignup.lastname : form.lastname}
+        value={target === 'modal'? formSignup.lastname : form.lastname}
         onChange={handleChange}
       />}
       {errors.lastname && <TextField
@@ -60,7 +60,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         id="filled-error-helper-text-lastname"
         label={`Error: ${errors.lastname}`}
         name="lastname"
-        value={target ? formSignup.lastname : form.lastname}
+        value={target === 'modal'? formSignup.lastname : form.lastname}
         onChange={handleChange}
         variant="standard"
       />}
@@ -72,7 +72,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         type="text"
         variant="standard"
         name="pseudo"
-        value={target ? formSignup.pseudo : form.pseudo}
+        value={target === 'modal'? formSignup.pseudo : form.pseudo}
         onChange={handleChange}
       />
 
@@ -84,7 +84,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         type="text"
         variant="standard"
         name="phone_number"
-        value={target ? formSignup.phone_number : form.phone_number}
+        value={target === 'modal'? formSignup.phone_number : form.phone_number}
         onChange={handleChange}
       />}
       {errors.phone_number && <TextField
@@ -94,7 +94,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         id="filled-error-helper-text-phone"
         label={`Error: ${errors.phone_number}`}
         name="phone_number"
-        value={target ? formSignup.phone_number : form.phone_number}
+        value={target === 'modal'? formSignup.phone_number : form.phone_number}
         onChange={handleChange}
         variant="standard"
       />}
@@ -107,7 +107,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         type="email"
         variant="standard"
         name="email"
-        value={target ? formSignup.email : form.email}
+        value={target === 'modal'? formSignup.email : form.email}
         onChange={handleChange}
       />}
       {errors.email && <TextField
@@ -117,7 +117,7 @@ const TextForm = ({ errors, form, formSignup, target }) => {
         label={`Error: ${errors.email}`}
         margin="dense"
         name="email"
-        value={target ? formSignup.email : form.email}
+        value={target === 'modal'? formSignup.email : form.email}
         onChange={handleChange}
         variant="standard"
       />}

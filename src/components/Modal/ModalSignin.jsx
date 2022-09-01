@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useSetSigninMutation } from '../../services/auth';
-import { useGetMeQuery } from '../../services/user';
+import { useGetUserQuery } from '../../services/user';
 import { setOpenModalSignin, setOpenModalSignup } from "../../reducers/booleans/slice";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -16,10 +16,10 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setErrorsUser, setSignin } from '../../reducers/users/slice';
+import { setLogged } from '../../reducers/auth/slice';
 import { validationSignin } from '../../selectors/validation';
 import { setMe } from '../../selectors/function';
 import Spinner from '../spinner';
-import { setLogged } from '../../reducers/auth/slice';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const ModalSignin = () => {
 
   // Ajax//
   const [setSigninMutation, { isError, error, isLoading, isSuccess }] = useSetSigninMutation();
-  const { data, refetch, isFetching } = useGetMeQuery({ skip: true });
+  const { data, refetch, isFetching } = useGetUserQuery({ skip: true });
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
@@ -64,14 +64,13 @@ const ModalSignin = () => {
       //! manque les photos du logement
       setMe({ data, dispatch });
       setTimeout(() => {
-        setLogged(true);
+        dispatch(setLogged(true));
       }, 300);
-      // close the modal 0.5 sec after dispatch
       setTimeout(() => {
        handleOpenOrCloseForIn();
       }, 500);
     };
-  }, [data]);
+  }, [data, setLogged]);
 
   //Submit //
   const submitSignInForm = async () => {
