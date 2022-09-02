@@ -1,15 +1,12 @@
 import { getUser, setProfilDesc } from "../reducers/users/slice";
-import { getAnimals } from "../reducers/animals/slice";
-import { getPlants } from "../reducers/plants/slice";
 import {
   getHouseDesc,
   getHouseBool,
   setHouseFormDesc,
   setHouseFormBool,
-  setPhotos,
 } from "../reducers/houses/slice";
 
-export const setMe = ({ data, dispatch }) => {
+export const setUser = ({ data, dispatch }) => {
   console.time("speed data =>");
   if (data) {
     const user = {
@@ -62,19 +59,5 @@ export const setMe = ({ data, dispatch }) => {
     dispatch(setHouseFormDesc(desc));
     dispatch(setHouseFormBool(bool));
   }
-  // if(data.photos[0] ou data.house.photos[0]) {
-  // const { photos } = data.house ou data;
-  // const mainPhoto = photos.find( p => p.main_photo === true);
-  // mainPhoto.target = 4
-  // const arrayFilter = photos.filter( p => p.main_photo === false);
-  // const newArray = arrayFilter.map((p, i) => { ...p, target: i });
-  // newArray.push({ ...mainPhoto, traget: 4 });
-  // console.log('newArray:', newArray);
-  // dispatch(setPhotos(newArray));
-  // };
-
-  if (data.plants[0]) dispatch(getPlants(data.plants));
-  if (data.animals[0]) dispatch(getAnimals(data.animals));
-
   console.timeEnd("speed data =>");
 };

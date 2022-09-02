@@ -18,7 +18,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { setLogged } from '../../reducers/auth/slice';
 import { validationSignin } from '../../selectors/validation';
-import { setMe } from '../../selectors/function';
+import { setUser } from '../../selectors/function';
 import Spinner from '../spinner';
 
 const ModalSignin = () => {
@@ -32,6 +32,7 @@ const ModalSignin = () => {
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
   const openModalSignup = useSelector(state => state.booleans.modalSignup);
+  const { logged } = useSelector(state => state.auth);
   const { signin, errorsUser } = useSelector(state => state.users);
   const { email, password } = signin;
 
@@ -61,8 +62,7 @@ const ModalSignin = () => {
 
   React.useEffect(() => {
     if (data) {
-      //! manque les photos du logement
-      setMe({ data, dispatch });
+      setUser({ data, dispatch });
       setTimeout(() => {
         dispatch(setLogged(true));
       }, 300);
@@ -70,7 +70,7 @@ const ModalSignin = () => {
        handleOpenOrCloseForIn();
       }, 500);
     };
-  }, [data, setLogged]);
+  }, [data]);
 
   //Submit //
   const submitSignInForm = async () => {

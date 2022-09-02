@@ -8,7 +8,7 @@ import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
 import Link from "next/link";
 
-const Home = ({ arrayHouse }) => {
+const Home = ({ arrayHouse }) => {  
 
   return (
     <div className={styles.container}>

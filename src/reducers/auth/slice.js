@@ -10,20 +10,9 @@ const authSlice = createSlice({
       state.logged = action.payload;
     },
 
-    setCredentials: (state, action) => {
-      const { accessToken, refreshToken } = action.payload;
-      state.accessToken = accessToken,
-      state.refreshToken = refreshToken
-    },
-
     setVerifyMail: (state, action) => {
       const { token } = action.payload;
       state.verifyMail = token
-    },
-
-    logOut: (state) => {
-      state.accessToken = null,
-      state.refreshToken = null
     },
 
   },
@@ -31,9 +20,7 @@ const authSlice = createSlice({
 
 export const { 
   setLogged,
-  setCredentials,
-  setVerifyMail,
-  logOut
+  setVerifyMail
 } = authSlice.actions;
 
 export default authSlice.reducer;
