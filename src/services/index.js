@@ -58,7 +58,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       console.log("route auth");
 
       const refreshToken = localStorage.getItem("refreshToken");
-
       let result = await baseQueryAuth(args, api, extraOptions);
       // console.log("result Auth =>", result);
 

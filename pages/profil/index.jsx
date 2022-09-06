@@ -15,15 +15,23 @@ import ButtonDelete from "../../src/components/Button/ButtonDelete";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, setErrorsUser, setProfilDesc } from "../../src/reducers/users/slice";
 import { validationProfilDesc, validationProfilPwd } from "../../src/selectors/validation";
+import { useUpdateUserMutation } from "../../src/services/user";
 
 const Profil = () => {
   const dispatch = useDispatch();
+
+  // Ajax
+  const [updateUserMutation, { isSuccess, data, error }] = useUpdateUserMutation();
+  console.log('error:', error);
+
+  // useSelector
   const {
     user,
     errorsUser,
     userFormPwd,
     userFormDesc,
   } = useSelector((state) => state.users);
+  
   const target = 'profil';
 
   // New styles pour le bouton
@@ -36,6 +44,16 @@ const Profil = () => {
     },
   });
 
+  // useEffect
+  React.useEffect(() => {
+    console.log('data =>', data);
+    if (data) {
+      getUser(data);
+      setProfilDesc(data);
+    };
+  }, [isSuccess]);
+
+  // Submit
   const submitTheFormCard = () => {
     if (
       Object.entries(user).toString() === Object.entries(userFormDesc).toString()
@@ -48,13 +66,12 @@ const Profil = () => {
       // Last check with condition
       if (
         userFormDesc.firstname && userFormDesc.lastname
-        && userFormDesc.phone_number 
+        && userFormDesc.phone_number
         && userFormDesc.email && !errorsUser.email
         && userFormDesc.description
-        ) {
+      ) {
         // requete ajax
-        dispatch(getUser(userFormDesc));
-        console.log("envoyer desc");
+        updateUserMutation(userFormDesc)
       };
     }
   };

@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "../../../styles/Profil.module.css";
 import Image from "next/image";
 import imagesLoader from "../../../imagesLoader";
@@ -9,15 +10,25 @@ import { setProfilDesc } from "../../reducers/users/slice";
 
 const AvatarForm = ({ data, form }) => {
   const dispatch = useDispatch();
-  
+  const [deleteAvatar, setDeleteAvatar] = React.useState(false);
+
   // State to display the picture
   const handleOnChange = (changeEvent) => {
-    const reader = new FileReader();
-    reader.onload = (onLoadEvent) => {
-      dispatch(setProfilDesc({ ...form, avatar: onLoadEvent.target.result }));
-    };
-    reader.readAsDataURL(changeEvent.target.files[0]);
+    if (!deleteAvatar) {
+      const reader = new FileReader();
+      console.log('reader:', reader);
+      reader.onload = (onLoadEvent) => {
+        dispatch(setProfilDesc({ ...form, avatar: onLoadEvent.target.result }));
+      };
+      reader.readAsDataURL(changeEvent.target.files[0]);
+    }
   };
+
+  const handleCheckbox = () => setDeleteAvatar(!deleteAvatar);
+
+  React.useEffect(() => {
+    if (deleteAvatar) dispatch(setProfilDesc({ ...form, avatar: null }));
+  }, [deleteAvatar]);
 
   return (
     <div className={`${styles.form_photo} ${styles.photo_hover}`}>
@@ -57,8 +68,18 @@ const AvatarForm = ({ data, form }) => {
             width="250"
             height="250"
           />
-      }
+        }
       </label>
+      <div>
+        <label className={styles.input_photo} forhtml="avatar">Pour supprimer l'image => cocher et envoyer</label>
+        <input
+          type="checkbox"
+          id="avatar"
+          name="avatar"
+          checked={deleteAvatar}
+          onChange={handleCheckbox}
+        />
+      </div>
     </div>
   );
 };

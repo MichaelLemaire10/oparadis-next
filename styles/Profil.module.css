@@ -72,6 +72,11 @@
   width: 350px;
 }
 
+.input_photo {
+  font-size: smaller;
+  color: rgb(219, 1, 1);
+}
+
 .form_desc {
   display: flex;
   flex-direction: column;
