@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  env: { url: process.env.URL },
+  env: { URL: process.env.URL },
   images: {
     domains: ['res.cloudinary.com'],
   },

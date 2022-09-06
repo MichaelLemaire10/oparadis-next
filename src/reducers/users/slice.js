@@ -29,7 +29,6 @@ const userSlice = createSlice({
       state.userFormPwd = action.payload;
     },
     resetUser: (state) => {
-      console.log('state:', state.user);
       state.user = state.user;
       state.userFormDesc = state.userFormDesc;
     },

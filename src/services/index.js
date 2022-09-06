@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setLogged } from "../reducers/auth/slice";
+import { resetHouse } from "../reducers/houses/slice";
+import { resetUser } from "../reducers/users/slice";
 
 // BaseQuery accessToken
 const baseQueryAuth = fetchBaseQuery({
-  baseUrl: process.env.url,
+  baseUrl: process.env.URL,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("accessToken");
     headers.set("Authorization", token ? `Bearer ${token}` : "");
@@ -12,7 +14,7 @@ const baseQueryAuth = fetchBaseQuery({
 });
 // BaseQuery resfreshToken
 const baseQueryAuthRefreshToken = fetchBaseQuery({
-  baseUrl: process.env.url,
+  baseUrl: process.env.URL,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("refreshToken");
     headers.set("Authorization", token ? `Bearer ${token}` : "");
@@ -20,11 +22,10 @@ const baseQueryAuthRefreshToken = fetchBaseQuery({
   },
 });
 // BaseQuery basic
-const baseQuery = fetchBaseQuery({ baseUrl: process.env.url });
+const baseQuery = fetchBaseQuery({ baseUrl: process.env.URL });
 
 // BaseQuery Main
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-
   // Route not protected by a token
   if (
     api.endpoint === "getHouses" ||
@@ -47,17 +48,27 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   } else {
     if (api.endpoint === "setLogout") {
       console.log("logout");
-      await baseQueryAuthRefreshToken("/auth/logout", api, extraOptions);
+      await baseQueryAuthRefreshToken(args, api, extraOptions);
       localStorage.clear();
       api.dispatch(setLogged(false));
+      window.location.replace(process.env.NEXT_PUBLIC_HOME);
     } else {
+
       // Route protected by a token
-      console.log('route auth');
+      console.log("route auth");
+
+      const refreshToken = localStorage.getItem("refreshToken");
+
       let result = await baseQueryAuth(args, api, extraOptions);
       // console.log("result Auth =>", result);
 
       // if accessToken isn't valide
-      if (result?.error?.status && result.error === 403) {
+      if (
+        refreshToken !== null &&
+        result?.error?.status === 401 &&
+        result.data.message ===
+        'Unauthorized'
+      ) {
         console.log("sending refresh token");
         // send refresh token to get new access token
         const refreshResult = await baseQueryAuthRefreshToken(
@@ -77,10 +88,11 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
           // retry the original query with new access token
           result = await baseQueryAuth(args, api, extraOptions);
         } else {
-          console.log("/auth/logout");
-          await baseQueryAuthRefreshToken("/auth/logout", api, extraOptions);
+          // console.log("/auth/logout");
+          await baseQueryAuthRefreshToken(args, api, extraOptions);
           localStorage.clear();
           api.dispatch(setLogged(false));
+          window.location.replace(process.env.NEXT_PUBLIC_HOME);
         }
         // if accessToken is valide return result
         return result;

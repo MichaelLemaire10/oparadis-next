@@ -1,23 +1,21 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch } from 'react-redux';
-import { logOut, setLogged } from '../../reducers/auth/slice';
+import { useSetLogoutMutation } from '../../services/auth';
 import { useDeleteUserMutation } from '../../services/user';
 
 const ButtonDelete = ({ custom, target }) => {
-    const dispatch = useDispatch();
-    const [deleteMutation] = useDeleteUserMutation();
+    const [deleteUserMutation] = useDeleteUserMutation();
+    const [setLogoutMutation] = useSetLogoutMutation();
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         switch (target) {
             case 'profil':
-                deleteMutation();
-                dispatch(logOut());
-                dispatch(setLogged(false));
-                window.location.replace("http://localhost:3000/");
+                await deleteUserMutation();
+                await setLogoutMutation();
+                window.location.replace(process.env.NEXT_PUBLIC_HOME);
                 break;
 
             case 'house':
-                window.location.replace("http://localhost:3000/");
+                window.location.replace(process.env.NEXT_PUBLIC_HOME);
                 break;
 
             default:

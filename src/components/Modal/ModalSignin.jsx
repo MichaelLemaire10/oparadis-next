@@ -27,12 +27,12 @@ const ModalSignin = () => {
 
   // Ajax//
   const [setSigninMutation, { isError, error, isLoading, isSuccess }] = useSetSigninMutation();
+  console.log('error modal =>', error);
   const { data, refetch, isFetching } = useGetUserQuery({ skip: true });
 
   // Selector //
   const openModalSignin = useSelector(state => state.booleans.modalSignin);
   const openModalSignup = useSelector(state => state.booleans.modalSignup);
-  const { logged } = useSelector(state => state.auth);
   const { signin, errorsUser } = useSelector(state => state.users);
   const { email, password } = signin;
 

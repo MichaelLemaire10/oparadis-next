@@ -12,6 +12,7 @@ import ModalSignin from "../Modal/ModalSignin";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenModalSignup, setOpenModalSignin, setOpenMenu } from "../../reducers/booleans/slice";
+import { useSetLogoutMutation } from "../../services/auth";
 
 // styles pour le menu
 const useStyles = makeStyles((theme) =>
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) =>
 
 const MenuListComposition = () => {
   const dispatch = useDispatch();
+  const [setLogoutMutation] = useSetLogoutMutation();
   const classes = useStyles();
   const anchorRef = React.useRef(null);
 
@@ -56,8 +58,13 @@ const MenuListComposition = () => {
       anchorRef.current.contains(event.target)
     ) {
       return;
-    }
+    };
     dispatch(setOpenMenu(false));
+  };
+
+  const handleLogout = async (e) => {
+    await setLogoutMutation();
+    handleClose(e);
   };
 
   function handleListKeyDown(event) {
@@ -143,7 +150,7 @@ const MenuListComposition = () => {
                               </MenuItem>
                             </Link>
                         }
-                        <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
+                        <MenuItem onClick={handleLogout}>Déconnexion</MenuItem>
                       </>
                     }
                   </MenuList>

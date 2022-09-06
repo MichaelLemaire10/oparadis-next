@@ -69,7 +69,7 @@ export const validationSignin = ({ email, password }) => {
   if (!email) {
     errors.email = "L'email est vide";
   } else if (email === 400) {
-    errors.email = "L'email est incorrect";
+    errors.email = "L'email ou le mot de passe sont incorrect";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'email est invalide";
   } 
@@ -78,7 +78,7 @@ export const validationSignin = ({ email, password }) => {
   } else if (password.length < 3) {
     errors.password = "3 caractères minimum";
   } else if (password === 403) {
-    errors.password = "Le mot de passe est incorrect";
+    errors.password = "L'email ou le mot de passe sont incorrect";
   }
 
   return errors;

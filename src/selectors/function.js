@@ -7,7 +7,6 @@ import {
 } from "../reducers/houses/slice";
 
 export const setUser = ({ data, dispatch }) => {
-  console.time("speed data =>");
   if (data) {
     const user = {
       email: data.email,
@@ -59,5 +58,4 @@ export const setUser = ({ data, dispatch }) => {
     dispatch(setHouseFormDesc(desc));
     dispatch(setHouseFormBool(bool));
   }
-  console.timeEnd("speed data =>");
 };
