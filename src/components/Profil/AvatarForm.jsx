@@ -16,7 +16,6 @@ const AvatarForm = ({ data, form }) => {
   const handleOnChange = (changeEvent) => {
     if (!deleteAvatar) {
       const reader = new FileReader();
-      console.log('reader:', reader);
       reader.onload = (onLoadEvent) => {
         dispatch(setProfilDesc({ ...form, avatar: onLoadEvent.target.result }));
       };
