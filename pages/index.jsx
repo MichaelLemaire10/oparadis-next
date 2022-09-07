@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Head from "next/head";
@@ -6,7 +7,6 @@ import HomeLogo from "../src/components/Home/homeLogo";
 import ImgHouse from "../src/components/Image/ImgHouse";
 import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
-import Link from "next/link";
 
 const Home = ({ arrayHouse }) => {  
 

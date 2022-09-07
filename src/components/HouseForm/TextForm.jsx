@@ -7,11 +7,11 @@ import ButtonClose from "../Button/ButtonClose";
 import ButtonValidation from "../Button/ButtonValidation";
 import { setHouseFormDesc, setHouseFormDescType, setHouseFormDescCountry } from "../../reducers/houses/slice";
 
-const TextForm = ({ targetPage, errors }) => {
+const TextForm = ({ targetPage, errors, types, countries }) => {
   const dispatch = useDispatch();
-  const { houseFormDesc, types, countries } = useSelector(state => state.houses);
+  const { houseFormDesc } = useSelector(state => state.houses);
   const {
-    address, zipcode, city, title, rooms, bedrooms,surface, area, floor, description,
+    address, zipcode, city, title, rooms, bedrooms, surface, area, floor, description,
     type, country
   } = houseFormDesc;
 
@@ -113,14 +113,14 @@ const TextForm = ({ targetPage, errors }) => {
                 />}
                 {errors.zipcode &&
                   <TextField
-                  error
-                  id="filled-error-helper-text-zip-code"
-                  label={errors.zipcode}
-                  value={zipcode}
-                  name="zipcode"
-                  onChange={handleChange}
-                  variant="standard"
-                  sx={{ width: "15ch" }}
+                    error
+                    id="filled-error-helper-text-zip-code"
+                    label={errors.zipcode}
+                    value={zipcode}
+                    name="zipcode"
+                    onChange={handleChange}
+                    variant="standard"
+                    sx={{ width: "15ch" }}
                   />}
                 {!errors.city && <TextField
                   required
@@ -135,14 +135,14 @@ const TextForm = ({ targetPage, errors }) => {
                 />}
                 {errors.city &&
                   <TextField
-                  error
-                  id="filled-error-helper-text-city"
-                  label={errors.city}
-                  value={city}
-                  name="city"
-                  onChange={handleChange}
-                  variant="standard"
-                  sx={{ width: "20ch" }}
+                    error
+                    id="filled-error-helper-text-city"
+                    label={errors.city}
+                    value={city}
+                    name="city"
+                    onChange={handleChange}
+                    variant="standard"
+                    sx={{ width: "20ch" }}
                   />}
                 <TextField
                   id="standard-select-currency-native-country"
@@ -247,6 +247,6 @@ const TextForm = ({ targetPage, errors }) => {
       </div>
     </section>
   );
-}
+};
 
 export default TextForm;

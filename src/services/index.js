@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setLogged } from "../reducers/auth/slice";
-import { resetHouse } from "../reducers/houses/slice";
-import { resetUser } from "../reducers/users/slice";
 
 // BaseQuery accessToken
 const baseQueryAuth = fetchBaseQuery({

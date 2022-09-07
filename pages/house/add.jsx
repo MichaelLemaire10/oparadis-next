@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Form.module.css";
+import axios from "axios";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
 import {
   DialogActions,
@@ -12,7 +13,7 @@ import { setErrorsHouse } from "../../src/reducers/houses/slice";
 import { validationHouse } from "../../src/selectors/validation";
 
 
-const HouseAdd = () => {
+const HouseAdd = ({ types, countries }) => {
   const dispatch = useDispatch();
   const { errorsHouse, houseFormDesc } = useSelector(state => state.houses);
   const targetPage = 'addHouse';
@@ -27,7 +28,7 @@ const HouseAdd = () => {
     },
   });
 
-  const submitTheFormDesc = () => {
+  const submitTheFormDesc = async () => {
     // check input errors before sending the form data
     dispatch(setErrorsHouse(validationHouse(houseFormDesc)));
     // Last check with condition 
@@ -46,6 +47,8 @@ const HouseAdd = () => {
       <SectionFormText
         errors={errorsHouse}
         targetPage={targetPage}
+        countries={countries}
+        types={types}
       />
       <DialogActions>
         <ThemeProvider theme={theme} >
@@ -64,3 +67,17 @@ const HouseAdd = () => {
 };
 
 export default HouseAdd;
+
+export async function getStaticProps() {
+  
+  const url = process.env.URL;
+  const arrayType = await axios.get(`${url}/types`);
+  const arrayCountry = await axios.get(`${url}/countries`);
+
+  return {
+    props: {
+      countries: arrayCountry.data,
+      types: arrayType.data
+    },
+  };
+};
