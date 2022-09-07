@@ -5,7 +5,7 @@ export const initialState = {
   signup: {
     email: "",
     password: "",
-    repeat_password: "",
+    verifyPassword: "",
     firstname: "",
     lastname: "",
     pseudo: "",
@@ -39,7 +39,7 @@ export const initialState = {
 
   userFormPwd: {
     password: "",
-    repeat_password: "",
-    old_password: "",
+    confirmationPassword: "",
+    oldPassword: "",
   },
 };

@@ -3,7 +3,7 @@ import styles from "../../../styles/Header.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import TextFormProfil from "../Profil/TextForm";
 import PasswordFormProfil from '../Profil/PasswordForm';
-import Spinner from '../spinner';
+import Spinner from '../Spinner';
 import { setOpenModalSignup, setOpenModalSignin } from "../../reducers/booleans/slice";
 import {
   Box, DialogContent, DialogTitle, Modal,
@@ -23,7 +23,7 @@ const ModalSignup = () => {
   const { signup, errorsUser } = useSelector((state) => state.users);
   const openModalSignup = useSelector((state) => state.booleans.modalSignup);
   
-  const { password, repeat_password, firstname, lastname, email, phone_number } = signup;
+  const { password, confirmationPassword, firstname, lastname, email, phone_number } = signup;
   
   // useEffect //
   React.useEffect(() => {
@@ -49,7 +49,7 @@ const ModalSignup = () => {
       // prevent form validation if password under 3 characters
       if (
         firstname && lastname && email && /\S+@\S+\.\S+/.test(email) && phone_number
-        && password.length >= 3 && repeat_password === password
+        && password.length >= 3 && confirmationPassword === password
         ) {
           setSignupMutation(signup);
         };

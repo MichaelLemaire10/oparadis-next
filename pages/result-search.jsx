@@ -7,7 +7,7 @@ import { useGetHousesQuery } from "../src/services/house";
 import { LeafletWithNoSSR } from "../src/selectors/LeafletWithNoSSR";
 import { noImgHouse } from "../src/selectors/img";
 import ErrorPage from "./404";
-import Spinner from "../src/components/spinner";
+import Spinner from "../src/components/Spinner";
 
 const ResultSearch = () => {
 

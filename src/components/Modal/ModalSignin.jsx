@@ -19,7 +19,7 @@ import { setErrorsUser, setSignin } from '../../reducers/users/slice';
 import { setLogged } from '../../reducers/auth/slice';
 import { validationSignin } from '../../selectors/validation';
 import { setUser } from '../../selectors/function';
-import Spinner from '../spinner';
+import Spinner from '../Spinner';
 
 const ModalSignin = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,6 @@ const ModalSignin = () => {
 
   // Ajax//
   const [setSigninMutation, { isError, error, isLoading, isSuccess }] = useSetSigninMutation();
-  console.log('error modal =>', error);
   const { data, refetch, isFetching } = useGetUserQuery({ skip: true });
 
   // Selector //

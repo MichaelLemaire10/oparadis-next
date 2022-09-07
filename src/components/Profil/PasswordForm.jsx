@@ -10,7 +10,7 @@ import { setSignup, setProfilPwd } from "../../reducers/users/slice";
 const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
   const dispatch = useDispatch();
 
-  // State utiliser pour l'affichage du mot de passe et initialisé
+  // State utiliser pour l'affichage du mot de passe et l'initialisé
   const [showPwd, setShowPwd] = React.useState({
     showPassword: false,
     showRepeatPassword: false,
@@ -66,13 +66,13 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           Vérifiez votre mot de passe
         </InputLabel>
         <Input
-          error={errors.repeat_password}
+          error={errors.confirmationPassword}
           id="standard-adornment-repeat-password"
           className={styles.input_pwd}
           margin="dense"
           type={showPwd.showRepeatPassword ? "text" : "password"}
-          name="repeat_password"
-          value={target === 'modal' ? formSignup.repeat_password : userFormPwd.repeat_password}
+          name="confirmationPassword"
+          value={target === 'modal' ? formSignup.confirmationPassword : userFormPwd.confirmationPassword}
           onChange={handleChange}
           endAdornment={
             <InputAdornment position="end">
@@ -88,7 +88,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
 
         />
       </FormControl>
-      {errors.repeat_password && <p className={styles.error}>{errors.repeat_password}</p>}
+      {errors.confirmationPassword && <p className={styles.error}>{errors.confirmationPassword}</p>}
 
       {target === 'profil' && (
         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
@@ -96,13 +96,13 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
             Ancien mot de passe
           </InputLabel>
           <Input
-            error={errors.old_password}
+            error={errors.oldPassword}
             id="standard-adornment-old-password"
             className={styles.input_pwd}
             margin="dense"
             type={showPwd.showOldPassword ? "text" : "password"}
-          name="old_password"
-            value={userFormPwd.old_password}
+          name="oldPassword"
+            value={userFormPwd.oldPassword}
             onChange={handleChange}
             endAdornment={
               <InputAdornment position="end">
@@ -118,7 +118,7 @@ const PasswordForm = ({ target, errors, formSignup, userFormPwd }) => {
           />
         </FormControl>
       )}
-      {errors.old_password && <p className={styles.error}>{errors.old_password}</p>}
+      {errors.oldPassword && <p className={styles.error}>{errors.oldPassword}</p>}
     </form>
   );
 };
