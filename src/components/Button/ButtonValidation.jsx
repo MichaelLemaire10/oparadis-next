@@ -6,19 +6,17 @@ import {
 } from '../../reducers/houses/slice';
 import { validationHouse } from '../../selectors/validation';
 
-const ButtonValidation = ({ custom, target }) => {
+const ButtonValidation = ({ custom, target, updateHouseBoolMutation }) => {
     const dispatch = useDispatch();
     const { 
         houseFormBool, houseFormDesc, photosForm,
          houseDesc, houseBool, photos 
         } = useSelector(state => state.houses);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         switch (target) {
             case 'photoForm':
-                console.log()
                 if (JSON.stringify(photos) === JSON.stringify(photosForm)) {
-                    console.log("Pas de changement");
                     dispatch(setShowFormPhoto(false));
                 } else {
                     const array = photosForm.filter(p => p.photo !== null);
@@ -33,7 +31,6 @@ const ButtonValidation = ({ custom, target }) => {
                 if (
                     Object.entries(houseDesc).toString() === Object.entries(houseFormDesc).toString()
                 ) {
-                    console.log("Pas de changement");
                     dispatch(setShowFormText(false));
                 } else {
                     if (houseFormDesc.address && houseFormDesc.zipcode
@@ -49,13 +46,10 @@ const ButtonValidation = ({ custom, target }) => {
                 if (
                     Object.entries(houseBool).toString() === Object.entries(houseFormBool).toString()
                 ) {
-                    console.log("Pas de changement");
                     dispatch(setShowFormBool(false));
                 }
                 else {
-                    dispatch(getHouseBool(houseFormBool));
-                    dispatch(setShowFormBool(false));
-                    console.log('envoyer Bool');
+                    // await updateHouseBoolMutation(houseFormBool);
                 };
                 break;
             default:

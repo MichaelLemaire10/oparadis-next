@@ -17,6 +17,13 @@ const houseApi = api.injectEndpoints({
         body: data,
       }),
     }),
+    updateHouse: build.mutation({
+      query: (data) => ({
+        url: `/houses/${data.id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
     deleteHouse: build.mutation({
       query: (id) => ({
         url: `/houses/${id}`,
@@ -31,5 +38,6 @@ export const {
   useGetHomeQuery,
   useGetHousesQuery,
   useSetHouseMutation,
+  useUpdateHouseMutation,
   useDeleteHouseMutation,
 } = houseApi;
