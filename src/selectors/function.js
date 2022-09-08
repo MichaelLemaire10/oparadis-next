@@ -22,7 +22,13 @@ export const setUser = ({ data, dispatch }) => {
   }
 
   if (data.house) {
-    const { house } = data;
+    const house = data.house;
+    setHouse({ house, dispatch });
+  };
+};
+
+export const setHouse = ({ house, dispatch }) => {
+  
     const desc = {
       id: house.id,
       address: house.address,
@@ -41,6 +47,7 @@ export const setUser = ({ data, dispatch }) => {
       longitude: house.longitude,
       map: house.map,
     };
+    
     const bool = {
       id: house.id,
       internet: house.internet,
@@ -57,5 +64,4 @@ export const setUser = ({ data, dispatch }) => {
     dispatch(getHouseBool(bool));
     dispatch(setHouseFormDesc(desc));
     dispatch(setHouseFormBool(bool));
-  }
 };

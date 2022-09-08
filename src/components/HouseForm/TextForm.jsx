@@ -20,17 +20,33 @@ const TextForm = ({ targetPage, errors, types, countries }) => {
 
   const target = 'textForm';
 
+  // handle
   const handleChangeType = (e) => {
     const type = types.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescType(type[0].id));
+    dispatch(setHouseFormDescType(
+      // JSON.stringify(type[0].id)
+      "cl7946esm17578ov2x3cwgvm1"
+      ));
   };
   const handleChangeCountry = (e) => {
     const country = countries.filter(t => t.value === e.target.value);
-    dispatch(setHouseFormDescCountry(country[0].id))
+    dispatch(setHouseFormDescCountry(
+      // JSON.stringify(country[0].id)
+      "cl7946d0h00008ov2fbxuyha4"
+      ));
   };
   const handleChange = (e) => {
     const getName = e.target.getAttribute('name');
-    dispatch(setHouseFormDesc({ ...houseFormDesc, [getName]: e.target.value }));
+    dispatch(setHouseFormDesc(
+      { ...houseFormDesc, 
+        [getName]: 
+        getName === "rooms" || getName === "bedrooms" ||
+        getName === "surface" || getName === "floor" ||
+        getName === "area" ? 
+        +e.target.value 
+        : 
+        e.target.value }
+      ));
   };
 
   return (
@@ -63,7 +79,7 @@ const TextForm = ({ targetPage, errors, types, countries }) => {
                 <TextField
                   id="standard-select-currency-native-type"
                   select
-                  defaultValue={objType.value}
+                  defaultValue={objType?.value ? objType.value :  "Maison"}
                   label="Selectionner le type"
                   onChange={handleChangeType}
                   SelectProps={{
@@ -148,7 +164,7 @@ const TextForm = ({ targetPage, errors, types, countries }) => {
                   id="standard-select-currency-native-country"
                   select
                   label="Selectionner le pays"
-                  defaultValue={objCountry.value}
+                  defaultValue={objCountry?.value ? objCountry.value : "France"}
                   onChange={handleChangeCountry}
                   SelectProps={{
                     native: true,

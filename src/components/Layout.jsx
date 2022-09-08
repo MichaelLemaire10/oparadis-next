@@ -7,22 +7,26 @@ import Footer from "./Footer";
 import { useGetUserQuery } from '../services/user';
 import { setUser } from '../selectors/function';
 import { setLogged } from "../reducers/auth/slice";
+import { useRouter } from "next/router";
 
 function Layout({ children }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { data } = useGetUserQuery();
-  
+
   React.useEffect(() => {
     if (data) {
       setUser({ data, dispatch });
       dispatch(setLogged(true));
+    } else {
+      router.push('/');
     };
   }, [data]);
 
   return (
     <div className={styles.container}>
-     <Header />
-       {children}
+      <Header />
+      {children}
       <Footer />
     </div>
   );

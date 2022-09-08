@@ -86,7 +86,6 @@ export const initialState = {
   photosForm: [],
 
   houseDesc: {
-    id: "",
     address: "",
     zipcode: "",
     city: "",
@@ -105,7 +104,6 @@ export const initialState = {
   },
 
   houseBool: {
-    id: "",
     internet: false,
     washing_machine: false,
     TV: false,
@@ -118,7 +116,6 @@ export const initialState = {
   },
 
   houseFormDesc: {
-    id: "",
     address: "",
     zipcode: "",
     city: "",
@@ -129,15 +126,14 @@ export const initialState = {
     area: 0,
     floor: 0,
     description: "",
-    type: 1,
-    country: 75,
+    type_id: "cl7946esm17578ov2x3cwgvm1",
+    country_id: "cl7946d0h00008ov2fbxuyha4",
     latitude: "",
     longitude: "",
     map: "",
   },
 
   houseFormBool: {
-    id: "",
     internet: false,
     washing_machine: false,
     TV: false,

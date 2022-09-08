@@ -139,7 +139,7 @@ const MenuListComposition = () => {
                         <Link href="/profil">
                           <MenuItem onClick={handleClose}>Mon profil</MenuItem>
                         </Link>
-                        {houseDesc.id ?
+                        {houseDesc?.id ?
                             <Link href={`/house/${houseDesc.id}`}>
                               <MenuItem onClick={handleClose}>Mon logement</MenuItem>
                             </Link>

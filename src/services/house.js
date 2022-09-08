@@ -1,6 +1,7 @@
 import { api } from "./index";
 
 const houseApi = api.injectEndpoints({
+  // not auth
   endpoints: (build) => ({
     getHome: build.query({
       query: () => "/",
@@ -8,8 +9,17 @@ const houseApi = api.injectEndpoints({
     getHouses: build.query({
       query: () => "/houses",
     }),
+    // auth
+    setHouse: build.mutation({
+      query: (data) => ({
+        url: "/houses",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
-  overrideExisting: false,
+  overrideExisting: true,
 });
 
-export const { useGetHomeQuery, useGetHousesQuery } = houseApi;
+export const { useGetHomeQuery, useGetHousesQuery, useSetHouseMutation } =
+  houseApi;

@@ -1,13 +1,11 @@
 //  House //
-export const validationHouse = ({
-  address,
-  zipcode,
-  city,
-}) => {
+export const validationHouse = ({ address, zipcode, city }) => {
   const errors = {};
 
   if (!address) {
     errors.address = "L'adresse est obligatoire";
+  } else if (address === "inconnu") {
+    errors.address = "Adresse inconnu";
   }
   if (!zipcode) {
     errors.zipcode = "CP est obligatoire";
@@ -27,9 +25,8 @@ export const validationSignup = ({
   password,
   confirmationPassword,
 }) => {
-  
   const errors = {};
-  
+
   if (!firstname) {
     errors.firstname = "Le prénom est vide";
   }
@@ -45,7 +42,7 @@ export const validationSignup = ({
     errors.email = "L'email est vide!";
   } else if (email === 403) {
     errors.email = "Ce mail est déjà utilisé";
-  }else if (!/\S+@\S+\.\S+/.test(email)) {
+  } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'Email est invalide";
   }
   if (!password) {
@@ -72,7 +69,7 @@ export const validationSignin = ({ email, password }) => {
     errors.email = "L'email ou le mot de passe sont incorrect";
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     errors.email = "L'email est invalide";
-  } 
+  }
   if (!password) {
     errors.password = "Un mot de passe est requis";
   } else if (password.length < 3) {

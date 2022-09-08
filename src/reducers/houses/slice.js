@@ -32,10 +32,10 @@ const houseSlice = createSlice({
       state.houseFormDesc = action.payload;
     },
     setHouseFormDescType: (state, action) => {
-      state.houseFormDesc.type = action.payload;
+      state.houseFormDesc.type_id = action.payload;
     },
     setHouseFormDescCountry: (state, action) => {
-      state.houseFormDesc.country = action.payload;
+      state.houseFormDesc.country_id = action.payload;
     },
     setHouseFormBool: (state, action) => {
       state.houseFormBool = action.payload;
