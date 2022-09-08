@@ -13,11 +13,9 @@ const Photo = ({ photos, sameId }) => {
   let bool;
   littlePhotos[0] ? bool = true : bool = false;
 
-  const target = 'photo';
-
   return (
     <section className={styles.photos}>
-      {sameId && <ButtonUpdate custom={styles.button_update} target={target} />}
+      {sameId && <ButtonUpdate custom={styles.button_update} target="photo" />}
       <BigPhoto mainPhoto={mainPhoto} />
       {bool && littlePhotos.map( p => <LittlePhoto key={p.id} obj={p} />)}
       {!bool && arrayPhoto.map( p => <LittlePhoto key={p.id} obj={p} />)}

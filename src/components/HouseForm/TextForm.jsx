@@ -18,8 +18,6 @@ const TextForm = ({ targetPage, errors, types, countries }) => {
   let objType = types.find((t) => t.id === type);
   let objCountry = countries.find((c) => c.id === country);
 
-  const target = 'textForm';
-
   // handle
   const handleChangeType = (e) => {
     const type = types.filter(t => t.value === e.target.value);
@@ -51,8 +49,8 @@ const TextForm = ({ targetPage, errors, types, countries }) => {
 
   return (
     <section className={styles.desc}>
-      {!targetPage && <ButtonClose custom={styles.button_close} target={target} />}
-      {!targetPage && <ButtonValidation custom={styles.button_validation} target={target} />}
+      {!targetPage && <ButtonClose custom={styles.button_close} target="textForm" />}
+      {!targetPage && <ButtonValidation custom={styles.button_validation} target="textForm" />}
       <div className={styles.desc_detailed}>
         <Box
           component="form"

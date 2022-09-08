@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setLogged } from "../reducers/auth/slice";
+import { resetHouse } from "../reducers/houses/slice";
+import { resetUser } from "../reducers/users/slice";
 
 // BaseQuery accessToken
 const baseQueryAuth = fetchBaseQuery({
@@ -32,7 +34,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   ) {
     let result = await baseQuery(args, api, extraOptions);
     if (api.endpoint === "setSignin") {
-      // dispatch result.data in the store
       if (result.data) {
         localStorage.setItem("accessToken", result.data.accessToken);
         localStorage.setItem("refreshToken", result.data.refreshToken);
@@ -49,6 +50,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       await baseQueryAuthRefreshToken(args, api, extraOptions);
       localStorage.clear();
       api.dispatch(setLogged(false));
+      api.dispatch(resetHouse());
+      api.dispatch(resetUser());
       window.location.replace(process.env.NEXT_PUBLIC_HOME);
     } else {
 

@@ -41,8 +41,6 @@ const Profil = () => {
     userFormDesc,
   } = useSelector((state) => state.users);
   
-  const target = 'profil';
-
   // New styles pour le bouton
   const theme = createTheme({
     palette: {
@@ -63,11 +61,7 @@ const Profil = () => {
 
   React.useEffect(() => {
     if (successPwd) {
-      dispatch(resetPwd({
-        password: "",
-        confirmationPassword: "",
-        oldPassword: "",
-      }));
+      dispatch(resetPwd());
     };
   }, [successPwd]);
 
@@ -114,7 +108,7 @@ const Profil = () => {
           <h2>
             Mon profil
           </h2>
-          <ButtonDelete custom={styles.button_delete} target={target} />
+          <ButtonDelete custom={styles.button_delete} target="profil" />
         </div>
         <form className={styles.form_card}>
           {IsLdgUser && <Spinner />}
@@ -122,7 +116,7 @@ const Profil = () => {
             data={user}
             form={userFormDesc}
             errors={errorsUser}
-            target={target}
+            target="profil"
           />
           <AvatarForm
             data={user}
@@ -152,7 +146,7 @@ const Profil = () => {
           <PasswordForm
             userFormPwd={userFormPwd}
             errors={errorsUser}
-            target={target}
+            target="profil"
           />
         </form>
         <DialogActions>

@@ -17,9 +17,19 @@ const houseApi = api.injectEndpoints({
         body: data,
       }),
     }),
+    deleteHouse: build.mutation({
+      query: (id) => ({
+        url: `/houses/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
   overrideExisting: true,
 });
 
-export const { useGetHomeQuery, useGetHousesQuery, useSetHouseMutation } =
-  houseApi;
+export const {
+  useGetHomeQuery,
+  useGetHousesQuery,
+  useSetHouseMutation,
+  useDeleteHouseMutation,
+} = houseApi;

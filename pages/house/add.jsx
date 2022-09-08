@@ -63,14 +63,14 @@ const HouseAdd = () => {
       const query = `q=${address.replace(/\s/g, '+')}&postcode=${zipcode.replace(/\s/g, '')}`;
       const { data: { features } } = await axios.get(`https://api-adresse.data.gouv.fr/search/?${query}`);
       if(features[0]) {
-        const lat = JSON.stringify(features[0].geometry.coordinates[0]);
-        const long = JSON.stringify(features[0].geometry.coordinates[1]);
+        const long = JSON.stringify(features[0].geometry.coordinates[0]);
+        const lat = JSON.stringify(features[0].geometry.coordinates[1]);
         // requete ajax
         postHouseMutation({
           ...houseFormDesc,
           latitude: lat,
           longitude: long,
-          map: `https://maps.google.com/maps?q=${long},${lat}`,
+          map: `https://maps.google.com/maps?q=${lat},${long}`,
         });
       } else {
         dispatch(setErrorsHouse(validationHouse(

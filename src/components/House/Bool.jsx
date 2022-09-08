@@ -18,8 +18,6 @@ function Bool({ house, sameId }) {
     parking: house.parking,
    };
    
-  const target = 'bool';
-
   let bool;
   let i = 0;
   for (const key in houseBool) if (houseBool[key] === true) i++;
@@ -27,7 +25,7 @@ function Bool({ house, sameId }) {
   
   return (
     <section className={styles.supply}>
-      {sameId && <ButtonUpdate custom={styles.button_update} target={target} />}
+      {sameId && <ButtonUpdate custom={styles.button_update} target="bool" />}
       <div className={styles.supply_icon}>
         {bool && arrayIcon.map(icon => 
         <Icon key={icon.id} obj={icon} houseBool={houseBool} />

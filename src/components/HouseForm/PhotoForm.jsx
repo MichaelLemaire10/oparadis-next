@@ -9,8 +9,6 @@ import ButtonValidation from "../Button/ButtonValidation";
 const PhotoForm = () => {
   const { photosForm } = useSelector(state => state.houses);
 
-  const target = 'photoForm';
-  
   const mainPhoto = photosForm.find(p => p.main_photo === true);
   const littlePhotoOne = photosForm.find(p => p.target === 0);
   const littlePhotoTwo = photosForm.find(p => p.target === 1);
@@ -19,8 +17,8 @@ const PhotoForm = () => {
 
   return (
     <section className={styles.photos}>
-      <ButtonClose custom={styles.button_close} target={target} />
-      <ButtonValidation custom={styles.button_validation} target={target} />
+      <ButtonClose custom={styles.button_close} target='photoForm' />
+      <ButtonValidation custom={styles.button_validation} target='photoForm' />
       <BigPhoto 
         mainPhoto={mainPhoto && mainPhoto.photo ?
            {...mainPhoto, target: 4} : {target: 4}} 

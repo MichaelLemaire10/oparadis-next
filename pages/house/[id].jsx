@@ -38,7 +38,7 @@ const HouseById = ({ house }) => {
         <h2>
           Mon logement
         </h2>
-        <ButtonDelete custom={styles.button_delete} />
+        <ButtonDelete custom={styles.button_delete} target="house" />
       </div>}
       {formPhoto
         ? <SectionFormPhoto />

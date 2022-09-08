@@ -58,12 +58,12 @@ const houseSlice = createSlice({
       }
     },
     resetHouse: (state) => {
-      state.houseBool = state.houseBool;
-      state.houseDesc = state.houseDesc;
-      state.houseFormBool = state.houseFormBool;
-      state.houseFormDesc = state.houseFormDesc;
-      state.photos = state.photos;
-      state.photosForm = state.photosForm;
+      state.houseBool = initialState.houseBool;
+      state.houseDesc = initialState.houseDesc;
+      state.houseFormBool = initialState.houseFormBool;
+      state.houseFormDesc = initialState.houseFormDesc;
+      state.photos = initialState.photos;
+      state.photosForm = initialState.photosForm;
     },
   },
 });

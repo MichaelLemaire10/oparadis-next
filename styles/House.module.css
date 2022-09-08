@@ -171,6 +171,8 @@
 
 .desc_detailed__title {
   text-align: center;
+  margin-top: 5px;
+  padding-bottom: 15px;
 }
 
 .desc_detailed__info {

@@ -29,11 +29,11 @@ const userSlice = createSlice({
       state.userFormPwd = action.payload;
     },
     resetUser: (state) => {
-      state.user = state.user;
-      state.userFormDesc = state.userFormDesc;
+      state.user = initialState.user;
+      state.userFormDesc = initialState.userFormDesc;
     },
-    resetPwd: (state, action) => {
-      state.userFormPwd = action.payload;
+    resetPwd: (state) => {
+      state.userFormPwd = initialState.userFormPwd;
     }
   },
 });

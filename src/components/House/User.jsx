@@ -1,6 +1,5 @@
 import styles from "../../../styles/House.module.css"
 import ImgAvatar from "../Image/ImgAvatar";
-import { useSelector } from "react-redux";
 
 const SectionUser = ({ user }) => {
 

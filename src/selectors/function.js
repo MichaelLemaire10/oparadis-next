@@ -7,6 +7,7 @@ import {
 } from "../reducers/houses/slice";
 
 export const setUser = ({ data, dispatch }) => {
+  console.log('function data =>', data);
   if (data) {
     const user = {
       email: data.email,
@@ -47,7 +48,7 @@ export const setHouse = ({ house, dispatch }) => {
       longitude: house.longitude,
       map: house.map,
     };
-    
+
     const bool = {
       id: house.id,
       internet: house.internet,
