@@ -10,11 +10,12 @@ const Text = ({ house, sameId }) => {
     description, type, country
   } = house;
 
-  const target = 'text';
+  // let objType = types.find((t) => t.id === type);
+  // let objCountry = countries.find((c) => c.id === country);
 
   return (
     <section className={styles.desc}>
-      {sameId && <ButtonUpdate custom={styles.button_update} target={target} />}
+      {sameId && <ButtonUpdate custom={styles.button_update} target="text" />}
       <h3 className={styles.displayNone}>Description du logement</h3>
       <div className={styles.desc_detailed}>
         <h4 className={styles.desc_detailed__title}>

@@ -2,7 +2,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowFormBool, setShowFormText, setShowFormPhoto } from '../../reducers/booleans/slice';
 import { 
-    getHouseBool, getHouseDesc, setErrorsHouse, getHousePhoto 
+    getHouseDesc, setErrorsHouse, getHousePhoto 
 } from '../../reducers/houses/slice';
 import { validationHouse } from '../../selectors/validation';
 
@@ -49,7 +49,7 @@ const ButtonValidation = ({ custom, target, updateHouseBoolMutation }) => {
                     dispatch(setShowFormBool(false));
                 }
                 else {
-                    // await updateHouseBoolMutation(houseFormBool);
+                    await updateHouseBoolMutation(houseFormBool);
                 };
                 break;
             default:

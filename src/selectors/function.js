@@ -47,21 +47,21 @@ export const setHouse = ({ house, dispatch }) => {
       longitude: house.longitude,
       map: house.map,
     };
-
+    dispatch(getHouseDesc(desc));
+    dispatch(setHouseFormDesc(desc));
+    
     const bool = {
       id: house.id,
       internet: house.internet,
       washing_machine: house.washing_machine,
       TV: house.TV,
       hoven: house.hoven,
-      microwaven: house.microwaven,
+      microwave: house.microwave,
       dishwasher: house.dishwasher,
-      bathub: house.bathub,
+      bathtub: house.bathtub,
       shower: house.shower,
       parking: house.parking,
     };
-    dispatch(getHouseDesc(desc));
     dispatch(getHouseBool(bool));
-    dispatch(setHouseFormDesc(desc));
     dispatch(setHouseFormBool(bool));
 };

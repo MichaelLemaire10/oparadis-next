@@ -1,5 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../../styles/House.module.css";
+import axios from "axios";
 import { LeafletWithNoSSR } from "../../src/selectors/LeafletWithNoSSR";
 import SectionPhoto from "../../src/components/House/Photo";
 import SectionUser from "../../src/components/House/User";
@@ -12,24 +15,19 @@ import SectionFormPhoto from "../../src/components/HouseForm/PhotoForm";
 import SectionFormText from "../../src/components/HouseForm/TextForm";
 import SectionFormBool from "../../src/components/HouseForm/BoolForm";
 import ButtonDelete from "../../src/components/Button/ButtonDelete";
-import { useDispatch, useSelector } from "react-redux";
-import React from "react";
 import { setHouseFormPhoto } from "../../src/reducers/houses/slice";
-import axios from "axios";
 
 const HouseById = ({ house }) => {
-
+  const dispatch = useDispatch();
   const { formPhoto, formText, formBool } = useSelector(state => state.booleans);
-  const { errorsHouse, photos, houseDesc } = useSelector(state => state.houses);
+  const { errorsHouse, photos, houseDesc, houseBool } = useSelector(state => state.houses);
   const zoom = 14;
   const sameId = houseDesc.id === house.id;
 
   //! à supprimer quand ajax sera en place !//
-  const dispatch = useDispatch();
   React.useEffect(() => {
     photos.map(p => dispatch(setHouseFormPhoto(p)));
   }, []);
-
 
   return (
     <div className={styles.main}>
@@ -42,13 +40,14 @@ const HouseById = ({ house }) => {
       </div>}
       {formPhoto
         ? <SectionFormPhoto />
-        : <SectionPhoto photos={house.photo} sameId={sameId} />}
+        : <SectionPhoto photos={sameId ? photos : house.photo} sameId={sameId} />}
       <div className={styles.container}>
         <SectionUser user={house.user} />
         <SectionCalendar />
         {formText
           ? <SectionFormText errors={errorsHouse} />
           : <SectionText house={house} sameId={sameId} />}
+          {/* : <SectionText house={sameId ? houseDesc : house} sameId={sameId} />} */}
         <section className={styles.map}>
           <LeafletWithNoSSR 
             style={styles.leaflet} 
@@ -58,7 +57,7 @@ const HouseById = ({ house }) => {
         </section>
         {formBool
           ? <SectionFormBool />
-          : <SectionBool house={house} sameId={sameId} />}
+          : <SectionBool house={sameId ? houseBool : house} sameId={sameId} />}
         {house.animals[0] && <SectionAnimal animals={house.animals} />}
         {house.plants[0] && <SectionPlant plants={house.plants} />}
       </div>

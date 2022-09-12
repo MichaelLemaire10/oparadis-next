@@ -11,9 +11,9 @@ function Bool({ house, sameId }) {
     washing_machine: house.washing_machine,
     TV: house.TV,
     hoven: house.hoven,
-    microwaven: house.microwaven,
+    microwave: house.microwave,
     dishwasher: house.dishwasher,
-    bathub: house.bathub,
+    bathtub: house.bathtub,
     shower: house.shower,
     parking: house.parking,
    };

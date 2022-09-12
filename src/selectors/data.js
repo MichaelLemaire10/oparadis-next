@@ -28,8 +28,8 @@ export const arrayIcon = [
   {
     id: 5,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/micro-onde_vu1wyo.png",
-    alt: "icon microwaven",
-    name: "microwaven"
+    alt: "icon microwave",
+    name: "microwave"
   },
   {
     id: 6,
@@ -41,7 +41,7 @@ export const arrayIcon = [
     id: 7,
     src: "https://res.cloudinary.com/dhwbw94lc/image/upload/v1655196754/icon/baignoire_keicr6.png",
     alt: "icon bathtub",
-    name: "bathub"
+    name: "bathtub"
   },
   {
     id: 8,
