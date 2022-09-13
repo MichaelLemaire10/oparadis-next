@@ -46,7 +46,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     }
   } else {
     if (api.endpoint === "setLogout") {
-      console.log("logout");
       await baseQueryAuthRefreshToken(args, api, extraOptions);
       localStorage.clear();
       api.dispatch(setLogged(false));
@@ -56,7 +55,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     } else {
 
       // Route protected by a token
-      console.log("route auth");
+      // console.log("route auth");
 
       const refreshToken = localStorage.getItem("refreshToken");
       let result = await baseQueryAuth(args, api, extraOptions);
@@ -65,9 +64,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       // if accessToken isn't valide
       if (
         refreshToken !== null &&
-        result?.error?.status === 401 &&
-        result.data.message ===
-        'Unauthorized'
+        result?.error?.status === 401
       ) {
         console.log("sending refresh token");
         // send refresh token to get new access token
