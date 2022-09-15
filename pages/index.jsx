@@ -8,7 +8,7 @@ import ImgHouse from "../src/components/Image/ImgHouse";
 import Cards from "../src/components/Home/Cards";
 import { array } from "../src/selectors/data";
 
-const Home = ({ arrayHouse }) => {  
+const Home = ({ arrayHouse }) => {
 
   return (
     <div className={styles.container}>
